@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import "tailwindcss";
+
+* {
+  font-family: "Outfit", sans-serif;
+}
+
+/* === Slide-in animation for player cards === */
+@keyframes slide-in {
+  0% { transform: translateX(-200%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+.animate-slide-in {
+  animation: slide-in 0.5s ease-out forwards;
+}
+
+/* === Slide-down toast animation (top-center) === */
+@keyframes slide-down {
+  0% { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-down {
+  animation: slide-down 0.5s ease forwards;
+}
+
+/* === Flashing animation for SOLD or blinking toasts === */
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.animate-flash {
+  animation: flash 0.5s ease-in-out infinite;
+}
+
+/* === Confetti / sparkle effect for sold players (optional) === */
+@keyframes confetti {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(300px) rotate(360deg); opacity: 0; }
+}
+.animate-confetti {
+  animation: confetti 1s ease-out forwards;
+}
+
+/* === Countdown timer circle animation (optional) === */
+@keyframes countdown-fill {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
+}
+.countdown-circle {
+  animation: countdown-fill 3s linear forwards;
+}
+
+/* === Neon border highlight for last 2 bidders === */
+.neon-border {
+  box-shadow: 0 0 10px #fff, 0 0 20px #ff0, 0 0 30px #ff0;
+  transition: box-shadow 0.3s ease;
+}
+
+/* === Dark Theme Backgrounds & Cards === */
+body, html {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.bg-card {
+  background-color: #2a2a2a;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.toastify-top-center {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
