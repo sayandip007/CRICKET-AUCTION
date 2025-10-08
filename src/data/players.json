@@ -16,7 +16,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player2.png"
+    "image": "/images/players/Ruturaj.png"
   },
   {
     "id": 2,
@@ -35,7 +35,7 @@
     "bowlingAverage": 21.62,
     "bowlingEconomy": 8.68,
     "bowlingStrikeRate": 14.94,
-    "image": "/images/players/player3.png"
+    "image": "/images/players/Pathirana.png"
   },
   {
     "id": 3,
@@ -54,7 +54,7 @@
     "bowlingAverage": 42.6,
     "bowlingEconomy": 10.31,
     "bowlingStrikeRate": 24.8,
-    "image": "/images/players/player4.png"
+    "image": "/images/players/Dube.png"
   },
   {
     "id": 4,
@@ -73,7 +73,7 @@
     "bowlingAverage": 30.52,
     "bowlingEconomy": 7.67,
     "bowlingStrikeRate": 23.86,
-    "image": "/images/players/player5.png"
+    "image": "/images/players/jadeja.png"
   },
   {
     "id": 5,
@@ -92,7 +92,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player6.png"
+    "image": "/images/players/dhoni.png"
   },
   {
     "id": 6,
@@ -111,7 +111,7 @@
     "bowlingAverage": 31.61,
     "bowlingEconomy": 7.35,
     "bowlingStrikeRate": 25.8,
-    "image": "/images/players/player7.png"
+    "image": "/images/players/axar.png"
   },
   {
     "id": 7,
@@ -130,7 +130,7 @@
     "bowlingAverage": 26.95,
     "bowlingEconomy": 8.04,
     "bowlingStrikeRate": 20.12,
-    "image": "/images/players/player8.png"
+    "image": "/images/players/kuldeep.png"
   },
   {
     "id": 8,
@@ -149,7 +149,7 @@
     "bowlingAverage": 17.25,
     "bowlingEconomy": 11.5,
     "bowlingStrikeRate": 9.0,
-    "image": "/images/players/player9.png"
+    "image": "/images/players/stubbs.png"
   },
   {
     "id": 9,
@@ -168,7 +168,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player10.png"
+    "image": "/images/players/porel.png"
   },
   {
     "id": 10,
@@ -187,7 +187,7 @@
     "bowlingAverage": 23.84,
     "bowlingEconomy": 7.09,
     "bowlingStrikeRate": 20.18,
-    "image": "/images/players/player1.png"
+    "image": "/images/players/rashid.png"
   },
   {
     "id": 11,
@@ -206,7 +206,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player2.png"
+    "image": "/images/players/gill.png"
   },
   {
     "id": 12,
@@ -225,7 +225,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player3.png"
+    "image": "/images/players/sai.png"
   },
   {
     "id": 13,
@@ -244,7 +244,7 @@
     "bowlingAverage": 34.72,
     "bowlingEconomy": 7.91,
     "bowlingStrikeRate": 26.34,
-    "image": "/images/players/player4.png"
+    "image": "/images/players/rahul.png"
   },
   {
     "id": 14,
@@ -263,7 +263,7 @@
     "bowlingAverage": 28.0,
     "bowlingEconomy": 9.33,
     "bowlingStrikeRate": 18.0,
-    "image": "/images/players/player5.png"
+    "image": "/images/players/shahrukh.png"
   },
   {
     "id": 15,
@@ -282,7 +282,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player6.png"
+    "image": "/images/players/rinku.png"
   },
   {
     "id": 16,
@@ -301,7 +301,7 @@
     "bowlingAverage": 23.85,
     "bowlingEconomy": 7.58,
     "bowlingStrikeRate": 18.88,
-    "image": "/images/players/player7.png"
+    "image": "/images/players/varun.png"
   },
   {
     "id": 17,
@@ -320,7 +320,7 @@
     "bowlingAverage": 25.64,
     "bowlingEconomy": 6.8,
     "bowlingStrikeRate": 22.63,
-    "image": "/images/players/player8.png"
+    "image": "/images/players/narine.png"
   },
   {
     "id": 18,
@@ -339,7 +339,7 @@
     "bowlingAverage": 23.28,
     "bowlingEconomy": 9.51,
     "bowlingStrikeRate": 14.68,
-    "image": "/images/players/player9.png"
+    "image": "/images/players/russell.png"
   },
   {
     "id": 19,
@@ -358,7 +358,7 @@
     "bowlingAverage": 25.73,
     "bowlingEconomy": 9.51,
     "bowlingStrikeRate": 16.23,
-    "image": "/images/players/player10.png"
+    "image": "/images/players/harshit.png"
   },
   {
     "id": 20,
@@ -377,7 +377,7 @@
     "bowlingAverage": 10.50,
     "bowlingEconomy": 9.45,
     "bowlingStrikeRate": 6.67,
-    "image": "/images/players/player1.png"
+    "image": "/images/players/ramandeep.png"
   },
   {
     "id": 21,
@@ -396,7 +396,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player2.png"
+    "image": "/images/players/pooran.png"
   },
   {
     "id": 22,
@@ -415,7 +415,7 @@
     "bowlingAverage": 31.07,
     "bowlingEconomy": 8.22,
     "bowlingStrikeRate": 22.68,
-    "image": "/images/players/player3.png"
+    "image": "/images/players/bishnoi.png"
   },
   {
     "id": 23,
@@ -434,7 +434,7 @@
     "bowlingAverage": 20.56,
     "bowlingEconomy": 9.17,
     "bowlingStrikeRate": 13.44,
-    "image": "/images/players/player4.png"
+    "image": "/images/players/mayank.png"
   },
   {
     "id": 24,
@@ -453,7 +453,7 @@
     "bowlingAverage": 15.52,
     "bowlingEconomy": 8.51,
     "bowlingStrikeRate": 18.00,
-    "image": "/images/players/player5.png"
+    "image": "/images/players/mohsin.png"
   },
   {
     "id": 25,
@@ -472,7 +472,7 @@
     "bowlingAverage": 12.25,
     "bowlingEconomy": 8.40,
     "bowlingStrikeRate": 8.75,
-    "image": "/images/players/player6.png"
+    "image": "/images/players/badoni.png"
   },
   {
     "id": 26,
@@ -491,7 +491,7 @@
     "bowlingAverage": 22.03,
     "bowlingEconomy": 7.25,
     "bowlingStrikeRate": 18.23,
-    "image": "/images/players/player7.png"
+    "image": "/images/players/bumrah.png"
   },
   {
     "id": 27,
@@ -510,7 +510,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 8.00,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player8.png"
+    "image": "/images/players/sky.png"
   },
   {
     "id": 28,
@@ -529,7 +529,7 @@
     "bowlingAverage": 31.95,
     "bowlingEconomy": 9.18,
     "bowlingStrikeRate": 20.87,
-    "image": "/images/players/player9.png"
+    "image": "/images/players/hardik.png"
   },
   {
     "id": 29,
@@ -548,7 +548,7 @@
     "bowlingAverage": 30.20,
     "bowlingEconomy": 8.02,
     "bowlingStrikeRate": 22.60,
-    "image": "/images/players/player10.png"
+    "image": "/images/players/rohit.png"
   },
   {
     "id": 30,
@@ -567,7 +567,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 7.64,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player1.png"
+    "image": "/images/players/tilak.png"
   },
   {
     "id": 31,
@@ -586,7 +586,7 @@
     "bowlingAverage": 52.00,
     "bowlingEconomy": 10.40,
     "bowlingStrikeRate": 30.00,
-    "image": "/images/players/player2.png"
+    "image": "/images/players/shashank.png"
   },
   {
     "id": 32,
@@ -605,7 +605,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player3.png"
+    "image": "/images/players/prab.png"
   },
   {
     "id": 33,
@@ -624,7 +624,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player4.png"
+    "image": "/images/players/sanju.png"
   },
   {
     "id": 34,
@@ -643,7 +643,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player5.png"
+    "image": "/images/players/jaiswal.png"
   },
   {
     "id": 35,
@@ -662,7 +662,7 @@
     "bowlingAverage": 68.14,
     "bowlingEconomy": 9.70,
     "bowlingStrikeRate": 42.14,
-    "image": "/images/players/player6.png"
+    "image": "/images/players/parag.png"
   },
   {
     "id": 36,
@@ -681,7 +681,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player7.png"
+    "image": "/images/players/jurel.png"
   },
   {
     "id": 37,
@@ -700,7 +700,7 @@
     "bowlingAverage": 0,
     "bowlingEconomy": 0,
     "bowlingStrikeRate": 0,
-    "image": "/images/players/player8.png"
+    "image": "/images/players/hetmyer.png"
   },
   {
     "id": 38,
