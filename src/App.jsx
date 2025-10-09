@@ -12,70 +12,70 @@ const iplTeams = [
     id: 1,
     name: "Mumbai Indians",
     color: "border-blue-600",
-    budget: 100,
+    budget: 120,
     players: [],
   },
   {
     id: 2,
     name: "Chennai Super Kings",
     color: "border-yellow-400",
-    budget: 100,
+    budget: 120,
     players: [],
   },
   {
     id: 3,
     name: "Royal Challengers Bangalore",
     color: "border-red-700",
-    budget: 100,
+    budget: 120,
     players: [],
   },
   {
     id: 4,
     name: "Kolkata Knight Riders",
     color: "border-purple-800",
-    budget: 100,
+    budget: 120,
     players: [],
   },
   {
     id: 5,
     name: "Delhi Capitals",
     color: "border-sky-600",
-    budget: 100,
+    budget: 120,
     players: [],
   },
   {
     id: 6,
     name: "Sunrisers Hyderabad",
     color: "border-orange-500",
-    budget: 100,
+    budget: 120,
     players: [],
   },
   {
     id: 7,
     name: "Rajasthan Royals",
     color: "border-pink-400",
-    budget: 100,
+    budget: 120,
     players: [],
   },
   {
     id: 8,
     name: "Lucknow Super Giants",
     color: "border-cyan-400",
-    budget: 100,
+    budget: 120,
     players: [],
   },
   {
     id: 9,
     name: "Gujarat Titans",
     color: "border-blue-900",
-    budget: 100,
+    budget: 120,
     players: [],
   },
   {
     id: 10,
     name: "Punjab Kings",
     color: "border-red-500",
-    budget: 100,
+    budget: 120,
     players: [],
   },
 ];
@@ -285,7 +285,7 @@ function App() {
       setTimeout(() => {
         sellPlayer();
       }, 10000);
-    }, 10000); // 10 seconds of inactivity
+    }, 5000); // 10 seconds of inactivity
 
     // Cleanup on next bid or pass
     return () => clearTimeout(timer);
@@ -402,7 +402,7 @@ function App() {
           {player.name}
         </h2>
         <p className="text-gray-300 text-sm md:text-base mb-4">
-          {player.role} {isOverseas && "(🌏 Overseas)"}
+          {player.role} {isOverseas && "( Overseas)"}
         </p>
         <div className="flex justify-center gap-6 text-white mb-5">
           <p className="text-gray-400 text-sm md:text-base">
@@ -482,7 +482,7 @@ function App() {
 
   // === Team Dashboard Data ===
   const getTeamStats = (team) => {
-    const totalSpent = 100 - team.budget;
+    const totalSpent = 120 - team.budget;
     const overseasPlayers = team.players.filter(
       (p) => p.nationality !== "Indian"
     ).length;
@@ -507,7 +507,7 @@ function App() {
         </button>
         <h2 className="text-2xl font-bold mb-3">{team.name} Roster</h2>
         <p className="mb-3">
-          Total Spent: ₹{(100 - team.budget).toFixed(2)}Cr | Budget Left: ₹
+          Total Spent: ₹{(120 - team.budget).toFixed(2)}Cr | Budget Left: ₹
           {team.budget.toFixed(2)}Cr
         </p>
         <DragDropContext onDragEnd={onDragEnd}>
@@ -707,7 +707,7 @@ function App() {
           const budgetPercent = (team.budget / 100) * 100;
 
           // Calculate team stats
-          const totalSpent = 100 - team.budget;
+          const totalSpent = 120 - team.budget;
           const overseasPlayers = team.players.filter(
             (p) => p.nationality !== "Indian"
           ).length;
