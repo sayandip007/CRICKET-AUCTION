@@ -1,0 +1,2316 @@
+[
+  {
+    "teamId": 1,
+    "teamName": "Chennai Super Kings",
+    "players": [
+      {
+        "id": 1,
+        "name": "Ruturaj Gaikwad",
+        "role": "Batsman",
+        "isCapped": true,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "",
+        "image": "/images/players/Ruturaj.png"
+      },
+      {
+        "id": 2,
+        "name": "Andre Siddarth C",
+        "role": "Batsman",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 3,
+        "name": "Shaik Rasheed",
+        "role": "Batsman",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 4,
+        "name": "Rahul Tripathi",
+        "role": "Batsman",
+        "isCapped": true,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 5,
+        "name": "Ayush Mhatre",
+        "role": "Batsman",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 6,
+        "name": "Dewald Brevis",
+        "role": "Batsman",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 7,
+        "name": "Shivam Dube",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": "/images/players/Dube.png"
+      },
+      {
+        "id": 8,
+        "name": "Rachin Ravindra",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 9,
+        "name": "Deepak Hooda",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 10,
+        "name": "Vijay Shankar",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 11,
+        "name": "Ramakrishna Ghosh",
+        "role": "All-Rounder",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 12,
+        "name": "Ravindra Jadeja",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": "/images/players/jadeja.png"
+      },
+      {
+        "id": 13,
+        "name": "Anshul Kamboj",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 14,
+        "name": "Jamie Overton",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 15,
+        "name": "Sam Curran",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 16,
+        "name": "Ravichandran Ashwin",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 17,
+        "name": "Devon Conway",
+        "role": "Wicketkeeper",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "South African",
+        "image": ""
+      },
+      {
+        "id": 18,
+        "name": "MS Dhoni",
+        "role": "Wicketkeeper",
+        "isCapped": false,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": "/images/players/dhoni.png"
+      },
+      {
+        "id": 19,
+        "name": "Vansh Bedi",
+        "role": "Wicketkeeper",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 20,
+        "name": "Urvil Patel",
+        "role": "Wicketkeeper",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 21,
+        "name": "Kamlesh Nagarkoti",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 22,
+        "name": "Shreyas Gopal",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 23,
+        "name": "Matheesha Pathirana",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "Sri Lankan",
+        "image": "/images/players/Pathirana.png"
+      },
+      {
+        "id": 24,
+        "name": "Mukesh Choudhary",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 0.75,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 25,
+        "name": "Nathan Ellis",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.75,
+        "previousPrice": null,
+        "nationality": "Australian",
+        "image": ""
+      },
+      {
+        "id": 26,
+        "name": "Noor Ahmad",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Afghan",
+        "image": ""
+      },
+      {
+        "id": 27,
+        "name": "Khaleel Ahmed",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.75,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      }
+    ]
+  },
+  {
+    "teamId": 2,
+    "teamName": "Rajasthan Royals",
+    "players": [
+      {
+        "id": 28,
+        "name": "Vaibhav Suryavanshi",
+        "role": "Batsman",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 29,
+        "name": "Shimron Hetmyer",
+        "role": "Batsman",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "West Indian",
+        "image": ""
+      },
+      {
+        "id": 30,
+        "name": "Yashasvi Jaiswal",
+        "role": "Batsman",
+        "isCapped": true,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 31,
+        "name": "Shubham Dubey",
+        "role": "Batsman",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 32,
+        "name": "Riyan Parag",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 33,
+        "name": "Wanindu Hasaranga",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "Sri Lankan",
+        "image": ""
+      },
+      {
+        "id": 34,
+        "name": "Sanju Samson",
+        "role": "Wicketkeeper",
+        "isCapped": true,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 35,
+        "name": "Dhruv Jurel",
+        "role": "Wicketkeeper",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 36,
+        "name": "Kunal Singh Rathore",
+        "role": "Wicketkeeper",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 37,
+        "name": "Lhuan-dre Pretorius",
+        "role": "Wicketkeeper",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "South African",
+        "image": ""
+      },
+      {
+        "id": 38,
+        "name": "Yudhvir Singh Charak",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 39,
+        "name": "Tushar Deshpande",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 40,
+        "name": "Kumar Kartikeya",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 0.75,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 41,
+        "name": "Akash Madhwal",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 0.75,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 42,
+        "name": "Kwena Maphaka",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "South African",
+        "image": ""
+      },
+      {
+        "id": 43,
+        "name": "Maheesh Theekshana",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "Sri Lankan",
+        "image": ""
+      },
+      {
+        "id": 44,
+        "name": "Fazalhaq Farooqi",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Afghan",
+        "image": ""
+      },
+      {
+        "id": 45,
+        "name": "Ashok Sharma",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 46,
+        "name": "Jofra Archer",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "English",
+        "image": ""
+      },
+      {
+        "id": 47,
+        "name": "Nandre Burger",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "South African",
+        "image": ""
+      }
+    ]
+  },
+  {
+    "teamId": 3,
+    "teamName": "Kolkata Knight Riders",
+    "players": [
+      {
+        "id": 48,
+        "name": "Manish Pandey",
+        "role": "Batsman",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 49,
+        "name": "Ajinkya Rahane",
+        "role": "Batsman",
+        "isCapped": true,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 50,
+        "name": "Rinku Singh",
+        "role": "Batsman",
+        "isCapped": true,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": "/images/players/rinku.png"
+      },
+      {
+        "id": 51,
+        "name": "Angkrish Raghuvanshi",
+        "role": "Batsman",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 52,
+        "name": "Anukul Roy",
+        "role": "All-Rounder",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 53,
+        "name": "Ramandeep Singh",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 54,
+        "name": "Venkatesh Iyer",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 55,
+        "name": "Moeen Ali",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "English",
+        "image": ""
+      },
+      {
+        "id": 56,
+        "name": "Sunil Narine",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "West Indian",
+        "image": ""
+      },
+      {
+        "id": 57,
+        "name": "Andre Russell",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "West Indian",
+        "image": "/images/players/russell.png"
+      },
+      {
+        "id": 58,
+        "name": "Quinton de Kock",
+        "role": "Wicketkeeper",
+        "isCapped": true,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "South African",
+        "image": ""
+      },
+      {
+        "id": 59,
+        "name": "Rahmanullah Gurbaz",
+        "role": "Wicketkeeper",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Afghan",
+        "image": ""
+      },
+      {
+        "id": 60,
+        "name": "Luvnith Sisodia",
+        "role": "Wicketkeeper",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 61,
+        "name": "Varun Chakaravarthy",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 62,
+        "name": "Mayank Markande",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.75,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 63,
+        "name": "Vaibhav Arora",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 64,
+        "name": "Harshit Rana",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 65,
+        "name": "Anrich Nortje",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "South African",
+        "image": ""
+      },
+      {
+        "id": 66,
+        "name": "Spencer Johnson",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Australian",
+        "image": ""
+      },
+      {
+        "id": 67,
+        "name": "Chetan Sakariya",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 68,
+        "name": "Shivam Shukla",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      }
+    ]
+  },
+  {
+    "teamId": 4,
+    "teamName": "Sunrisers Hyderabad",
+    "players": [
+      {
+        "id": 69,
+        "name": "Atharva Taide",
+        "role": "Batsman",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 70,
+        "name": "Travis Head",
+        "role": "Batsman",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "Australian",
+        "image": ""
+      },
+      {
+        "id": 71,
+        "name": "Abhinav Manohar",
+        "role": "Batsman",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 72,
+        "name": "Sachin Baby",
+        "role": "Batsman",
+        "isCapped": false,
+        "basePrice": 0.75,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 73,
+        "name": "Aniket Verma",
+        "role": "Batsman",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 74,
+        "name": "Nitish Kumar Reddy",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 75,
+        "name": "Abhishek Sharma",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 76,
+        "name": "Kamindu Mendis",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "Sri Lankan",
+        "image": ""
+      },
+      {
+        "id": 77,
+        "name": "Wiaan Mulder",
+        "role": "All-Rounder",
+        "isCapped": true,
+        "basePrice": 0.75,
+        "previousPrice": null,
+        "nationality": "South African",
+        "image": ""
+      },
+      {
+        "id": 78,
+        "name": "Heinrich Klaasen",
+        "role": "Wicketkeeper",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "South African",
+        "image": ""
+      },
+      {
+        "id": 79,
+        "name": "Ishan Kishan",
+        "role": "Wicketkeeper",
+        "isCapped": true,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 80,
+        "name": "Zeeshan Ansari",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "",
+        "image": ""
+      },
+      {
+        "id": 81,
+        "name": "Pat Cummins",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 2.0,
+        "previousPrice": null,
+        "nationality": "Australian",
+        "image": ""
+      },
+      {
+        "id": 82,
+        "name": "Mohammed Shami",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 83,
+        "name": "Harshal Patel",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 84,
+        "name": "Rahul Chahar",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 1.0,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 85,
+        "name": "Simarjeet Singh",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      },
+      {
+        "id": 86,
+        "name": "Eshan Malinga",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.5,
+        "previousPrice": null,
+        "nationality": "Sri Lankan",
+        "image": ""
+      },
+      {
+        "id": 87,
+        "name": "Jaydev Unadkat",
+        "role": "Bowler",
+        "isCapped": true,
+        "basePrice": 0.75,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": ""
+      }
+    ]
+  },
+  [
+    {
+      "teamId": 5,
+      "teamName": "Royal Challengers Bangalore",
+      "players": [
+        {
+          "id": 88,
+          "name": "Virat Kohli",
+          "role": "Batsman",
+          "isCapped": true,
+          "basePrice": 2.0,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 89,
+          "name": "Rajat Patidar",
+          "role": "Batsman",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 90,
+          "name": "Swastik Chikara",
+          "role": "Batsman",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 91,
+          "name": "Tim David",
+          "role": "Batsman",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "Singaporean",
+          "image": ""
+        },
+        {
+          "id": 92,
+          "name": "Mayank Agarwal",
+          "role": "Batsman",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 93,
+          "name": "Krunal Pandya",
+          "role": "All-Rounder",
+          "isCapped": true,
+          "basePrice": 2.0,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 94,
+          "name": "Liam Livingstone",
+          "role": "All-Rounder",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "English",
+          "image": ""
+        },
+        {
+          "id": 95,
+          "name": "Manoj Bhandage",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.75,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 96,
+          "name": "Romario Shepherd",
+          "role": "All-Rounder",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "West Indian",
+          "image": ""
+        },
+        {
+          "id": 97,
+          "name": "Swapnil Singh",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 98,
+          "name": "Mohit Rathee",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 99,
+          "name": "Philip Salt",
+          "role": "Wicketkeeper",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "English",
+          "image": ""
+        },
+        {
+          "id": 100,
+          "name": "Jitesh Sharma",
+          "role": "Wicketkeeper",
+          "isCapped": true,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 101,
+          "name": "Tim Seifert",
+          "role": "Wicketkeeper",
+          "isCapped": true,
+          "basePrice": 1.0,
+          "previousPrice": null,
+          "nationality": "New Zealand",
+          "image": ""
+        },
+        {
+          "id": 102,
+          "name": "Josh Hazlewood",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 2.0,
+          "previousPrice": null,
+          "nationality": "Australian",
+          "image": ""
+        },
+        {
+          "id": 103,
+          "name": "Bhuvneshwar Kumar",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 104,
+          "name": "Rasikh Dar Salam",
+          "role": "Bowler",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 105,
+          "name": "Suyash Sharma",
+          "role": "Bowler",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 106,
+          "name": "Yash Dayal",
+          "role": "Bowler",
+          "isCapped": false,
+          "basePrice": 0.75,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 107,
+          "name": "Nuwan Thushara",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 1.0,
+          "previousPrice": null,
+          "nationality": "Sri Lankan",
+          "image": ""
+        },
+        {
+          "id": 108,
+          "name": "Abhinandan Singh",
+          "role": "Bowler",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 109,
+          "name": "Blessing Muzarabani",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 1.0,
+          "previousPrice": null,
+          "nationality": "Zimbabwean",
+          "image": ""
+        }
+      ]
+    },
+    {
+      "teamId": 6,
+      "teamName": "Delhi Capitals",
+      "players": [
+        {
+          "id": 110,
+          "name": "Faf du Plessis",
+          "role": "Batsman",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "South African",
+          "image": ""
+        },
+        {
+          "id": 111,
+          "name": "Karun Nair",
+          "role": "Batsman",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 112,
+          "name": "Sameer Rizvi",
+          "role": "Batsman",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 113,
+          "name": "Sediqullah Atal",
+          "role": "Batsman",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 114,
+          "name": "Axar Patel",
+          "role": "All-Rounder",
+          "isCapped": true,
+          "basePrice": 2.0,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": "/images/players/axar.png"
+        },
+        {
+          "id": 115,
+          "name": "Ashutosh Sharma",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 116,
+          "name": "Tripurana Vijay",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 117,
+          "name": "Darshan Nalkande",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 118,
+          "name": "Manvanth Kumar L",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 119,
+          "name": "Madhav Tiwari",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 120,
+          "name": "Tristan Stubbs",
+          "role": "Wicketkeeper",
+          "isCapped": true,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "South African",
+          "image": "/images/players/stubbs.png"
+        },
+        {
+          "id": 121,
+          "name": "Abishek Porel",
+          "role": "Wicketkeeper",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": "/images/players/porel.png"
+        },
+        {
+          "id": 122,
+          "name": "Donovan Ferreira",
+          "role": "Wicketkeeper",
+          "isCapped": true,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "South African",
+          "image": ""
+        },
+        {
+          "id": 123,
+          "name": "KL Rahul",
+          "role": "Wicketkeeper",
+          "isCapped": true,
+          "basePrice": 2.0,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 124,
+          "name": "Vipraj Nigam",
+          "role": "Bowler",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 125,
+          "name": "Kuldeep Yadav",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": "/images/players/kuldeep.png"
+        },
+        {
+          "id": 126,
+          "name": "Dushmantha Chameera",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "Sri Lankan",
+          "image": ""
+        },
+        {
+          "id": 127,
+          "name": "Mohit Sharma",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 1.0,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 128,
+          "name": "T Natarajan",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 1.0,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 129,
+          "name": "Mukesh Kumar",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 1.0,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 130,
+          "name": "Mustafizur Rahman",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "Bangladeshi",
+          "image": ""
+        }
+      ]
+    },
+    {
+      "teamId": 7,
+      "teamName": "Punjab Kings",
+      "players": [
+        {
+          "id": 131,
+          "name": "Nehal Wadhera",
+          "role": "Batsman",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 132,
+          "name": "Harnoor Singh",
+          "role": "Batsman",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 133,
+          "name": "Shreyas Iyer",
+          "role": "Batsman",
+          "isCapped": true,
+          "basePrice": 2.0,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 134,
+          "name": "Pyla Avinash",
+          "role": "Batsman",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 135,
+          "name": "Priyansh Arya",
+          "role": "Batsman",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 136,
+          "name": "Musheer Khan",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "",
+          "image": ""
+        },
+        {
+          "id": 137,
+          "name": "Marcus Stoinis",
+          "role": "All-Rounder",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "Australian",
+          "image": ""
+        },
+        {
+          "id": 138,
+          "name": "Aaron Hardie",
+          "role": "All-Rounder",
+          "isCapped": true,
+          "basePrice": 0.75,
+          "previousPrice": null,
+          "nationality": "Australian",
+          "image": ""
+        },
+        {
+          "id": 139,
+          "name": "Suryansh Shedge",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 140,
+          "name": "Shashank Singh",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 141,
+          "name": "Mitchell Owen",
+          "role": "All-Rounder",
+          "isCapped": true,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Australian",
+          "image": ""
+        },
+        {
+          "id": 142,
+          "name": "Praveen Dubey",
+          "role": "All-Rounder",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 143,
+          "name": "Azmatullah Omarzai",
+          "role": "All-Rounder",
+          "isCapped": true,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Afghan",
+          "image": ""
+        },
+        {
+          "id": 144,
+          "name": "Prabhsimran Singh",
+          "role": "Wicketkeeper",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 145,
+          "name": "Josh Inglis",
+          "role": "Wicketkeeper",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "Australian",
+          "image": ""
+        },
+        {
+          "id": 146,
+          "name": "Vishnu Vinod",
+          "role": "Wicketkeeper",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 147,
+          "name": "Harpreet Brar",
+          "role": "Bowler",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 148,
+          "name": "Arshdeep Singh",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 1.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 149,
+          "name": "Yuzvendra Chahal",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 2.0,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 150,
+          "name": "Vijaykumar Vyshak",
+          "role": "Bowler",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 151,
+          "name": "Kuldeep Sen",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 152,
+          "name": "Yash Thakur",
+          "role": "Bowler",
+          "isCapped": false,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Indian",
+          "image": ""
+        },
+        {
+          "id": 153,
+          "name": "Xavier Bartlett",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 0.5,
+          "previousPrice": null,
+          "nationality": "Australian",
+          "image": ""
+        },
+        {
+          "id": 154,
+          "name": "Kyle Jamieson",
+          "role": "Bowler",
+          "isCapped": true,
+          "basePrice": 2.0,
+          "previousPrice": null,
+          "nationality": "New Zealand",
+          "image": ""
+        }
+      ]
+    },
+    [
+      {
+        "teamId": 8,
+        "teamName": "Mumbai Indians",
+        "players": [
+          {
+            "id": 155,
+            "name": "Rohit Sharma",
+            "role": "Batsman",
+            "isCapped": true,
+            "basePrice": 2.0,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 156,
+            "name": "Suryakumar Yadav",
+            "role": "Batsman",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 157,
+            "name": "Tilak Varma",
+            "role": "Batsman",
+            "isCapped": true,
+            "basePrice": 0.75,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 158,
+            "name": "Naman Dhir",
+            "role": "Batsman",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 159,
+            "name": "Bevon Jacobs",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 0.75,
+            "previousPrice": null,
+            "nationality": "West Indian",
+            "image": ""
+          },
+          {
+            "id": 160,
+            "name": "Hardik Pandya",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 2.0,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 161,
+            "name": "Raj Bawa",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 0.75,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 162,
+            "name": "Charith Asalanka",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 0.75,
+            "previousPrice": null,
+            "nationality": "Sri Lankan",
+            "image": ""
+          },
+          {
+            "id": 163,
+            "name": "Mitchell Santner",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "New Zealand",
+            "image": ""
+          },
+          {
+            "id": 164,
+            "name": "Arjun Tendulkar",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 165,
+            "name": "Krishnan Shrijith",
+            "role": "Wicketkeeper",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 166,
+            "name": "Robin Minz",
+            "role": "Wicketkeeper",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 167,
+            "name": "Jonny Bairstow",
+            "role": "Wicketkeeper",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "English",
+            "image": ""
+          },
+          {
+            "id": 168,
+            "name": "Jasprit Bumrah",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 2.0,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 169,
+            "name": "Ashwani Kumar",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 170,
+            "name": "Reece Topley",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "English",
+            "image": ""
+          },
+          {
+            "id": 171,
+            "name": "Karn Sharma",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 0.75,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 172,
+            "name": "Trent Boult",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "New Zealand",
+            "image": ""
+          },
+          {
+            "id": 173,
+            "name": "Satyanarayana Raju",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 174,
+            "name": "Deepak Chahar",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 175,
+            "name": "Mujeeb Ur Rahman",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Afghan",
+            "image": ""
+          },
+          {
+            "id": 176,
+            "name": "Raghu Sharma",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 177,
+            "name": "Richard Gleeson",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.0,
+            "previousPrice": null,
+            "nationality": "English",
+            "image": ""
+          }
+        ]
+      },
+      {
+        "teamId": 9,
+        "teamName": "Gujarat Titans",
+        "players": [
+          {
+            "id": 178,
+            "name": "Sai Sudharsan",
+            "role": "Batsman",
+            "isCapped": true,
+            "basePrice": 0.75,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 179,
+            "name": "Shubman Gill",
+            "role": "Batsman",
+            "isCapped": true,
+            "basePrice": 2.0,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 180,
+            "name": "Shahrukh Khan",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 0.75,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 181,
+            "name": "Rahul Tewatia",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 182,
+            "name": "Nishant Sindhu",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 183,
+            "name": "Sherfane Rutherford",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "West Indian",
+            "image": ""
+          },
+          {
+            "id": 184,
+            "name": "Mahipal Lomror",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 185,
+            "name": "Dasun Shanaka",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Sri Lankan",
+            "image": ""
+          },
+          {
+            "id": 186,
+            "name": "Rashid Khan",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 2.0,
+            "previousPrice": null,
+            "nationality": "Afghan",
+            "image": ""
+          },
+          {
+            "id": 187,
+            "name": "Ravisrinivasan Sai Kishore",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 188,
+            "name": "Arshad Khan",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Afghan",
+            "image": ""
+          },
+          {
+            "id": 189,
+            "name": "Jayant Yadav",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 190,
+            "name": "Karim Janat",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Afghan",
+            "image": ""
+          },
+          {
+            "id": 191,
+            "name": "Washington Sundar",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 192,
+            "name": "Kumar Kushagra",
+            "role": "Wicketkeeper",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 193,
+            "name": "Anuj Rawat",
+            "role": "Wicketkeeper",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 194,
+            "name": "Kusal Mendis",
+            "role": "Wicketkeeper",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Sri Lankan",
+            "image": ""
+          },
+          {
+            "id": 195,
+            "name": "Gerald Coetzee",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "South African",
+            "image": ""
+          },
+          {
+            "id": 196,
+            "name": "Manav Suthar",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 197,
+            "name": "Gurnoor Brar",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 198,
+            "name": "Ishant Sharma",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 199,
+            "name": "Kulwant Khejroliya",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 200,
+            "name": "Prasidh Krishna",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 201,
+            "name": "Mohammed Siraj",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 2.0,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          }
+        ]
+      },
+      {
+        "teamId": 10,
+        "teamName": "Lucknow Super Giants",
+        "players": [
+          {
+            "id": 202,
+            "name": "Himmat Singh",
+            "role": "Batsman",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 203,
+            "name": "David Miller",
+            "role": "Batsman",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "South African",
+            "image": ""
+          },
+          {
+            "id": 204,
+            "name": "Aiden Markram",
+            "role": "Batsman",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "South African",
+            "image": ""
+          },
+          {
+            "id": 205,
+            "name": "Ayush Badoni",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 0.75,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 206,
+            "name": "Mitchell Marsh",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Australian",
+            "image": ""
+          },
+          {
+            "id": 207,
+            "name": "Abdul Samad",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 0.75,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 208,
+            "name": "Arshin Kulkarni",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 209,
+            "name": "Yuvraj Chaudhary",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 210,
+            "name": "Shahbaz Ahmed",
+            "role": "All-Rounder",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 211,
+            "name": "RS Hangargekar",
+            "role": "All-Rounder",
+            "isCapped": false,
+            "basePrice": 0.75,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 212,
+            "name": "Shardul Thakur",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 213,
+            "name": "Matthew Breetzke",
+            "role": "Wicketkeeper",
+            "isCapped": true,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "South African",
+            "image": ""
+          },
+          {
+            "id": 214,
+            "name": "Nicholas Pooran",
+            "role": "Wicketkeeper",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "West Indian",
+            "image": ""
+          },
+          {
+            "id": 215,
+            "name": "Aryan Juyal",
+            "role": "Wicketkeeper",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 216,
+            "name": "Rishabh Pant",
+            "role": "Wicketkeeper",
+            "isCapped": true,
+            "basePrice": 2.0,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 217,
+            "name": "Ravi Bishnoi",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 218,
+            "name": "Akash Deep",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 219,
+            "name": "Manimaran Siddharth",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 220,
+            "name": "Shamar Joseph",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "West Indian",
+            "image": ""
+          },
+          {
+            "id": 221,
+            "name": "Avesh Khan",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 222,
+            "name": "Prince Yadav",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 223,
+            "name": "Akash Maharaj Singh",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 224,
+            "name": "Digvesh Singh Rathi",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 0.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": ""
+          },
+          {
+            "id": 225,
+            "name": "William ORourke",
+            "role": "Bowler",
+            "isCapped": true,
+            "basePrice": 1.0,
+            "previousPrice": null,
+            "nationality": "New Zealand",
+            "image": ""
+          }
+        ]
+      }
+    ]
+  ]
+]
