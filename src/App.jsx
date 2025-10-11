@@ -546,25 +546,34 @@ const handlePass = () => {
 
 // AI Auto-sell Warning Sequence
 useEffect(() => {
-  if (auctionEnded || !currentPlayer || showRetentionModal) return; // <--- added showRetentionModal check
+  if (auctionEnded || !currentPlayer || showRetentionModal) return;
 
-  let timer = null;
+  // Store all timers so we can clear them
+  const timers = [];
 
-  timer = setTimeout(() => {
-    triggerBidToast("⏳ Any more bids? Fair warning!", null, "warning");
+  // 1️⃣ After 5s → first warning
+  timers.push(
+    setTimeout(() => {
+      triggerBidToast("⏳ Any more bids? Fair warning!", null, "warning");
+    }, 5000)
+  );
 
+  // 2️⃣ After 15s → last warning
+  timers.push(
     setTimeout(() => {
       triggerBidToast("⚠️ Last chance for bidding! Make it count!", null, "warning");
-    }, 10000);
+    }, 15000)
+  );
 
+  // 3️⃣ After 25s → sell the player
+  timers.push(
     setTimeout(() => {
       sellPlayer();
-    }, 10000);
-  }, 5000);
+    }, 25000)
+  );
 
-  return () => clearTimeout(timer);
+  return () => timers.forEach((t) => clearTimeout(t));
 }, [currentBid, currentPlayer, showRetentionModal]);
-
 
   // === AI Bidding ===
 useEffect(() => {
