@@ -39,7 +39,7 @@ const iplTeams = [
   },
   {
     id: 5,
-    name: "Royal Challengers Bangalore",
+    name: "Royal Challengers Bangaluru",
     color: "border-red-700",
     budget: 120,
     players: [],
@@ -94,7 +94,9 @@ const TeamSelectionModal = ({ teams, onSelectTeam }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
       <div className="bg-gray-900 p-6 rounded-2xl shadow-2xl w-11/12 md:w-1/2 text-white text-center">
-        <h2 className="text-3xl font-bold mb-4 text-yellow-400">Select Your Team</h2>
+        <h2 className="text-3xl font-bold mb-4 text-yellow-400">
+          Select Your Team
+        </h2>
         <p className="mb-4 text-gray-300">Pick a team to start the auction!</p>
         <div className="grid grid-cols-2 gap-4">
           {teams.map((team) => (
@@ -113,7 +115,13 @@ const TeamSelectionModal = ({ teams, onSelectTeam }) => {
 };
 
 // === Retention Modal ===
-const RetentionModal = ({ isOpen, onClose, team, eligiblePlayers, onConfirm }) => {
+const RetentionModal = ({
+  isOpen,
+  onClose,
+  team,
+  eligiblePlayers,
+  onConfirm,
+}) => {
   const TOTAL_FUNDS = 120; // Total purse in Cr
   const [selectedPlayerIds, setSelectedPlayerIds] = useState([]);
   const [playerPrices, setPlayerPrices] = useState({});
@@ -207,8 +215,9 @@ const RetentionModal = ({ isOpen, onClose, team, eligiblePlayers, onConfirm }) =
           Player Retention - {team.name}
         </h2>
         <p className="mb-6 text-gray-300">
-          Select up to <span className="text-yellow-400 font-semibold">6 players</span> — 
-          max <span className="text-green-400 font-semibold">5 capped</span> and 
+          Select up to{" "}
+          <span className="text-yellow-400 font-semibold">6 players</span> — max{" "}
+          <span className="text-green-400 font-semibold">5 capped</span> and
           <span className="text-blue-400 font-semibold"> 2 uncapped</span>.
         </p>
 
@@ -257,7 +266,9 @@ const RetentionModal = ({ isOpen, onClose, team, eligiblePlayers, onConfirm }) =
                 </div>
 
                 {/* Player Info */}
-                <h3 className="text-lg font-bold text-white mb-1">{player.name}</h3>
+                <h3 className="text-lg font-bold text-white mb-1">
+                  {player.name}
+                </h3>
                 <p className="text-sm text-gray-400 mb-1">{player.role}</p>
                 <p
                   className={`text-sm mb-2 ${
@@ -290,7 +301,6 @@ const RetentionModal = ({ isOpen, onClose, team, eligiblePlayers, onConfirm }) =
   );
 };
 
-
 // === Player Card ===
 const PlayerCard = ({ player, currentBid, onClick }) => {
   const isOverseas = player.nationality !== "Indian";
@@ -300,14 +310,31 @@ const PlayerCard = ({ player, currentBid, onClick }) => {
       onClick={onClick}
     >
       <div className="relative w-32 h-32 mx-auto mb-5">
-        <img src={player.image} alt={player.name} className="w-full h-full rounded-full border-4 border-indigo-500 shadow-2xl object-cover" />
-        <img src={roleImages[player.role]} alt={player.role} title={player.role} className="w-8 h-8 absolute bottom-0 right-0 border-2 border-white rounded-full shadow-lg" />
+        <img
+          src={player.image}
+          alt={player.name}
+          className="w-full h-full rounded-full border-4 border-indigo-500 shadow-2xl object-cover"
+        />
+        <img
+          src={roleImages[player.role]}
+          alt={player.role}
+          title={player.role}
+          className="w-8 h-8 absolute bottom-0 right-0 border-2 border-white rounded-full shadow-lg"
+        />
       </div>
-      <h2 className="text-2xl md:text-3xl font-extrabold text-yellow-300 mb-1">{player.name}</h2>
-      <p className="text-gray-300 text-sm md:text-base mb-4">{player.role} {isOverseas && "( Overseas)"}</p>
+      <h2 className="text-2xl md:text-3xl font-extrabold text-yellow-300 mb-1">
+        {player.name}
+      </h2>
+      <p className="text-gray-300 text-sm md:text-base mb-4">
+        {player.role} {isOverseas && "( Overseas)"}
+      </p>
       <div className="flex justify-center gap-6 text-white mb-5">
-        <p className="text-gray-400 text-sm md:text-base">Base: ₹{player.basePrice.toFixed(2)}Cr</p>
-        <p className="font-semibold text-lg md:text-xl text-green-400">Bid: ₹{currentBid.toFixed(2)}Cr</p>
+        <p className="text-gray-400 text-sm md:text-base">
+          Base: ₹{player.basePrice.toFixed(2)}Cr
+        </p>
+        <p className="font-semibold text-lg md:text-xl text-green-400">
+          Bid: ₹{currentBid.toFixed(2)}Cr
+        </p>
       </div>
     </div>
   );
@@ -317,11 +344,18 @@ const PlayerCard = ({ player, currentBid, onClick }) => {
 const PlayerStatsModal = ({ player, onClose }) => (
   <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
     <div className="bg-gray-900 p-6 rounded-2xl shadow-2xl w-11/12 md:w-1/2 text-white relative overflow-y-auto max-h-[80vh]">
-      <button className="absolute top-3 right-3 text-red-500 font-bold" onClick={onClose}>X</button>
+      <button
+        className="absolute top-3 right-3 text-red-500 font-bold"
+        onClick={onClose}
+      >
+        X
+      </button>
       <h2 className="text-2xl font-bold mb-3">{player.name} Stats</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-gray-200 text-sm md:text-base">
         {Object.entries(player).map(([key, value]) => (
-          <p key={key}><span className="font-semibold">{key}:</span> {value}</p>
+          <p key={key}>
+            <span className="font-semibold">{key}:</span> {value}
+          </p>
         ))}
       </div>
     </div>
@@ -332,13 +366,25 @@ const PlayerStatsModal = ({ player, onClose }) => (
 const TeamRosterModal = ({ team, onClose, onDragEnd }) => (
   <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
     <div className="bg-gray-900 p-6 rounded-2xl shadow-2xl w-11/12 md:w-1/2 text-white relative overflow-y-auto max-h-[80vh]">
-      <button className="absolute top-3 right-3 text-red-500 font-bold" onClick={onClose}>X</button>
+      <button
+        className="absolute top-3 right-3 text-red-500 font-bold"
+        onClick={onClose}
+      >
+        X
+      </button>
       <h2 className="text-2xl font-bold mb-3">{team.name} Roster</h2>
-      <p className="mb-3">Total Spent: ₹{(120 - team.budget).toFixed(2)}Cr | Budget Left: ₹{team.budget.toFixed(2)}Cr</p>
+      <p className="mb-3">
+        Total Spent: ₹{(120 - team.budget).toFixed(2)}Cr | Budget Left: ₹
+        {team.budget.toFixed(2)}Cr
+      </p>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId={`${team.id}`}>
           {(provided) => (
-            <table ref={provided.innerRef} {...provided.droppableProps} className="w-full mt-2 table-auto border-collapse border border-gray-500 text-sm md:text-base">
+            <table
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+              className="w-full mt-2 table-auto border-collapse border border-gray-500 text-sm md:text-base"
+            >
               <thead>
                 <tr className="bg-gray-700">
                   <th className="border px-3 py-1">Player</th>
@@ -350,10 +396,20 @@ const TeamRosterModal = ({ team, onClose, onDragEnd }) => (
                 {team.players.map((p, idx) => (
                   <Draggable key={p.id} draggableId={`${p.id}`} index={idx}>
                     {(provided) => (
-                      <tr ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className="hover:bg-gray-800 transition-all">
-                        <td className="border px-3 py-1 flex items-center gap-2"><img src={p.image} className="w-6 h-6 rounded-full" />{p.name}</td>
+                      <tr
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className="hover:bg-gray-800 transition-all"
+                      >
+                        <td className="border px-3 py-1 flex items-center gap-2">
+                          <img src={p.image} className="w-6 h-6 rounded-full" />
+                          {p.name}
+                        </td>
                         <td className="border px-3 py-1">{p.role}</td>
-                        <td className="border px-3 py-1">{p.bidPrice.toFixed(2)}</td>
+                        <td className="border px-3 py-1">
+                          {p.bidPrice.toFixed(2)}
+                        </td>
                       </tr>
                     )}
                   </Draggable>
@@ -382,7 +438,7 @@ function App() {
   const [userTeamId, setUserTeamId] = useState(null);
   const [auctionStarted, setAuctionStarted] = useState(false);
   const [showRetentionModal, setShowRetentionModal] = useState(true);
-const [retainedPlayers, setRetainedPlayers] = useState([]);
+  const [retainedPlayers, setRetainedPlayers] = useState([]);
 
   const [auctionLog, setAuctionLog] = useState(
     players.map((p) => ({
@@ -433,36 +489,35 @@ const [retainedPlayers, setRetainedPlayers] = useState([]);
   };
 
   // === Manual Pass (User Only) ===
-const handlePass = () => {
-  if (!userTeamId) return;
+  const handlePass = () => {
+    if (!userTeamId) return;
 
-  // Add user team to passedTeams if not already
-  if (!passedTeams.includes(userTeamId)) {
-    setPassedTeams((prev) => [...prev, userTeamId]);
-    triggerBidToast(
-      `${teams[userTeamId - 1].name} passed!`,
-      userTeamId,
-      "warning"
-    );
-  }
+    // Add user team to passedTeams if not already
+    if (!passedTeams.includes(userTeamId)) {
+      setPassedTeams((prev) => [...prev, userTeamId]);
+      triggerBidToast(
+        `${teams[userTeamId - 1].name} passed!`,
+        userTeamId,
+        "warning"
+      );
+    }
 
-  // Find next active bidder
-  const activeBidders = teams
-    .map((t, idx) => idx)
-    .filter(
-      (idx) =>
-        !passedTeams.includes(idx + 1) && // exclude teams that passed
-        idx !== currentBidderIndex // skip current bidder
-    );
+    // Find next active bidder
+    const activeBidders = teams
+      .map((t, idx) => idx)
+      .filter(
+        (idx) =>
+          !passedTeams.includes(idx + 1) && // exclude teams that passed
+          idx !== currentBidderIndex // skip current bidder
+      );
 
-  if (activeBidders.length > 0) {
-    setCurrentBidderIndex(activeBidders[0]);
-  } else {
-    // If all teams passed, auto-sell player
-    sellPlayer();
-  }
-};
-
+    if (activeBidders.length > 0) {
+      setCurrentBidderIndex(activeBidders[0]);
+    } else {
+      // If all teams passed, auto-sell player
+      sellPlayer();
+    }
+  };
 
   // === Sell Player ===
   const sellPlayer = () => {
@@ -544,125 +599,127 @@ const handlePass = () => {
     }
   };
 
-// AI Auto-sell Warning Sequence
-useEffect(() => {
-  if (auctionEnded || !currentPlayer || showRetentionModal) return;
+  // AI Auto-sell Warning Sequence
+  useEffect(() => {
+    if (auctionEnded || !currentPlayer || showRetentionModal) return;
 
-  // Store all timers so we can clear them
-  const timers = [];
+    // Store all timers so we can clear them
+    const timers = [];
 
-  // 1️⃣ After 5s → first warning
-  timers.push(
-    setTimeout(() => {
-      triggerBidToast("⏳ Any more bids? Fair warning!", null, "warning");
-    }, 5000)
-  );
-
-  // 2️⃣ After 15s → last warning
-  timers.push(
-    setTimeout(() => {
-      triggerBidToast("⚠️ Last chance for bidding! Make it count!", null, "warning");
-    }, 15000)
-  );
-
-  // 3️⃣ After 25s → sell the player
-  timers.push(
-    setTimeout(() => {
-      sellPlayer();
-    }, 25000)
-  );
-
-  return () => timers.forEach((t) => clearTimeout(t));
-}, [currentBid, currentPlayer, showRetentionModal]);
-
-  // === AI Bidding ===
-useEffect(() => {
-  if (!currentPlayer || auctionEnded || showRetentionModal) return; // <--- added showRetentionModal check
-
-  const timer = setTimeout(() => {
-    const activeTeams = teams
-      .map((t, idx) => ({ team: t, idx }))
-      .filter(
-        ({ team, idx }) =>
-          team.budget >= currentBid + getIncrement() &&
-          idx !== currentBidderIndex &&
-          idx + 1 !== userTeamId
-      );
-
-    if (!activeTeams.length) {
-      autoSellSequence();
-      return;
-    }
-
-    const scoredTeams = activeTeams.map(({ team }) => {
-      const roleCount = team.players.filter(
-        (p) => p.role === currentPlayer.role
-      ).length;
-      const overseasCount = team.players.filter(
-        (p) => p.nationality !== "Indian"
-      ).length;
-      let score = team.budget;
-      if (roleCount >= 8) score -= 50;
-      if (currentPlayer.nationality !== "Indian" && overseasCount >= 8)
-        score -= 50;
-      if (currentPlayer.rating >= 90) score += 20;
-      score *= 0.9 + Math.random() * 0.2;
-      return { team, score };
-    });
-
-    scoredTeams.sort((a, b) => b.score - a.score);
-    const aiTeam = scoredTeams[0].team;
-
-    if (Math.random() < 0.2) {
-      setPassedTeams((prev) => [...prev, aiTeam.id]);
-      triggerBidToast(`${aiTeam.name} passed!`, aiTeam.id, "warning");
-      return;
-    }
-
-    const newBid = parseFloat((currentBid + getIncrement()).toFixed(2));
-    setCurrentBid(newBid);
-    setCurrentBidderIndex(aiTeam.id - 1);
-    triggerBidToast(`${aiTeam.name} bids ₹${newBid.toFixed(2)}Cr`, aiTeam.id);
-  }, 3500);
-
-  return () => clearTimeout(timer);
-}, [currentBid, currentPlayer, teams, auctionEnded, showRetentionModal]);
-
-
-  // === PDF Export ===
-const exportPDF = () => {
-  const doc = new jsPDF();
-  doc.setFontSize(18);
-  doc.text("IPL Auction Sheet", 14, 22);
-
-  let y = 30;
-  const lineHeight = 10;
-
-  // Loop over all teams & all players
-  auctionLog.forEach((player) => {
-    const soldInfo = auctionLog.find((p) => p.id === player.id);
-    const soldTo = soldInfo ? soldInfo.soldTo : "Unsold";
-    const soldPrice = soldInfo ? soldInfo.soldPrice : player.basePrice;
-
-    doc.setFontSize(12);
-    doc.text(
-      `${player.name} (${player.role}) - ₹${soldPrice}Cr -> ${soldTo}`,
-      14,
-      y
+    // 1️⃣ After 5s → first warning
+    timers.push(
+      setTimeout(() => {
+        triggerBidToast("⏳ Any more bids? Fair warning!", null, "warning");
+      }, 5000)
     );
 
-    y += lineHeight;
+    // 2️⃣ After 15s → last warning
+    timers.push(
+      setTimeout(() => {
+        triggerBidToast(
+          "⚠️ Last chance for bidding! Make it count!",
+          null,
+          "warning"
+        );
+      }, 15000)
+    );
 
-    // If page height is exceeded, add new page
-    if (y > 280) {
-      doc.addPage();
-      y = 20;
-    }
-  });
+    // 3️⃣ After 25s → sell the player
+    timers.push(
+      setTimeout(() => {
+        sellPlayer();
+      }, 25000)
+    );
 
-  doc.save("auction-sheet.pdf");
-};
+    return () => timers.forEach((t) => clearTimeout(t));
+  }, [currentBid, currentPlayer, showRetentionModal]);
 
+  // === AI Bidding ===
+  useEffect(() => {
+    if (!currentPlayer || auctionEnded || showRetentionModal) return; // <--- added showRetentionModal check
+
+    const timer = setTimeout(() => {
+      const activeTeams = teams
+        .map((t, idx) => ({ team: t, idx }))
+        .filter(
+          ({ team, idx }) =>
+            team.budget >= currentBid + getIncrement() &&
+            idx !== currentBidderIndex &&
+            idx + 1 !== userTeamId
+        );
+
+      if (!activeTeams.length) {
+        autoSellSequence();
+        return;
+      }
+
+      const scoredTeams = activeTeams.map(({ team }) => {
+        const roleCount = team.players.filter(
+          (p) => p.role === currentPlayer.role
+        ).length;
+        const overseasCount = team.players.filter(
+          (p) => p.nationality !== "Indian"
+        ).length;
+        let score = team.budget;
+        if (roleCount >= 8) score -= 50;
+        if (currentPlayer.nationality !== "Indian" && overseasCount >= 8)
+          score -= 50;
+        if (currentPlayer.rating >= 90) score += 20;
+        score *= 0.9 + Math.random() * 0.2;
+        return { team, score };
+      });
+
+      scoredTeams.sort((a, b) => b.score - a.score);
+      const aiTeam = scoredTeams[0].team;
+
+      if (Math.random() < 0.2) {
+        setPassedTeams((prev) => [...prev, aiTeam.id]);
+        triggerBidToast(`${aiTeam.name} passed!`, aiTeam.id, "warning");
+        return;
+      }
+
+      const newBid = parseFloat((currentBid + getIncrement()).toFixed(2));
+      setCurrentBid(newBid);
+      setCurrentBidderIndex(aiTeam.id - 1);
+      triggerBidToast(`${aiTeam.name} bids ₹${newBid.toFixed(2)}Cr`, aiTeam.id);
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, [currentBid, currentPlayer, teams, auctionEnded, showRetentionModal]);
+
+  // === PDF Export ===
+  const exportPDF = () => {
+    const doc = new jsPDF();
+    doc.setFontSize(18);
+    doc.text("IPL Auction Sheet", 14, 22);
+
+    let y = 30;
+    const lineHeight = 10;
+
+    // Loop over all teams & all players
+    auctionLog.forEach((player) => {
+      const soldInfo = auctionLog.find((p) => p.id === player.id);
+      const soldTo = soldInfo ? soldInfo.soldTo : "Unsold";
+      const soldPrice = soldInfo ? soldInfo.soldPrice : player.basePrice;
+
+      doc.setFontSize(12);
+      doc.text(
+        `${player.name} (${player.role}) - ₹${soldPrice}Cr -> ${soldTo}`,
+        14,
+        y
+      );
+
+      y += lineHeight;
+
+      // If page height is exceeded, add new page
+      if (y > 280) {
+        doc.addPage();
+        y = 20;
+      }
+    });
+
+    doc.save("auction-sheet.pdf");
+  };
 
   // === Drag-and-Drop ===
   const onDragEnd = (result) => {
@@ -677,8 +734,6 @@ const exportPDF = () => {
     destTeam.players.splice(destination.index, 0, draggedPlayer);
     setTeams([...teams]);
   };
-
-
 
   // === Team Dashboard Data ===
   const getTeamStats = (team) => {
@@ -820,33 +875,32 @@ const exportPDF = () => {
     );
   }
 
-// Recursive flatten function
-const flattenTeams = (arr) => {
-  return arr.reduce((acc, item) => {
-    if (Array.isArray(item)) {
-      acc.push(...flattenTeams(item)); // recurse for nested arrays
-    } else if (item && typeof item === "object" && item.teamId) {
-      acc.push(item);
-    }
-    return acc;
-  }, []);
-};
+  // Recursive flatten function
+  const flattenTeams = (arr) => {
+    return arr.reduce((acc, item) => {
+      if (Array.isArray(item)) {
+        acc.push(...flattenTeams(item)); // recurse for nested arrays
+      } else if (item && typeof item === "object" && item.teamId) {
+        acc.push(item);
+      }
+      return acc;
+    }, []);
+  };
 
-// Flatten previousPlayers properly
-const normalizedPreviousPlayers = flattenTeams(previousPlayers);
+  // Flatten previousPlayers properly
+  const normalizedPreviousPlayers = flattenTeams(previousPlayers);
 
-// Find the user’s previous team
-const userPreviousTeam = normalizedPreviousPlayers.find(
-  (team) => team.teamId === userTeamId
-);
+  // Find the user’s previous team
+  const userPreviousTeam = normalizedPreviousPlayers.find(
+    (team) => team.teamId === userTeamId
+  );
 
-// Eligible players
-const eligiblePlayers = userPreviousTeam?.players || [];
+  // Eligible players
+  const eligiblePlayers = userPreviousTeam?.players || [];
 
-console.log("eligiblePlayers:", eligiblePlayers);
-console.log("userTeamId:", userTeamId);
-console.log("normalizedPreviousPlayers:", normalizedPreviousPlayers);
-
+  console.log("eligiblePlayers:", eligiblePlayers);
+  console.log("userTeamId:", userTeamId);
+  console.log("normalizedPreviousPlayers:", normalizedPreviousPlayers);
 
   return (
     <div className="flex flex-col items-center min-h-screen p-5 relative bg-gray-900">
@@ -855,176 +909,180 @@ console.log("normalizedPreviousPlayers:", normalizedPreviousPlayers);
       </h1>
 
       {/* Team Selection Modal */}
-{!userTeamId && (
-  <TeamSelectionModal
-    teams={teams}
-    onSelectTeam={(teamId) => {
-      setUserTeamId(teamId);
-      setShowRetentionModal(true); // Show retention after picking team
-    }}
-  />
-)}
+      {!userTeamId && (
+        <TeamSelectionModal
+          teams={teams}
+          onSelectTeam={(teamId) => {
+            setUserTeamId(teamId);
+            setShowRetentionModal(true); // Show retention after picking team
+          }}
+        />
+      )}
 
       {showRetentionModal && userTeamId && (
-<RetentionModal
-  isOpen={showRetentionModal}
-  onClose={() => setShowRetentionModal(false)}
-  team={teams.find((t) => t.id === userTeamId)}
-  eligiblePlayers={eligiblePlayers}
-onConfirm={(teamId, retainedIds, prices) => {
-  const retained = eligiblePlayers.filter((p) => retainedIds.includes(p.id));
-  const totalRetentionCost = retained.reduce(
-    (sum, p) => sum + (prices[p.id] || p.basePrice), // ✅ use prices here
-    0
-  );
+        <RetentionModal
+          isOpen={showRetentionModal}
+          onClose={() => setShowRetentionModal(false)}
+          team={teams.find((t) => t.id === userTeamId)}
+          eligiblePlayers={eligiblePlayers}
+          onConfirm={(teamId, retainedIds, prices) => {
+            const retained = eligiblePlayers.filter((p) =>
+              retainedIds.includes(p.id)
+            );
+            const totalRetentionCost = retained.reduce(
+              (sum, p) => sum + (prices[p.id] || p.basePrice), // ✅ use prices here
+              0
+            );
 
-  setTeams((prev) =>
-    prev.map((t) =>
-      t.id === teamId
-        ? {
-            ...t,
-            players: retained.map((p) => ({
-              ...p,
-              bidPrice: prices[p.id] || p.basePrice,
-            })),
-            budget: t.budget - totalRetentionCost,
-          }
-        : t
-    )
-  );
+            setTeams((prev) =>
+              prev.map((t) =>
+                t.id === teamId
+                  ? {
+                      ...t,
+                      players: retained.map((p) => ({
+                        ...p,
+                        bidPrice: prices[p.id] || p.basePrice,
+                      })),
+                      budget: t.budget - totalRetentionCost,
+                    }
+                  : t
+              )
+            );
 
-  setAuctionLog((prev) =>
-    prev.map((p) =>
-      retainedIds.includes(p.id)
-        ? {
-            ...p,
-            soldPrice: prices[p.id] || p.basePrice,
-            soldTo: teams.find((t) => t.id === teamId).name,
-          }
-        : p
-    )
-  );
+            setAuctionLog((prev) =>
+              prev.map((p) =>
+                retainedIds.includes(p.id)
+                  ? {
+                      ...p,
+                      soldPrice: prices[p.id] || p.basePrice,
+                      soldTo: teams.find((t) => t.id === teamId).name,
+                    }
+                  : p
+              )
+            );
 
-  setRetainedPlayers(retained);
-  setShowRetentionModal(false);
-  setAuctionStarted(true);
-}}
+            setRetainedPlayers(retained);
+            setShowRetentionModal(false);
+            setAuctionStarted(true);
+          }}
+        />
+      )}
 
-/>
+      {auctionStarted && (
+        <>
+          <PlayerCard player={currentPlayer} currentBid={currentBid} />
 
-)}
+          {/* Bid Buttons */}
+          <div className="flex flex-wrap gap-3 mb-6 justify-center">
+            {teams.map((team) => {
+              const overseasCount = team.players.filter(
+                (p) => p.nationality !== "Indian"
+              ).length;
+              const isOverseas = currentPlayer.nationality !== "Indian";
+              const maxPlayersReached = team.players.length >= 25;
+              const overseasLimitReached = isOverseas && overseasCount >= 8;
+              const insufficientBudget =
+                team.budget < currentBid + getIncrement();
+              const disabled =
+                team.id !== userTeamId ||
+                maxPlayersReached ||
+                overseasLimitReached ||
+                insufficientBudget ||
+                passedTeams.includes(team.id);
 
-
-{auctionStarted && (
-  <>
-    <PlayerCard player={currentPlayer} currentBid={currentBid} />
-
-    {/* Bid Buttons */}
-    <div className="flex flex-wrap gap-3 mb-6 justify-center">
-      {teams.map((team) => {
-        const overseasCount = team.players.filter(
-          (p) => p.nationality !== "Indian"
-        ).length;
-        const isOverseas = currentPlayer.nationality !== "Indian";
-        const maxPlayersReached = team.players.length >= 25;
-        const overseasLimitReached = isOverseas && overseasCount >= 8;
-        const insufficientBudget = team.budget < currentBid + getIncrement();
-        const disabled =
-          team.id !== userTeamId ||
-          maxPlayersReached ||
-          overseasLimitReached ||
-          insufficientBudget ||
-          passedTeams.includes(team.id);
-
-        return (
-          <button
-            key={team.id}
-            className={`px-4 py-2 rounded text-white transition-all ${
-              disabled
-                ? "bg-gray-600 cursor-not-allowed"
-                : "bg-blue-700 hover:bg-blue-800"
-            }`}
-            onClick={() => handleBid(team.id)}
-            disabled={disabled}
-          >
-            {team.name}
-          </button>
-        );
-      })}
-      <button
-        onClick={handlePass}
-        className="px-4 py-2 bg-red-700 hover:bg-red-800 text-white rounded transition-all"
-      >
-        Pass
-      </button>
-      <button
-        onClick={sellPlayer}
-        className="px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded transition-all"
-      >
-        Sold
-      </button>
-    </div>
-
-    {/* Teams Panel */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-5 mt-5 w-full">
-      {teams.map((team) => {
-        const budgetPercent = (team.budget / 120) * 100;
-
-        const totalSpent = 120 - team.budget;
-        const overseasPlayers = team.players.filter(
-          (p) => p.nationality !== "Indian"
-        ).length;
-        const roleDistribution = team.players.reduce((acc, p) => {
-          acc[p.role] = (acc[p.role] || 0) + 1;
-          return acc;
-        }, {});
-
-        return (
-          <div
-            key={team.id}
-            className={`border-4 ${
-              team.color
-            } rounded p-4 shadow-lg transition-all duration-500 ${
-              lastBidders.includes(team.id)
-                ? "ring-4 ring-yellow-400 animate-pulse"
-                : ""
-            }`}
-            onClick={() => setShowRosterModal(team.id)}
-          >
-            <h3 className="font-bold text-lg text-white">{team.name}</h3>
-            <p className="text-white">
-              Budget Left: ₹{team.budget.toFixed(2)}Cr
-            </p>
-            <p className="text-white">
-              Total Spent: ₹{totalSpent.toFixed(2)}Cr
-            </p>
-            <p className="text-white">Overseas Players: {overseasPlayers}</p>
-            <p className="text-white">
-              Roles:{" "}
-              {Object.entries(roleDistribution)
-                .map(([role, count]) => `${role}: ${count}`)
-                .join(", ")}
-            </p>
-
-            {/* Budget Bar */}
-            <div className="bg-gray-700 h-4 rounded mt-2 overflow-hidden">
-              <div
-                className="bg-green-500 h-4 rounded transition-all duration-500"
-                style={{ width: `${Math.min(budgetPercent, 100)}%` }}
-              ></div>
-            </div>
+              return (
+                <button
+                  key={team.id}
+                  className={`px-4 py-2 rounded text-white transition-all ${
+                    disabled
+                      ? "bg-gray-600 cursor-not-allowed"
+                      : "bg-blue-700 hover:bg-blue-800"
+                  }`}
+                  onClick={() => handleBid(team.id)}
+                  disabled={disabled}
+                >
+                  {team.name}
+                </button>
+              );
+            })}
+            <button
+              onClick={handlePass}
+              className="px-4 py-2 bg-red-700 hover:bg-red-800 text-white rounded transition-all"
+            >
+              Pass
+            </button>
+            <button
+              onClick={sellPlayer}
+              className="px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded transition-all"
+            >
+              Sold
+            </button>
           </div>
-        );
-      })}
-    </div>
 
-    <AuctionSheet />
-    {showRosterModal && (
-      <TeamRosterModal team={teams.find((t) => t.id === showRosterModal)} />
-    )}
-    {showPlayerStats && <PlayerStatsModal player={showPlayerStats} />}
-  </>
-)}
+          {/* Teams Panel */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-5 mt-5 w-full">
+            {teams.map((team) => {
+              const budgetPercent = (team.budget / 120) * 100;
+
+              const totalSpent = 120 - team.budget;
+              const overseasPlayers = team.players.filter(
+                (p) => p.nationality !== "Indian"
+              ).length;
+              const roleDistribution = team.players.reduce((acc, p) => {
+                acc[p.role] = (acc[p.role] || 0) + 1;
+                return acc;
+              }, {});
+
+              return (
+                <div
+                  key={team.id}
+                  className={`border-4 ${
+                    team.color
+                  } rounded p-4 shadow-lg transition-all duration-500 ${
+                    lastBidders.includes(team.id)
+                      ? "ring-4 ring-yellow-400 animate-pulse"
+                      : ""
+                  }`}
+                  onClick={() => setShowRosterModal(team.id)}
+                >
+                  <h3 className="font-bold text-lg text-white">{team.name}</h3>
+                  <p className="text-white">
+                    Budget Left: ₹{team.budget.toFixed(2)}Cr
+                  </p>
+                  <p className="text-white">
+                    Total Spent: ₹{totalSpent.toFixed(2)}Cr
+                  </p>
+                  <p className="text-white">
+                    Overseas Players: {overseasPlayers}
+                  </p>
+                  <p className="text-white">
+                    Roles:{" "}
+                    {Object.entries(roleDistribution)
+                      .map(([role, count]) => `${role}: ${count}`)
+                      .join(", ")}
+                  </p>
+
+                  {/* Budget Bar */}
+                  <div className="bg-gray-700 h-4 rounded mt-2 overflow-hidden">
+                    <div
+                      className="bg-green-500 h-4 rounded transition-all duration-500"
+                      style={{ width: `${Math.min(budgetPercent, 100)}%` }}
+                    ></div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <AuctionSheet />
+          {showRosterModal && (
+            <TeamRosterModal
+              team={teams.find((t) => t.id === showRosterModal)}
+            />
+          )}
+          {showPlayerStats && <PlayerStatsModal player={showPlayerStats} />}
+        </>
+      )}
       <ToastContainer position="top-center" newestOnTop limit={4} />
     </div>
   );

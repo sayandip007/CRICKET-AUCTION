@@ -10,7 +10,7 @@
         "isCapped": true,
         "basePrice": 2.0,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "Indian",
         "image": "/images/players/Ruturaj.png"
       },
       {
@@ -20,7 +20,7 @@
         "isCapped": false,
         "basePrice": 0.5,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "Indian",
         "image": ""
       },
       {
@@ -30,7 +30,7 @@
         "isCapped": false,
         "basePrice": 0.5,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "Indian",
         "image": ""
       },
       {
@@ -40,7 +40,7 @@
         "isCapped": true,
         "basePrice": 1.0,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "Indian",
         "image": ""
       },
       {
@@ -50,7 +50,7 @@
         "isCapped": false,
         "basePrice": 0.5,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "Indian",
         "image": ""
       },
       {
@@ -60,7 +60,7 @@
         "isCapped": true,
         "basePrice": 1.5,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "South African",
         "image": ""
       },
       {
@@ -70,7 +70,7 @@
         "isCapped": true,
         "basePrice": 1.5,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "Indian",
         "image": "/images/players/Dube.png"
       },
       {
@@ -80,7 +80,7 @@
         "isCapped": true,
         "basePrice": 1.5,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "New Zealand",
         "image": ""
       },
       {
@@ -90,17 +90,17 @@
         "isCapped": true,
         "basePrice": 2.0,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "Indian",
         "image": ""
       },
       {
         "id": 10,
         "name": "Vijay Shankar",
         "role": "All-Rounder",
-        "isCapped": true,
+        "isCapped": false,
         "basePrice": 1.5,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "Indian",
         "image": ""
       },
       {
@@ -110,7 +110,7 @@
         "isCapped": false,
         "basePrice": 0.5,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "Indian",
         "image": ""
       },
       {
@@ -130,7 +130,7 @@
         "isCapped": true,
         "basePrice": 0.5,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "Indian",
         "image": ""
       },
       {
@@ -297,7 +297,7 @@
         "basePrice": 1.5,
         "previousPrice": null,
         "nationality": "West Indian",
-        "image": ""
+        "image": "/images/players/hetmyer.png"
       },
       {
         "id": 30,
@@ -307,7 +307,7 @@
         "basePrice": 2.0,
         "previousPrice": null,
         "nationality": "Indian",
-        "image": ""
+        "image": "/images/players/jaiswal.png"
       },
       {
         "id": 31,
@@ -327,7 +327,7 @@
         "basePrice": 1.5,
         "previousPrice": null,
         "nationality": "Indian",
-        "image": ""
+        "image": "/images/players/parag.png"
       },
       {
         "id": 33,
@@ -347,7 +347,7 @@
         "basePrice": 2.0,
         "previousPrice": null,
         "nationality": "Indian",
-        "image": ""
+        "image": "/images/players/sanju.png"
       },
       {
         "id": 35,
@@ -357,7 +357,7 @@
         "basePrice": 0.5,
         "previousPrice": null,
         "nationality": "Indian",
-        "image": ""
+        "image": "/images/players/jurel.png"
       },
       {
         "id": 36,
@@ -478,6 +478,16 @@
         "previousPrice": null,
         "nationality": "South African",
         "image": ""
+      },
+      {
+        "id": 470,
+        "name": "Sandeep Sharma",
+        "role": "Bowler",
+        "isCapped": false,
+        "basePrice": 1.5,
+        "previousPrice": null,
+        "nationality": "Indian",
+        "image": "/images/players/sandeep.png"
       }
     ]
   },
@@ -543,7 +553,7 @@
         "basePrice": 0.5,
         "previousPrice": null,
         "nationality": "Indian",
-        "image": ""
+        "image": "/images/players/ramandeep.png"
       },
       {
         "id": 54,
@@ -573,7 +583,7 @@
         "basePrice": 1.5,
         "previousPrice": null,
         "nationality": "West Indian",
-        "image": ""
+        "image": "/images/players/narine.png"
       },
       {
         "id": 57,
@@ -623,7 +633,7 @@
         "basePrice": 1.0,
         "previousPrice": null,
         "nationality": "Indian",
-        "image": ""
+        "image": "/images/players/varun.png"
       },
       {
         "id": 62,
@@ -653,7 +663,7 @@
         "basePrice": 0.5,
         "previousPrice": null,
         "nationality": "Indian",
-        "image": ""
+        "image": "/images/players/harshit.png"
       },
       {
         "id": 65,
@@ -719,7 +729,7 @@
         "basePrice": 1.5,
         "previousPrice": null,
         "nationality": "Australian",
-        "image": ""
+        "image": "/images/players/head.png"
       },
       {
         "id": 71,
@@ -748,7 +758,7 @@
         "isCapped": false,
         "basePrice": 0.5,
         "previousPrice": null,
-        "nationality": "",
+        "nationality": "Indian",
         "image": ""
       },
       {
@@ -758,8 +768,8 @@
         "isCapped": true,
         "basePrice": 0.5,
         "previousPrice": null,
-        "nationality": "",
-        "image": ""
+        "nationality": "Indian",
+        "image": "/images/players/reddy.png"
       },
       {
         "id": 75,
@@ -769,7 +779,7 @@
         "basePrice": 1.5,
         "previousPrice": null,
         "nationality": "Indian",
-        "image": ""
+        "image": "/images/players/abhishek.png"
       },
       {
         "id": 76,
@@ -793,13 +803,13 @@
       },
       {
         "id": 78,
-        "name": "Heinrich Klaasen",
+        "name": "Heinrich Klassen",
         "role": "Wicketkeeper",
         "isCapped": true,
         "basePrice": 1.5,
         "previousPrice": null,
         "nationality": "South African",
-        "image": ""
+        "image": "/images/players/klassen.png"
       },
       {
         "id": 79,
@@ -829,7 +839,7 @@
         "basePrice": 2.0,
         "previousPrice": null,
         "nationality": "Australian",
-        "image": ""
+        "image": "/images/players/pat.png"
       },
       {
         "id": 82,
@@ -896,7 +906,7 @@
   [
     {
       "teamId": 5,
-      "teamName": "Royal Challengers Bangalore",
+      "teamName": "Royal Challengers Bangaluru",
       "players": [
         {
           "id": 88,
@@ -906,7 +916,7 @@
           "basePrice": 2.0,
           "previousPrice": null,
           "nationality": "Indian",
-          "image": ""
+          "image": "/images/players/kohli.png"
         },
         {
           "id": 89,
@@ -916,7 +926,7 @@
           "basePrice": 1.5,
           "previousPrice": null,
           "nationality": "Indian",
-          "image": ""
+          "image": "/images/players/patidar.png"
         },
         {
           "id": 90,
@@ -1086,7 +1096,7 @@
           "basePrice": 0.75,
           "previousPrice": null,
           "nationality": "Indian",
-          "image": ""
+          "image": "/images/players/dayal.png"
         },
         {
           "id": 107,
@@ -1236,7 +1246,7 @@
         },
         {
           "id": 121,
-          "name": "Abishek Porel",
+          "name": "Abhishek Porel",
           "role": "Wicketkeeper",
           "isCapped": false,
           "basePrice": 0.5,
@@ -1438,7 +1448,7 @@
           "basePrice": 0.5,
           "previousPrice": null,
           "nationality": "Indian",
-          "image": ""
+          "image": "/images/players/shashank.png"
         },
         {
           "id": 141,
@@ -1478,7 +1488,7 @@
           "basePrice": 0.5,
           "previousPrice": null,
           "nationality": "Indian",
-          "image": ""
+          "image": "/images/players/prab.png"
         },
         {
           "id": 145,
@@ -1595,7 +1605,7 @@
             "basePrice": 2.0,
             "previousPrice": null,
             "nationality": "Indian",
-            "image": ""
+            "image": "/images/players/rohit.png"
           },
           {
             "id": 156,
@@ -1605,17 +1615,17 @@
             "basePrice": 1.5,
             "previousPrice": null,
             "nationality": "Indian",
-            "image": ""
+            "image": "/images/players/sky.png"
           },
           {
             "id": 157,
-            "name": "Tilak Varma",
+            "name": "Tilak Verma",
             "role": "Batsman",
             "isCapped": true,
             "basePrice": 0.75,
             "previousPrice": null,
             "nationality": "Indian",
-            "image": ""
+            "image": "/images/players/tilak.png"
           },
           {
             "id": 158,
@@ -1645,7 +1655,7 @@
             "basePrice": 2.0,
             "previousPrice": null,
             "nationality": "Indian",
-            "image": ""
+            "image": "/images/players/hardik.png"
           },
           {
             "id": 161,
@@ -1725,7 +1735,7 @@
             "basePrice": 2.0,
             "previousPrice": null,
             "nationality": "Indian",
-            "image": ""
+            "image": "/images/players/bumrah.png"
           },
           {
             "id": 169,
@@ -1831,7 +1841,7 @@
             "basePrice": 0.75,
             "previousPrice": null,
             "nationality": "Indian",
-            "image": ""
+            "image": "/images/players/sai.png"
           },
           {
             "id": 179,
@@ -1841,7 +1851,7 @@
             "basePrice": 2.0,
             "previousPrice": null,
             "nationality": "Indian",
-            "image": ""
+            "image": "/images/players/gill.png"
           },
           {
             "id": 180,
@@ -1851,7 +1861,7 @@
             "basePrice": 0.75,
             "previousPrice": null,
             "nationality": "Indian",
-            "image": ""
+            "image": "/images/players/shahrukh.png"
           },
           {
             "id": 181,
@@ -1861,7 +1871,7 @@
             "basePrice": 1.5,
             "previousPrice": null,
             "nationality": "Indian",
-            "image": ""
+            "image": "/images/players/rahul.png"
           },
           {
             "id": 182,
@@ -1911,7 +1921,7 @@
             "basePrice": 2.0,
             "previousPrice": null,
             "nationality": "Afghan",
-            "image": ""
+            "image": "/images/players/rashid.png"
           },
           {
             "id": 187,
@@ -2107,7 +2117,7 @@
             "basePrice": 0.75,
             "previousPrice": null,
             "nationality": "Indian",
-            "image": ""
+            "image": "/images/players/badoni.png"
           },
           {
             "id": 206,
@@ -2197,7 +2207,7 @@
             "basePrice": 1.5,
             "previousPrice": null,
             "nationality": "West Indian",
-            "image": ""
+            "image": "/images/players/pooran.png"
           },
           {
             "id": 215,
@@ -2227,7 +2237,7 @@
             "basePrice": 1.5,
             "previousPrice": null,
             "nationality": "Indian",
-            "image": ""
+            "image": "/images/players/bishnoi.png"
           },
           {
             "id": 218,
@@ -2308,6 +2318,26 @@
             "previousPrice": null,
             "nationality": "New Zealand",
             "image": ""
+          },
+          {
+            "id": 226,
+            "name": "Mayank Yadav",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": "/images/players/mayank.png"
+          },
+          {
+            "id": 227,
+            "name": "Mohsin Khan",
+            "role": "Bowler",
+            "isCapped": false,
+            "basePrice": 1.5,
+            "previousPrice": null,
+            "nationality": "Indian",
+            "image": "/images/players/mohsin.png"
           }
         ]
       }
