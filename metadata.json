@@ -1,0 +1,7 @@
+{
+  "name": "Cricket Auction",
+  "description": "Interactive IPL-style cricket player auction simulator with team retention, bidding, and roster management.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
