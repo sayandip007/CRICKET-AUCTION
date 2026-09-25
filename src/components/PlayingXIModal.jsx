@@ -10,6 +10,7 @@ import {
 } from "../utils/squadSimulator";
 import { roleImages, FALLBACK_IMAGE } from "../utils/constants";
 import { getPlayerSpecializations } from "../utils/aiIntelligence";
+import { FORM_STATUS } from "../utils/playerFormUtils";
 
 export default function PlayingXIModal({
   isOpen,
@@ -18,12 +19,14 @@ export default function PlayingXIModal({
   initialTeamId,
   userTeamId,
   onOpenMatchSimulator,
+  playerFormMap = {},
 }) {
   const [selectedTeamId, setSelectedTeamId] = useState(initialTeamId || userTeamId || 1);
   const [playingXI, setPlayingXI] = useState([]);
   const [captainId, setCaptainId] = useState(null);
   const [viceCaptainId, setViceCaptainId] = useState(null);
   const [selectedPlayerToSwap, setSelectedPlayerToSwap] = useState(null);
+  const [impactPlayerId, setImpactPlayerId] = useState(null);
 
   const currentTeam = teams.find((t) => t.id === selectedTeamId) || teams[0];
   const squad = useMemo(() => currentTeam?.players || [], [currentTeam]);
@@ -391,6 +394,18 @@ export default function PlayingXIModal({
                                 (VC)
                               </span>
                             )}
+                            {playerFormMap[player.id]?.status &&
+                              FORM_STATUS[playerFormMap[player.id].status] && (
+                                <span
+                                  className={`text-[9px] px-1.5 py-0.2 rounded font-bold border ${
+                                    FORM_STATUS[playerFormMap[player.id].status].color
+                                  }`}
+                                  title={FORM_STATUS[playerFormMap[player.id].status].description}
+                                >
+                                  {FORM_STATUS[playerFormMap[player.id].status].badge}{" "}
+                                  {FORM_STATUS[playerFormMap[player.id].status].label}
+                                </span>
+                              )}
                           </div>
 
                           <div className="flex items-center gap-2 text-[10px] text-gray-400 mt-0.5">
@@ -482,8 +497,31 @@ export default function PlayingXIModal({
               <h3 className="font-black text-sm uppercase tracking-wider text-gray-400 flex items-center gap-1.5">
                 <span>Bench Reserves ({bench.length})</span>
               </h3>
-              <span className="text-[11px] text-gray-500">Click to swap into XI</span>
+              <span className="text-[11px] text-gray-500">Click to swap or nominate Impact Sub</span>
             </div>
+
+            {/* Impact Player Banner if designated */}
+            {impactPlayerId && (
+              <div className="p-2.5 rounded-xl bg-amber-950/40 border border-amber-500/50 text-xs text-amber-200 flex items-center justify-between shadow-md">
+                <div className="flex items-center gap-2">
+                  <span className="text-base">⚡</span>
+                  <div>
+                    <span className="text-[10px] text-amber-400 font-bold uppercase block">
+                      Nominated Impact Player (12th Man):
+                    </span>
+                    <strong className="text-white font-extrabold text-xs">
+                      {squad.find((p) => p.id === impactPlayerId)?.name}
+                    </strong>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setImpactPlayerId(null)}
+                  className="text-gray-400 hover:text-white text-xs px-2 py-1 rounded bg-gray-900 border border-gray-800"
+                >
+                  Clear
+                </button>
+              </div>
+            )}
 
             {bench.length === 0 ? (
               <div className="p-6 text-center text-gray-500 bg-gray-900/40 rounded-2xl border border-gray-800 text-xs">
@@ -494,6 +532,7 @@ export default function PlayingXIModal({
                 {bench.map((player) => {
                   const overseas = isOverseas(player);
                   const isSelected = selectedPlayerToSwap?.player.id === player.id;
+                  const isImpact = impactPlayerId === player.id;
                   return (
                     <div
                       key={player.id}
@@ -501,6 +540,8 @@ export default function PlayingXIModal({
                       className={`p-2 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-2 ${
                         isSelected
                           ? "bg-amber-950/60 border-amber-400 ring-2 ring-amber-400"
+                          : isImpact
+                          ? "bg-amber-950/40 border-amber-500/70"
                           : "bg-gray-900/60 hover:bg-gray-800/80 border-gray-800"
                       }`}
                     >
@@ -521,9 +562,25 @@ export default function PlayingXIModal({
                         </div>
                       </div>
 
-                      <button className="px-2 py-1 bg-gray-800 hover:bg-yellow-400 hover:text-black rounded text-[10px] font-bold text-gray-300 transition-colors shrink-0">
-                        Swap In
-                      </button>
+                      <div className="flex items-center gap-1 shrink-0">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setImpactPlayerId(player.id);
+                          }}
+                          className={`px-2 py-1 rounded text-[10px] font-bold border transition-colors ${
+                            isImpact
+                              ? "bg-amber-400 text-black border-amber-400 font-black shadow-md shadow-amber-400/20"
+                              : "bg-gray-800 text-amber-300 hover:text-white border-gray-700 hover:border-amber-400/50"
+                          }`}
+                          title="Nominate as Tactical Impact Player"
+                        >
+                          {isImpact ? "⚡ Impact Sub" : "+ Impact"}
+                        </button>
+                        <button className="px-2 py-1 bg-gray-800 hover:bg-yellow-400 hover:text-black rounded text-[10px] font-bold text-gray-300 transition-colors">
+                          Swap In
+                        </button>
+                      </div>
                     </div>
                   );
                 })}

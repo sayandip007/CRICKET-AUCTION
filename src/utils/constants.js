@@ -111,3 +111,17 @@ export const initialIplTeams = [
     rtmCount: 6,
   },
 ];
+
+export const TEAMS = {
+  csk: { id: "csk", teamId: 1, name: "Chennai Super Kings", shortName: "CSK", purse: 120 },
+  rr: { id: "rr", teamId: 2, name: "Rajasthan Royals", shortName: "RR", purse: 120 },
+  kkr: { id: "kkr", teamId: 3, name: "Kolkata Knight Riders", shortName: "KKR", purse: 120 },
+  srh: { id: "srh", teamId: 4, name: "Sunrisers Hyderabad", shortName: "SRH", purse: 120 },
+  rcb: { id: "rcb", teamId: 5, name: "Royal Challengers Bengaluru", shortName: "RCB", purse: 120 },
+  dc: { id: "dc", teamId: 6, name: "Delhi Capitals", shortName: "DC", purse: 120 },
+  pbks: { id: "pbks", teamId: 7, name: "Punjab Kings", shortName: "PBKS", purse: 120 },
+  mi: { id: "mi", teamId: 8, name: "Mumbai Indians", shortName: "MI", purse: 120 },
+  gt: { id: "gt", teamId: 9, name: "Gujarat Titans", shortName: "GT", purse: 120 },
+  lsg: { id: "lsg", teamId: 10, name: "Lucknow Super Giants", shortName: "LSG", purse: 120 },
+};
+

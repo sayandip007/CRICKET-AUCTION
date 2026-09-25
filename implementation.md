@@ -13,13 +13,32 @@ This document details the architectural design and code implementation of the fe
 - **Notifications**: `react-toastify` for real-time bid alerts and sale celebrations
 - **PDF Generation**: `jspdf` for generating structured post-auction squad reports
 - **State Management**: React Hooks (`useState`, `useEffect`, `useMemo`, `useCallback`)
-- **Modular Utilities**:
+- **Modular Utilities & Components**:
   - `src/utils/auctionRules.js`: Domain rules, squad limits, RTM calculations, dynamic rating algorithm, and set builder.
   - `src/utils/constants.js`: Franchises, base purses, roles, and asset mappings.
-  - `src/components/RTMModals.jsx`: Complete Right to Match interactive modal suite.
-  - `src/components/AuctionSetsModal.jsx`: Full categorized auction catalog and status viewer.
-  - `src/components/SetCompletionModal.jsx`: Set transition interstitial with sales highlights and upcoming set preview.
-  - `src/components/AcceleratedRoundModal.jsx`: Unsold recall selector with 50% discount and rapid bidding setup.
+  - `src/utils/aiIntelligence.js`: 10 authentic franchise AI personas, rivalry matrices, positional need scoring, and bidding war logic.
+  - `src/utils/squadSimulator.js`: Playing XI validation, squad chemistry engine, ball-by-ball T20 physics, and tournament scheduling.
+  - `src/utils/audioEffects.js`: Procedural Web Audio API sound generator and synthesized SpeechSynthesis auctioneer.
+  - `src/utils/storageUtils.js`: Checkpoint auto-serialization and LocalStorage session restoration.
+  - `src/utils/playerFormUtils.js`: 5-tier player form streaks, match rating adjustments, and bowler fatigue workload decay.
+  - `src/utils/themeStyles.js`: 4 TV broadcast theme styling definitions (Star Sports Ultra Gold, JioCinema Neon Night, 2008 Vintage Retro, and IPL Dark).
+  - `src/utils/socialReactions.js`: Simulated social media reaction generator with pundit personas and algorithmic franchise auction grading (A+ to F).
+  - `src/data/headToHeadData.js`: Head-to-Head batter vs bowler rivalry records and dynamic matchup generator.
+  - `src/components/HeadToHeadModal.jsx`: Interactive batter vs bowler matchup matrix viewer with balls, strike rates, dismissals, and tactical tips.
+  - `src/components/SocialFeedAndGradesModal.jsx`: Pundit studio, social wire commentary feed, and franchise auction report cards.
+  - `src/components/MatchWormChart.jsx`: Interactive comparative run-rate worm curve and over-by-over Manhattan run charts.
+  - `src/utils/multiplayerSync.js`: Real-time room synchronization engine supporting native `BroadcastChannel` multi-tab sync, WebRTC DataChannel peer linking, and in-room event messaging.
+  - `src/components/MultiplayerRoomModal.jsx`: Real-time multiplayer cloud rooms, custom room codes, role selection (Host / Manager / Spectator), live chat & sledge box, and cross-device WebRTC tokens.
+  - `src/components/AuctioneerHostModal.jsx`: Dedicated Live Auctioneer podium with gavel knockdown controls (Going Once, Going Twice, SOLD, UNSOLD), countdown speed governor, and FX soundboard.
+  - `src/components/SquadCardStudioModal.jsx`: High-resolution canvas-rendered graphical squad card studio with 4:5 Instagram & 16:9 landscape HD poster export (PNG/Clipboard).
+  - `src/components/CommunityRosterHubModal.jsx`: Community roster hub with legendary dream squads (RCB 2016, MI 2020, CSK 2018, All-Time GOATs), custom franchise publishing, and direct simulation loading.
+  - `src/data/globalLeaguesData.js`: Global franchise leagues (BBL, SA20, MLC, PSL, CPL) and T20 World Cup national rosters, budgets, and rules.
+  - `src/components/GlobalLeaguesModal.jsx`: Multi-league selector, ICC T20 World Cup International Draft, and Custom Tournament Sandbox Builder.
+  - `src/components/TradeCenterModal.jsx`: Mid-season transfer window with player swaps, cash considerations, and AI trade evaluations.
+  - `src/components/MiniAuctionModal.jsx`: Multi-year franchise progression, player retention/release, and annual mini-auction with rookie draft talents.
+  - `src/components/PlayingXIModal.jsx`: Lineup builder, formation regulations, and Impact Player (12th Man) nomination.
+  - `src/components/TournamentSimulatorModal.jsx`: 45-match season schedule, Points Table, NRR, Playoffs, and exhibition matches.
+  - `src/components/StarterPage.jsx`: High-impact landing page, direct mode routing, and in-app quick guide.
 
 ---
 
@@ -533,9 +552,253 @@ A physics- and probability-grounded match simulation engine modeling authentic 2
 
 ---
 
-## 7. Data Structures & Schemas
+## 7. Phase 6 Implementation Details: Strategic Franchise Management & In-Game Rules (Completed)
 
-### 7.1 Franchise Object (`src/utils/constants.js`)
+### 7.1 Impact Player Rule (12th Man Tactical Substitution) (`src/utils/squadSimulator.js` & `src/components/PlayingXIModal.jsx`)
+
+- **12th Man Nomination & Reserves Selection**:
+  - In `PlayingXIModal`, users can designate a nominated Impact Player from bench reserves with visual designation badges (`⚡ Nominated Impact Player (12th Man)`).
+  - Teams can nominate up to 5 substitutes prior to matchday simulation.
+  - Bench player swapping allows immediate testing of tactical configurations before locking in the matchday roster.
+- **Situational Mid-Innings Tactical Swaps in Simulation**:
+  - In `src/utils/squadSimulator.js` (`simulateT20Match`), the match engine dynamically assesses game phase conditions:
+    - **1st Innings (Batting Firepower Reinforcement)**: Replaces a lower-order tailender with the nominated Impact Batter to boost middle-order boundary hitting and accelerate death-overs strike rate.
+    - **2nd Innings (Target Defense / Bowling Specialist)**: Replaces a specialist batter who completed their turn with an Impact Bowling specialist or mystery spinner to protect defending totals or execute tactical yorkers.
+  - Every match summary tracks telemetry on substitutions: player in, player out, innings, tactical reason, and role classification.
+
+---
+
+### 7.2 Mid-Season Transfer Window & Player Trades (`src/components/TradeCenterModal.jsx`)
+
+- **Interactive Multi-Franchise Trade Console**:
+  - Accessible via `🔄 Trades` in the header bar, within `TournamentSimulatorModal`, or on the concluded auction screen.
+  - Allows trading between any two franchises (Human vs. AI or AI vs. AI).
+- **Flexible Transaction Structure**:
+  - Player-for-player swaps (1-for-1 or 2-for-2).
+  - Cash-plus-player transactions: Team A can offer positive or negative cash compensation in Crores, dynamically debited/credited to the respective franchise budgets.
+- **Regulatory Constraint Validation**:
+  - Enforces mandatory squad size boundaries: both franchises must maintain between 18 and 25 players after the trade.
+  - Enforces the strict 8-overseas player ceiling: neither team can exceed 8 international signings post-trade.
+  - Enforces budget solvency: cash considerations cannot push a franchise budget below ₹0.00 Cr.
+- **Algorithmic AI Trade Evaluation Engine**:
+  - Assesses trade equity across three dimensions:
+    1. **Rating Balance**: Compares total talent score exchanged.
+    2. **Positional Roster Synergy**: Analyzes whether the trade fulfills a deficit (Critical/Urgent need) or dumps an unnecessary surplus.
+    3. **Financial Fair Value**: Weights cash considerations against player market values.
+  - Yields categorized trade outcomes:
+    - `ACCEPTED`: AI accepts the trade proposal with favorable commentary.
+    - `REJECTED`: AI declines with specific feedback on why the deal hurts their roster.
+    - `ROSTER_SIZE_VIOLATION` / `OVERSEAS_LIMIT_VIOLATION` / `BUDGET_DEFICIT`: Immediate regulatory blocking.
+
+---
+
+### 7.3 Dynamic Player Form Streaks & Fitness Fatigue (`src/utils/playerFormUtils.js`)
+
+- **5-Tier Form & Fatigue Classification**:
+  - `ON_FIRE` (🔥): Multiplier `1.15` (+15% performance boost). Triggered by back-to-back 50+ runs or 3+ wicket hauls.
+  - `IN_FORM` (⚡): Multiplier `1.08` (+8% boost). Triggered by consistent solid performances.
+  - `NORMAL` (⚪): Multiplier `1.00`. Baseline performance.
+  - `SLUMP` (❄️): Multiplier `0.90` (-10% penalty). Triggered by consecutive single-digit dismissals or ducks.
+  - `FATIGUED` (⚠️): Multiplier `0.86` (-14% penalty). Triggered by high bowling workloads (heavy overs bowled across consecutive matches without rest).
+- **Workload Decay & Bench Rotation Incentives**:
+  - Fast bowlers accumulate fatigue counters with each 4-over spell.
+  - Resting fatigued players on the bench in simulated matches restores stamina, incentivizing deep squad utilization over a grueling 14-match season.
+- **Visual Status Badges**:
+  - Rendered in `PlayingXIModal`, player cards, and match scorecards with tooltips explaining active form/fatigue effects.
+
+---
+
+### 7.4 Multi-Year Franchise Mode & Annual Mini-Auctions (`src/components/MiniAuctionModal.jsx`)
+
+- **Multi-Year Progression (Season 1 → Season 2 → Season 3)**:
+  - Accessible via `🚀 S{currentSeason + 1} Mini-Auction` in the header, or after crowning a champion in `TournamentSimulatorModal`.
+  - Increments franchise championship season and rolls over existing rosters.
+- **Pre-Mini-Auction Squad Retention & Release Window**:
+  - Franchises evaluate existing squads: retain core stars (up to 15–18 players) or release underperforming players to replenish purse budget.
+  - Released players return their contract values directly to the franchise purse for mini-auction spending.
+- **Injected Rookie Draft Talents**:
+  - Introduces new high-potential rookie prospects:
+    - *Arjun Verma* (U-19 Prodigy, All-Rounder, ₹0.50 Cr base)
+    - *Kwena Maphaka* (Express Pacer, Bowler, ₹0.75 Cr base)
+    - *Sameer Rizvi* (Finisher Sensation, Batsman, ₹0.40 Cr base)
+    - *Cooper Connolly* (Clutch Striker, All-Rounder, ₹0.75 Cr base)
+    - *Allah Ghazanfar* (Mystery Spinner, Bowler, ₹0.50 Cr base)
+    - *Musheer Khan* (Top-Order Anchor, Batsman, ₹0.30 Cr base)
+- **Live Mini-Auction Bidding Engine**:
+  - Fast-paced auction floor with real-time AI bidding, increments, hammer timer, and instantaneous squad signing.
+
+---
+
+## 8. Phase 7 Implementation Details (Completed)
+
+### 8.1 Broadcast Television Skin Themes (`src/utils/themeStyles.js`)
+
+- **4 Authentic Broadcast Graphics Packages**:
+  - `modern_dark`: **IPL Dark Broadcast** (Default). Deep obsidian gradients (`bg-gray-950`), gold badges, and amber borders.
+  - `star_sports`: **Star Sports Ultra Gold**. Royal blue stadium backdrop (`bg-gradient-to-b from-[#061129] via-[#091b42] to-[#040c1d]`), royal blue cards with studio glitz, gold live tickers, and amber scorebugs.
+  - `jiocinema_neon`: **JioCinema Neon Night**. Cyberpunk magenta and deep purple backdrop (`#09021a` to `#12052b`), electric fuchsia borders, cyan text highlights, and neon glow effects.
+  - `vintage_retro`: **Vintage 2008 Retro CRT**. Sepia-tinted nostalgic aesthetic (`#181a1b` to `#202324`), CRT scorebug borders, monospace typography, and antique gold auction floor.
+- **Dynamic Theme Switcher**:
+  - Placed in the top header toolbar with real-time toggle buttons displaying theme badges and descriptive tooltips.
+  - Smooth 500ms CSS transitions across background classes and card containers.
+
+---
+
+### 8.2 Interactive Match Worm & Manhattan Visualizations (`src/components/MatchWormChart.jsx`)
+
+- **Interactive Run-Rate Worm Graph**:
+  - Built with responsive vector SVG charts ($600 \times 240$ viewBox).
+  - Comparative cumulative run curves for Team 1 (Yellow line) vs. Team 2 (Cyan line) across 20 overs.
+  - Precise over markers (Powerplay: 1–6, Middle: 7–15, Death: 16–20) and run gridlines ($0, 50, 100, 150, 200$).
+  - Circular red wicket-fall icons plotted exactly at the over where dismissals occurred.
+- **Manhattan Over-by-Over Bar Chart**:
+  - 20-column over-by-over comparative bar chart displaying runs scored in each over for both teams.
+  - Floating red dot wicket indicators above individual over bars.
+  - Interactive hover tooltips displaying over number, runs scored, and wickets taken.
+- **Integration**:
+  - Fully integrated into `TournamentSimulatorModal.jsx` across both the 45-match season league match details card and quick exhibition match scorecards.
+
+---
+
+### 8.3 Simulated Social Media Wire & Expert Franchise Grades (`src/utils/socialReactions.js` & `src/components/SocialFeedAndGradesModal.jsx`)
+
+- **Simulated Real-Time Social Media Ticker**:
+  - Automatically generates dynamic analyst and fan tweets when auction events occur (Big Sales $\ge ₹15\text{Cr}$, Bargain Steals, RTM challenges, Unsold events, and Pre-auction Retentions).
+  - Features authentic pundit personas (Harsha B., Ian B., Aakash C., Simon D., and CricFanatic community).
+  - Interactive live ticker placed beneath the player showcase card on the auction floor with likes, retweets, and quick link into the full feed.
+- **Post-Auction Expert Franchise Report Cards**:
+  - Grades all 10 franchises from **A+ to F** using an algorithmic weighted evaluation:
+    $$\text{Score} = (\text{AvgRating} \times 0.45) + (\text{BalanceScore} \times 0.35) + (\text{PurseEfficiency} \times 0.20)$$
+  - Enforces severe penalties for roster deficiencies ($< 18$ players), missing specialist wicketkeepers, or overseas quota violations ($> 8$).
+  - Provides expert qualitative commentary explaining each team's strengths and weaknesses.
+
+---
+
+### 8.4 Head-to-Head Batter vs. Bowler Matchup Matrix (`src/data/headToHeadData.js` & `src/components/HeadToHeadModal.jsx`)
+
+- **Comprehensive Rivalry Matchup Database**:
+  - Curated face-off records between marquee IPL titans:
+    - *Virat Kohli vs. Jasprit Bumrah* (92 balls, 140 runs, 4 dismissals, SR 152.2)
+    - *Rohit Sharma vs. Trent Boult* (58 balls, 69 runs, 4 dismissals, SR 119.0)
+    - *MS Dhoni vs. Sunil Narine* (81 balls, 49 runs, 1 dismissal, 0 sixes, SR 60.5)
+    - *Heinrich Klaasen vs. Rashid Khan* (52 balls, 112 runs, 10 sixes, SR 215.4)
+    - *Andre Russell vs. Jasprit Bumrah* (46 balls, 54 runs, 4 dismissals, SR 117.4)
+    - *Glenn Maxwell vs. Ravindra Jadeja* (54 balls, 72 runs, 6 dismissals, SR 133.3)
+- **Deterministic Matchup Synthesizer**:
+  - Algorithmic generator (`synthesizeH2H`) for any combination of batsmen and bowlers from the 500-player database.
+- **Interactive Matchup Modal**:
+  - Dropdown selectors for batter and bowler with instant stats breakdown: balls faced, runs, strike rate, dismissals, dot balls, boundary 4s/6s, tactical tip, and definitive expert verdict.
+  - Featured 1-click blockbuster presets for instant tactical inspection.
+
+---
+
+## 9. Phase 8 Implementation Details (Completed)
+
+### 9.1 Real-Time Multiplayer Cloud Rooms & Sync Engine (`src/utils/multiplayerSync.js` & `src/components/MultiplayerRoomModal.jsx`)
+
+- **Dual-Layer Real-Time Synchronization**:
+  - **Native `BroadcastChannel` API**: Zero-latency cross-tab and cross-window synchronization on the same device. Multiple browser tabs with the same Room ID (e.g. `IPL-2025`) immediately mirror bidding, gavel strikes, and timers.
+  - **Encrypted WebRTC DataChannel (P2P)**: Direct browser-to-browser peer connection without requiring third-party relay servers. Generates base64 SDP Offer and Answer tokens for instant linkup across different devices (e.g., PC Host + Mobile Manager).
+- **Role Assignment & Control**:
+  - **Host / Live Auctioneer**: Holds gavel authority, controls countdown pacing, and strikes lots SOLD or UNSOLD.
+  - **Franchise Manager**: Represents an assigned IPL franchise (CSK, MI, RCB, KKR, etc.) with dedicated bidding paddle.
+  - **Spectator / VIP Guest**: Passive observer viewing the hammer action and banter wire.
+- **In-Room Live Chat & Sledge Box**:
+  - Real-time chat messages between managers with team badges, timestamps, and quick-click banter/sledge buttons (*"Not letting you have him!", "Purse running dry?", "RTM Incoming!"*).
+
+---
+
+### 9.2 Dedicated Host / Auctioneer Gavel Mode (`src/components/AuctioneerHostModal.jsx`)
+
+- **Live Auctioneer Podium & Gavel Knockdown Controls**:
+  - **Going Once!**: Plays tension audio tick and synthesizes voice call: *"Player at ₹X Cr, going once!"*.
+  - **Going Twice!**: Triggers urgency chime and speech call: *"At ₹X Cr, going twice! Any further bids?"*.
+  - **Hammer: SOLD!**: Instantly knocks down the lot to the current highest bidder with oak gavel strike, fanfare applause, and sale finalization.
+  - **Strike: UNSOLD!**: Declares player unsold and cues the next lot.
+- **Pacing & Speed Governor**:
+  - **Manual Gavel Mode**: Disables auto-timeout countdowns, giving the human auctioneer total time control until they strike the gavel.
+  - **Preset Speeds**: 3s Blitz, 5s Standard, 10s Tactical.
+  - **Pause / Resume Auction Clock**: One-click master clock pause for tactical deliberation.
+- **Auctioneer FX Soundboard**:
+  - Interactive sound matrix for gavel knocks, tension ticks, warning gongs, outbid bells, sold fanfares, and unsold buzzers.
+- **Broadcast Announcements**:
+  - Transmits official floor announcements directly into room chat and live toast wires.
+
+---
+
+### 9.3 Graphical Squad Card Studio (`src/components/SquadCardStudioModal.jsx`)
+
+- **High-Resolution Canvas Poster Generator**:
+  - Custom HTML5 Canvas rendering engine outputting 300 DPI broadcast-quality graphics.
+  - Formats: **4:5 Instagram / Twitter Portrait** ($900 \times 1200\text{px}$) and **16:9 Wallpaper Landscape** ($1200 \times 800\text{px}$).
+- **Visual Presentation**:
+  - Official franchise team color grading (CSK Canary & Navy, MI Royal Blue & Gold, RCB Crimson & Black, KKR Purple & Gold, etc.).
+  - Squad Spend vs. Remaining Purse metric header.
+  - Detailed player lineup with roles (BAT, BOWL, AR, WK), prices, overseas indicators (✈️), and compliance verification.
+  - Authenticity watermark: *"PRODUCED BY CRICKET AUCTION SIMULATOR • BROADCAST CERTIFIED • REAL-TIME AI ENGINE"*.
+- **Export Capabilities**:
+  - **Download PNG**: Direct download of `[Team]_Squad_Card.png`.
+  - **Copy Image to Clipboard**: Modern asynchronous `navigator.clipboard.write([new ClipboardItem(...)])` support.
+  - **Copy Roster JSON**: Compact structured export for sharing across tools.
+
+---
+
+### 9.4 Community Roster Hub & Dream Squad Gallery (`src/components/CommunityRosterHubModal.jsx`)
+
+- **Curated Legendary Squads**:
+  - 🌟 **RCB 2016 Peak Dynasty**: Virat Kohli's 973-run season, Chris Gayle, AB de Villiers, Shane Watson, KL Rahul, Yuzvendra Chahal.
+  - 🏆 **MI 2020 Juggernaut**: Rohit Sharma, Quinton de Kock, Suryakumar Yadav, Kieron Pollard, Hardik Pandya, Jasprit Bumrah, Trent Boult.
+  - 👑 **CSK 2018 Dad's Army Champions**: MS Dhoni, Shane Watson, Suresh Raina, Faf du Plessis, Dwayne Bravo, Ravindra Jadeja.
+  - 🌍 **All-Time IPL GOATs XI**: Chris Gayle, David Warner, Virat Kohli, Suresh Raina, AB de Villiers, MS Dhoni, Andre Russell, Ravindra Jadeja, Rashid Khan, Lasith Malinga, Jasprit Bumrah.
+- **Franchise Publishing & Simulation Integration**:
+  - **Publish to Hub**: Save user drafted auction teams directly into their local Community Hub gallery with custom titles, overall ratings, and descriptions.
+  - **Load into Match Simulator**: Directly load any curated or user-saved roster into the Tournament Simulator for instant 45-match season or exhibition match play.
+
+---
+
+## 10. Phase 9 Implementation Details (Completed)
+
+### 10.1 Global T20 Franchise League Presets (`src/data/globalLeaguesData.js` & `src/components/GlobalLeaguesModal.jsx`)
+
+- **5 World Premier T20 Leagues**:
+  - 🇦🇺 **Big Bash League (BBL Australia)**: 8 franchises (*Perth Scorchers, Sydney Sixers, Brisbane Heat, Melbourne Stars, Melbourne Renegades, Adelaide Strikers, Sydney Thunder, Hobart Hurricanes*), A$20M purse cap, 4 overseas limit.
+  - 🇿🇦 **SA20 League (South Africa)**: 6 franchises (*Sunrisers Eastern Cape, MI Cape Town, Pretoria Capitals, Paarl Royals, Joburg Super Kings, Durban's Super Giants*), R40M purse cap, 5 overseas limit.
+  - 🇺🇸 **Major League Cricket (MLC USA)**: 6 franchises (*Washington Freedom, MI New York, Texas Super Kings, San Francisco Unicorns, LA Knight Riders, Seattle Orcas*), $15M purse cap, 6 overseas limit.
+  - 🇵🇰 **Pakistan Super League (PSL)**: 6 franchises (*Lahore Qalandars, Islamabad United, Karachi Kings, Multan Sultans, Peshawar Zalmi, Quetta Gladiators*), $18M purse cap, 4 overseas limit.
+  - 🏝️ **Caribbean Premier League (CPL West Indies)**: 6 franchises (*Trinbago Knight Riders, Guyana Amazon Warriors, Barbados Royals, Saint Lucia Kings, St Kitts & Nevis Patriots, Antigua Falcons*), $12M purse cap, 4 overseas limit.
+- **Global Superstar Player Additions**:
+  - Enriched player database (`GLOBAL_ADDITIONAL_PLAYERS`) featuring domestic and international stars for each league: Babar Azam, Shaheen Afridi, Mohammad Rizwan, Glenn Maxwell, Mitchell Marsh, Heinrich Klaasen, Kagiso Rabada, Nicholas Pooran, Andre Russell, Saurabh Netravalkar, Ali Khan, and Monank Patel.
+
+---
+
+### 10.2 ICC T20 World Cup International Draft Mode
+
+- **10 World Cup Nations**:
+  - Compete as or against: *India, Australia, England, South Africa, Pakistan, New Zealand, West Indies, Afghanistan, Sri Lanka, and the United States*.
+- **Championship Draft Engine**:
+  - $100M draft cap with zero overseas restrictions (international nation vs. nation format).
+  - Direct integration into the tournament engine for Super 8s, semifinals, and World T20 Championship crowning.
+
+---
+
+### 10.3 Custom Tournament & Rule Sandbox Builder
+
+- **Total Architectural Flexibility**:
+  - **Custom Tournament Name**: Any user-specified league or draft series.
+  - **Dynamic Team Count**: Choose between 4 (Mini-Cup), 6 (Standard), 8 (Premier), or 10 teams (Mega Championship).
+  - **Multi-Currency Support**: Switch between ₹ (INR Crore), $ (USD Millions), A$ (AUD Millions), and R (ZAR Millions).
+  - **Purse Cap Slider**: Customizable from 30 to 200 currency units.
+  - **Overseas Quota**: Configure foreign player allowances from 0 (All-Domestic) to 11 (Unrestricted Global Open).
+  - **Squad Size Constraints**: Configure Min (12 to 25) and Max (16 to 30) roster limits.
+  - **RTM Cards**: 0 to 6 challenge cards per franchise.
+  - **Auction Pacing**: 3s Blitz, 5s Standard, 10s Tactical, or Manual Host Control.
+  - **1-Click Deployment**: Dynamically instantiates the custom rules, team branding, and budgets directly into the active auction floor.
+
+---
+
+## 11. Data Structures & Schemas
+
+### 8.1 Franchise Object (`src/utils/constants.js`)
 ```javascript
 {
   id: 1,
@@ -549,7 +812,7 @@ A physics- and probability-grounded match simulation engine modeling authentic 2
 }
 ```
 
-### 7.2 Player Object with Ratings & Previous Team
+### 8.2 Player Object with Ratings & Previous Team
 ```javascript
 {
   id: 1,
@@ -572,7 +835,7 @@ A physics- and probability-grounded match simulation engine modeling authentic 2
 }
 ```
 
-### 7.3 LocalStorage Checkpoint Schema (`src/utils/storageUtils.js`)
+### 8.3 LocalStorage Checkpoint Schema (`src/utils/storageUtils.js`)
 ```javascript
 {
   timestamp: 1727189400000,
@@ -596,7 +859,7 @@ A physics- and probability-grounded match simulation engine modeling authentic 2
 
 ---
 
-## 8. Verification Checklist
+## 10. Verification Checklist
 
 - [x] **Phase 1 RTM Logic**: Initial RTM counts calculated ($6 - \text{retained}$) with interactive 3-stage modal workflow.
 - [x] **Phase 1 Auction Sets**: 11+ structured sets with set headers, progression tracking, and catalog modal.
@@ -626,7 +889,22 @@ A physics- and probability-grounded match simulation engine modeling authentic 2
 - [x] **Phase 5 Vintage Presets**: 2025 Mega Auction (Default), 2008 Historic Inaugural (Tendulkar, Warne, Dhoni, etc.), and All-Time Legends & T20 Titans.
 - [x] **Phase 5 LocalStorage State Recovery**: Automatic debounced checkpoint serialization, load/restore detection banner, manual save, and clean reset.
 - [x] **Phase 5 Welcome Starter Page**: High-impact landing page, Solo & Pass-and-Play entry buttons, franchise marquee, in-app quick guide, and saved session restore banner.
-- [x] **User Manual & Guide (`document.md`)**: Comprehensive 14-section user manual with step-by-step instructions, rules, tables, and strategies.
+- [x] **Phase 6 Impact Player Rule**: 12th man nomination in Playing XI, 5 nominated substitutes, and tactical mid-innings swaps in match simulator.
+- [x] **Phase 6 Mid-Season Trade Center**: Player-for-player swaps, cash-plus-player trades, roster constraint checks (18-25 squad size, overseas cap), and algorithmic AI trade evaluation.
+- [x] **Phase 6 Dynamic Form & Fitness Fatigue Engine**: 5 status tiers (🔥 On Fire, ⚡ In Form, ⚪ Standard, ❄️ Slump, ⚠️ Fatigued) with performance multipliers and bowler workload decay.
+- [x] **Phase 6 Multi-Year Franchise Mode & Mini-Auctions**: Year-over-year progression (Season 1 → 2 → 3), squad retention/release to replenish purse, and bidding on rookie draft talents.
+- [x] **Phase 7 TV Broadcast Skin Themes**: 4 authentic television skins (Star Sports Ultra Gold, JioCinema Neon Night, 2008 Vintage Retro, and IPL Dark) with instant header switcher.
+- [x] **Phase 7 Interactive Match Worm & Manhattan Charts**: Cumulative run-rate curves, over-by-over run rate bars, and wicket markers for both 45-match season & exhibition matches.
+- [x] **Phase 7 Simulated Social Wire & Expert Grades**: Real-time analyst tweets on sales, steals, and RTMs with algorithmic franchise auction report cards (A+ to F).
+- [x] **Phase 7 Head-to-Head Batter vs Bowler Matrix**: Interactive rivalry matrix (Kohli vs Bumrah, Rohit vs Boult, Dhoni vs Narine) with strike rates, dismissals, tactical tips, and custom pair generator.
+- [x] **Phase 8 Real-Time Multiplayer Cloud Rooms**: Synchronized bidding rooms via `BroadcastChannel` and WebRTC DataChannel with custom room codes and live sledge box.
+- [x] **Phase 8 Dedicated Host / Auctioneer Gavel Mode**: Live gavel knockdown controls (Going Once, Going Twice, SOLD, UNSOLD), countdown speed governor, and FX soundboard.
+- [x] **Phase 8 Graphical Squad Card Studio**: Canvas-rendered 300 DPI HD squad posters (4:5 Instagram & 16:9 Landscape) with one-click PNG download and clipboard copy.
+- [x] **Phase 8 Community Roster Hub**: Curated legendary dream squads (RCB 2016, MI 2020, CSK 2018, All-Time GOATs), custom franchise publishing, and direct simulation loading.
+- [x] **Phase 9 Global T20 Franchise Leagues**: 5 world premier leagues (BBL, SA20, MLC USA, PSL, CPL) with authentic teams, purse caps, and international stars.
+- [x] **Phase 9 T20 World Cup International Draft**: 10 national teams (India, Australia, England, South Africa, Pakistan, NZ, WI, AFG, SL, USA) with $100M draft cap and championship bracket.
+- [x] **Phase 9 Custom Tournament Sandbox**: Dynamic team counts (4 to 10), multi-currency ($ / £ / ₹ / R / A$), custom purse, squad size limits, overseas quotas, and RTM cards.
+- [x] **User Manual & Guide (`document.md`)**: Comprehensive multi-section user manual with step-by-step instructions, rules, tables, and strategies.
 - [x] **Roster Drag & Drop**: Intact with `react-beautiful-dnd`.
 - [x] **PDF Export**: Post-auction summary generation via `jspdf`.
 - [x] **ESLint & Vite**: 0 lint errors, 0 warnings, clean production compilation.

@@ -287,7 +287,158 @@ Enjoy an immersive broadcast-quality soundscape powered by the Web Audio API and
 
 ---
 
-## 14. Pro Tips & Championship Winning Strategies
+## 14. Strategic Franchise Management: Impact Player, Trades & Multi-Year
+
+Take complete control of franchise operations beyond the auction podium with deep tactical features:
+
+### 14.1 Impact Player Rule (12th Man Substitution)
+- **Bench Nomination**: In `🏏 Playing XI`, you can designate any bench reserve as your **Nominated Impact Player**. You can also nominate up to 5 matchday substitutes.
+- **Mid-Innings Tactical Swaps**:
+  - **1st Innings (Batting Reinforcement)**: If your top order stumbles or you need an explosive finish, the match engine activates the Impact Batter into the middle order to boost boundaries.
+  - **2nd Innings (Target Defense / Bowling Specialist)**: Bring on a death-overs yorker specialist or mystery spinner to defend totals and contain late-innings chases.
+- Substitution telemetry is tracked and detailed on every completed match scorecard.
+
+### 14.2 Mid-Season Transfer Window & Player Trades
+- Open the **Trade Center** (`🔄 Trades` in the header or tournament simulator) anytime during the tournament.
+- **Player-for-Player & Cash Deals**:
+  - Propose 1-for-1 or 2-for-2 swaps between your franchise and rival franchises.
+  - Sweeten the deal with cash considerations (₹0.25 Cr to ₹5.00 Cr) added to or subtracted from franchise budgets.
+- **Smart AI Trade Evaluations**:
+  - AI franchises reject unfair offers, analyze whether the trade fills their positional deficits, and strictly enforce the 18–25 player squad boundaries and 8 overseas limit.
+
+### 14.3 Dynamic Player Form Streaks & Fitness Fatigue
+- **Form Tiers**:
+  - 🔥 **On Fire (+15% boost)**: Consecutive 50+ scores or 3+ wicket hauls.
+  - ⚡ **In Form (+8% boost)**: Reliable match-to-match consistency.
+  - ⚪ **Standard (1.0x baseline)**: Neutral form.
+  - ❄️ **In Slump (-10% penalty)**: Consecutive single-digit scores or expensive bowling spells.
+  - ⚠️ **Fatigued (-14% penalty)**: Bowlers carrying heavy workloads over consecutive matches.
+- **Resting & Rotation**: Bench fatigued players for a match or two to restore stamina and avoid season-ending slumps!
+
+### 14.4 Multi-Year Franchise Mode & Annual Mini-Auctions
+- **Carry Forward Your Legacy**: Once an IPL champion is crowned, advance to **Season 2** and **Season 3** (`🚀 S2 Mini-Auction`).
+- **Retentions & Purse Recovery**:
+  - Retain up to 15–18 core stars.
+  - Release underperforming players to recover their contract money back into your auction purse!
+- **Rookie Draft Class**:
+  - Bid on newly added high-ceiling prodigies (U-19 sensations, express 150km/h pacers, mystery spinners, and clutch finishers) in a fast-paced mini-auction!
+
+---
+
+## 15. Broadcast Visuals, Match Analytics & Social Pundit Studio (Phase 7)
+
+### 15.1 Official TV Broadcast Skin Themes
+Switch between four authentic television broadcast presentation skins via the top toolbar:
+- **IPL Dark Broadcast** (Default): Polished obsidian dark theme with official IPL gold accents.
+- **Star Sports Ultra Gold**: Iconic blue stadium studio look with rich gold typography and television graphics.
+- **JioCinema Neon Night**: High-energy cyberpunk neon with glowing magenta, electric purple, and cyan highlights.
+- **Vintage 2008 Retro CRT**: Nostalgic sepia gold and vintage CRT monitor styling paying homage to the inaugural 2008 auction.
+
+### 15.2 Interactive Match Worm & Manhattan Over Charts
+During simulated matches (both in the 45-match season and exhibition quick matches):
+- **Worm Graph (Run-Rate Curves)**:
+  - Vector SVG comparative run-rate curves tracking Team 1 vs. Team 2 cumulative scoring across all 20 overs.
+  - Plotted circular red markers indicate the exact over where wickets fell.
+  - Clear markers for Powerplay (1–6), Middle Overs (7–15), and Death Overs (16–20).
+- **Manhattan Chart**:
+  - Over-by-over comparative bar charts showing runs scored in every individual over.
+  - Floating red wicket indicators above bars with full hover details.
+
+### 15.3 Simulated Social Media Wire & Expert Franchise Report Cards
+- **Live Fan & Analyst Wire**:
+  - Real-time ticker beneath the live player card reacting to big-money bids (₹15 Cr+), bargain steals, dramatic RTM cards, and shocking unsolds.
+  - Pundit reactions from 5 distinct analyst personas (Harsha B., Ian B., Aakash C., Simon D., and CricFanatic).
+- **Post-Auction Report Cards (A+ to F)**:
+  - Algorithmic grading of all 10 franchises evaluating average player ratings, wicketkeeper & bowling quota balance, squad depth (18–25), and purse utilization efficiency.
+
+### 15.4 Head-to-Head Batter vs. Bowler Matchup Matrix
+- Access the **⚔️ H2H Matchups** console from the top header or the concluded auction screen.
+- Select any batsman and bowler to inspect historical and simulated face-offs:
+  - Balls faced, runs scored, career strike rate, dismissals, and boundary tallies.
+  - Actionable tactical intelligence explaining bowler traps and batter scoring zones.
+  - Curated 1-click blockbuster rivalries: Kohli vs. Bumrah, Rohit vs. Boult, Dhoni vs. Narine, Klaasen vs. Rashid, and Maxwell vs. Jadeja.
+
+---
+
+## 16. Real-Time Multiplayer Rooms, Dedicated Host Podium & HD Squad Posters (Phase 8)
+
+### 16.1 Online Multiplayer Cloud Rooms
+- **Instant Cross-Tab & Cross-Device Rooms**:
+  - Click **🌐 Rooms** in the top navigation bar to create or join a room using a 6-character room code (e.g. `IPL-2025`).
+  - **Multi-Tab Synchronization**: Uses native `BroadcastChannel` for zero-latency, instantaneous synchronization between browser tabs on the same computer.
+  - **Cross-Device Linking**: Establish encrypted peer-to-peer WebRTC connections between your laptop and phone via the *Cross-Device P2P Linking* tab with zero server dependencies.
+- **Role Assignment**:
+  - **Live Auctioneer**: Has supreme authority over the hammer, countdown timers, and announcements.
+  - **Franchise Manager**: Takes ownership of an assigned IPL team (CSK, MI, RCB, KKR...) with synchronized live bidding paddles.
+  - **Spectator**: Watches the bidding duel and joins the live banter.
+- **Live Sledge & Banter Box**:
+  - Send real-time chat messages to everyone in the room with team badges and timestamps.
+  - One-click quick-sledge buttons (*"Not letting you have him!", "Purse running dry? 😂", "RTM Incoming!"*).
+
+### 16.2 Dedicated Host / Auctioneer Podium Mode
+- Click **🔨 Host Mode** (or join a room as Auctioneer) to take the podium:
+  - **Live Knockdown Controls**:
+    - **Going Once!**: Triggers warning chime and calls *"Player at ₹X Cr, going once!"*.
+    - **Going Twice!**: Raises tension with an urgent buzzer and synthesized speech call.
+    - **Hammer: SOLD!**: Instantly knocks down the lot to the highest bidder with an oak gavel strike and confetti fanfare.
+    - **Strike: UNSOLD!**: Declares the player unsold and cues the next lot.
+  - **Pacing Governor**:
+    - Choose between **Manual Host Control** (infinite clock until host acts), **3s Blitz**, **5s Standard**, or **10s Tactical**.
+    - Pause or resume the auction clock at any point for strategic deliberation.
+  - **Soundboard FX Matrix**:
+    - One-touch triggers for gavel knocks, tension ticks, warning gongs, outbid bells, sold fanfares, and unsold buzzers.
+
+### 16.3 High-Resolution Graphical Squad Card Studio
+- Click **🖼️ Squad Cards** (or access from the concluded auction screen):
+  - Automatically generates broadcast-quality 300 DPI graphics directly on an HTML5 canvas.
+  - **Formats**: 4:5 Instagram Portrait ($900 \times 1200\text{px}$) and 16:9 Landscape Wallpaper ($1200 \times 800\text{px}$).
+  - Features official franchise gradient branding, spend vs. remaining purse meters, full squad lineup with prices, overseas icons, and compliance verification.
+  - **1-Click Export**:
+    - **Download PNG**: Saves a high-res image `[Team]_Squad_Card.png`.
+    - **Copy Image**: Directly copies the raw PNG image blob to your clipboard.
+    - **Copy JSON**: Copies compact roster data for external use.
+
+### 16.4 Community Roster Hub & Dream Squad Gallery
+- Click **🏛️ Hub** in the header:
+  - **Curated All-Time Squads**: Browse and inspect legendary rosters: *RCB 2016 Peak Dynasty* (Kohli 973 runs), *MI 2020 Juggernaut*, *CSK 2018 Dad's Army Champions*, and the *All-Time IPL GOATs XI*.
+  - **Publish Your Squad**: Save your drafted auction squad into your local Community Hub gallery with custom titles and overall ratings.
+  - **Load into Match Simulator**: Immediately load any curated or saved squad into the Tournament Simulator for 45-match season campaigns or exhibition clashes!
+
+---
+
+## 17. Global T20 Leagues & Custom Tournament Sandbox (Phase 9)
+
+### 17.1 Global Franchise T20 Leagues
+- Click **🌍 Leagues** in the top navigation bar or from the post-auction screen to open the Global Tournament Center.
+- **Available Leagues**:
+  - 🇮🇳 **Indian Premier League (IPL)**: 10 franchises, ₹120 Cr purses, max 8 overseas.
+  - 🇦🇺 **Big Bash League (BBL Australia)**: 8 franchises (*Perth Scorchers, Sydney Sixers, Brisbane Heat, Melbourne Stars, Melbourne Renegades, Adelaide Strikers, Sydney Thunder, Hobart Hurricanes*), A$20M purse cap, max 4 overseas.
+  - 🇿🇦 **SA20 League (South Africa)**: 6 franchises (*Sunrisers Eastern Cape, MI Cape Town, Pretoria Capitals, Paarl Royals, Joburg Super Kings, Durban's Super Giants*), R40M purse cap, max 5 overseas.
+  - 🇺🇸 **Major League Cricket (MLC USA)**: 6 franchises (*Washington Freedom, MI New York, Texas Super Kings, San Francisco Unicorns, LA Knight Riders, Seattle Orcas*), $15M purse cap, max 6 overseas.
+  - 🇵🇰 **Pakistan Super League (PSL)**: 6 franchises (*Lahore Qalandars, Islamabad United, Karachi Kings, Multan Sultans, Peshawar Zalmi, Quetta Gladiators*), $18M purse cap, max 4 overseas.
+  - 🏝️ **Caribbean Premier League (CPL)**: 6 franchises (*Trinbago Knight Riders, Guyana Amazon Warriors, Barbados Royals, Saint Lucia Kings, St Kitts & Nevis Patriots, Antigua Falcons*), $12M purse cap, max 4 overseas.
+- Click **🚀 Load League** to instantly reconfigure the auction floor with the chosen league's franchises, authentic color branding, currencies, and squad constraints.
+
+### 17.2 International T20 World Cup Draft Mode
+- Switch to the **🏆 International T20 World Cup** tab in the Leagues Center.
+- Choose from 10 national superpowers: *India, Australia, England, South Africa, Pakistan, New Zealand, West Indies, Afghanistan, Sri Lanka, and the United States*.
+- Operates on a $100M draft cap with zero foreign player limits, enabling an authentic international draft and World Championship tournament run!
+
+### 17.3 Custom Tournament & Rule Sandbox Builder
+- Switch to the **🛠️ Custom Rule Sandbox** tab to engineer your own dream league from scratch:
+  - **Tournament Name**: Name your competition (e.g. *"Premier Super League 2026"*).
+  - **Team Count**: 4 (Mini Cup), 6 (Standard), 8 (Premier), or 10 teams (Mega).
+  - **Currency**: Switch between ₹ (INR Crore), $ (USD Millions), A$ (AUD Millions), and R (ZAR Millions).
+  - **Purse Cap**: Slider from 30 to 200 currency units.
+  - **Foreign Player Quota**: 0 (Pure Domestic) to 11 (Uncapped Global Open).
+  - **Squad Range**: Set minimum and maximum squad sizes (12 to 30).
+  - **RTM Cards**: 0 to 6 challenge cards per franchise.
+  - **Auction Pacing**: 3s Blitz, 5s Standard, 10s Tactical, or Manual Host Control.
+  - Click **🚀 Deploy Custom Tournament** to immediately take your bespoke league live into the auction room!
+
+---
+
+## 18. Pro Tips & Championship Winning Strategies
 
 1. **Protect Your Purse Reserves**: Don't blow all your money in Marquee Set 1. The middle sets (Set 3–6) often offer incredible value for elite pacers and all-rounders at a fraction of superstar prices.
 2. **Master the RTM Mindset**: Don't waste early retentions on players you can buy back cheaper at the auction. Retaining a player at ₹18 Cr when market value might be ₹11 Cr loses you ₹7 Cr in bidding power!

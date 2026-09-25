@@ -46,6 +46,20 @@ import { AudioSettingsModal } from "./components/AudioSettingsModal";
 import { audioEngine } from "./utils/audioEffects";
 import { MultiplayerSettingsModal } from "./components/MultiplayerSettingsModal";
 import { PlayerEditorModal } from "./components/PlayerEditorModal";
+import TradeCenterModal from "./components/TradeCenterModal";
+import MiniAuctionModal from "./components/MiniAuctionModal";
+import HeadToHeadModal from "./components/HeadToHeadModal";
+import SocialFeedAndGradesModal from "./components/SocialFeedAndGradesModal";
+import MultiplayerRoomModal from "./components/MultiplayerRoomModal";
+import AuctioneerHostModal from "./components/AuctioneerHostModal";
+import SquadCardStudioModal from "./components/SquadCardStudioModal";
+import CommunityRosterHubModal from "./components/CommunityRosterHubModal";
+import GlobalLeaguesModal from "./components/GlobalLeaguesModal";
+import { GLOBAL_LEAGUES, GLOBAL_ADDITIONAL_PLAYERS } from "./data/globalLeaguesData";
+import { AuctionRoomSync } from "./utils/multiplayerSync";
+import { BROADCAST_THEMES } from "./utils/themeStyles";
+import { generateSocialReaction } from "./utils/socialReactions";
+import { initPlayersForm } from "./utils/playerFormUtils";
 import { VINTAGE_2008_ROSTER, ALL_TIME_LEGENDS_ROSTER } from "./data/vintageRosters";
 import {
   saveAuctionState,
@@ -856,6 +870,43 @@ export default function App() {
   const [isSoldAnimation, setIsSoldAnimation] = useState(false);
   const [lastSoldEvent, setLastSoldEvent] = useState(null);
 
+  // Phase 6: Strategic Franchise Management & In-Game Rules State
+  const [showTradeModal, setShowTradeModal] = useState(false);
+  const [showMiniAuctionModal, setShowMiniAuctionModal] = useState(false);
+  const [currentSeason, setCurrentSeason] = useState(1);
+  const [playerFormMap, setPlayerFormMap] = useState({});
+
+  // Phase 7: Advanced Visuals, Broadcast Overlays & Social Media Reactions
+  const [activeThemeKey, setActiveThemeKey] = useState("modern_dark"); // 'modern_dark' | 'star_sports' | 'jiocinema_neon' | 'vintage_retro'
+  const [showHeadToHeadModal, setShowHeadToHeadModal] = useState(false);
+  const [showSocialModal, setShowSocialModal] = useState(false);
+  const [socialFeed, setSocialFeed] = useState([]);
+  const [latestTickerPost, setLatestTickerPost] = useState(null);
+
+  // Phase 8: Real-Time Online Multiplayer, Dedicated Host & Community Hub State
+  const [showRoomLobbyModal, setShowRoomLobbyModal] = useState(false);
+  const [showHostModal, setShowHostModal] = useState(false);
+  const [showSquadCardStudioModal, setShowSquadCardStudioModal] = useState(false);
+  const [showRosterHubModal, setShowRosterHubModal] = useState(false);
+  const [activeRoomId, setActiveRoomId] = useState(null);
+  const [roomRole, setRoomRole] = useState("manager"); // 'host' | 'manager' | 'spectator'
+  const [roomTeamId, setRoomTeamId] = useState("csk");
+  const [syncEngine, setSyncEngine] = useState(null);
+  const [isAuctionPaused, setIsAuctionPaused] = useState(false);
+  const [timerSpeedSetting, setTimerSpeedSetting] = useState("standard"); // 'manual' | 'blitz' | 'standard' | 'tactical'
+
+  // Phase 9: Global T20 Leagues & Custom Tournament Creator State
+  const [showGlobalLeaguesModal, setShowGlobalLeaguesModal] = useState(false);
+  const [activeLeague, setActiveLeague] = useState(GLOBAL_LEAGUES.ipl);
+
+  const activeTheme = BROADCAST_THEMES[activeThemeKey] || BROADCAST_THEMES.modern_dark;
+
+  useEffect(() => {
+    if (playersData && playersData.length > 0) {
+      setPlayerFormMap(initPlayersForm(playersData));
+    }
+  }, []);
+
   // Phase 4: Resume Web Audio context on user first click/tap
   useEffect(() => {
     const handleFirstInteraction = () => {
@@ -916,8 +967,20 @@ export default function App() {
 
   // Reset clock on new bids or players
   const resetTimer = useCallback(() => {
+    if (timerSpeedSetting === "manual") {
+      setTimer(99);
+      return;
+    }
+    if (timerSpeedSetting === "blitz") {
+      setTimer(3);
+      return;
+    }
+    if (timerSpeedSetting === "tactical") {
+      setTimer(10);
+      return;
+    }
     setTimer(isAcceleratedRound ? 5 : 12);
-  }, [isAcceleratedRound]);
+  }, [isAcceleratedRound, timerSpeedSetting]);
 
   // Check saved state on initial load
   useEffect(() => {
@@ -1059,6 +1122,16 @@ export default function App() {
         buyer.id,
         "success"
       );
+
+      // Phase 7: Generate Social Reaction Post & update Ticker
+      const socialPost = generateSocialReaction(
+        currentPlayer,
+        isRTM ? "RTM" : "SOLD",
+        buyer,
+        soldAmount
+      );
+      setSocialFeed((prev) => [socialPost, ...prev.slice(0, 49)]);
+      setLatestTickerPost(socialPost);
     } else {
       // Unsold
       audioEngine.playUnsoldBuzzer();
@@ -1090,6 +1163,11 @@ export default function App() {
         null,
         "warning"
       );
+
+      // Phase 7: Generate Social Reaction Post for Unsold
+      const socialPost = generateSocialReaction(currentPlayer, "UNSOLD", null, 0);
+      setSocialFeed((prev) => [socialPost, ...prev.slice(0, 49)]);
+      setLatestTickerPost(socialPost);
     }
 
     setRtmState(null);
@@ -1212,7 +1290,15 @@ export default function App() {
 
   // Timer Countdown Effect
   useEffect(() => {
-    if (!auctionStarted || auctionEnded || !currentPlayer || showRetentionModal || rtmState) {
+    if (
+      !auctionStarted ||
+      auctionEnded ||
+      !currentPlayer ||
+      showRetentionModal ||
+      rtmState ||
+      isAuctionPaused ||
+      timerSpeedSetting === "manual"
+    ) {
       return;
     }
 
@@ -1239,7 +1325,7 @@ export default function App() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [auctionStarted, auctionEnded, currentPlayer, showRetentionModal, rtmState, sellPlayer, currentBid, currentBidderIndex, teams]);
+  }, [auctionStarted, auctionEnded, currentPlayer, showRetentionModal, rtmState, sellPlayer, currentBid, currentBidderIndex, teams, isAuctionPaused, timerSpeedSetting]);
 
   // AI Bidding Engine with Target-Aware Needs, Purse Pacing & Rivalry Bidding Wars
   useEffect(() => {
@@ -1360,7 +1446,7 @@ export default function App() {
   ]);
 
   // Handle Multi-Manager / Single Team Manual Bid
-  const handleTeamBid = (biddingTeamId) => {
+  const handleTeamBid = useCallback((biddingTeamId, isRemote = false) => {
     if (!biddingTeamId || !currentPlayer) return;
     const biddingTeam = teams.find((t) => t.id === biddingTeamId);
     if (!biddingTeam) return;
@@ -1371,6 +1457,10 @@ export default function App() {
     if (!validation.allowed) {
       toast.warning(`${biddingTeam.shortName}: ${validation.reason}`);
       return;
+    }
+
+    if (syncEngine && !isRemote) {
+      syncEngine.send("BID_PLACED", { teamId: biddingTeamId, nextBid });
     }
 
     const prevLeader = currentBidderIndex !== null ? teams[currentBidderIndex] : null;
@@ -1408,6 +1498,96 @@ export default function App() {
         audioEngine.announceBiddingWar(prevLeader.name, biddingTeam.name);
       }
     }
+  }, [currentPlayer, teams, currentBid, currentBidderIndex, resetTimer, triggerBidToast, activeBiddingWar, syncEngine]);
+
+  // Handle Room Sync Events
+  const handleIncomingSyncMessage = useCallback((msg) => {
+    if (!msg || !msg.type) return;
+
+    if (msg.type === "BID_PLACED" && msg.payload?.teamId) {
+      handleTeamBid(msg.payload.teamId, true);
+    } else if (msg.type === "HOST_SOLD") {
+      sellPlayer();
+    } else if (msg.type === "HOST_UNSOLD") {
+      finalizeSale(null, 0);
+    } else if (msg.type === "HOST_CALL") {
+      audioEngine.playTensionTick();
+      toast.info(`🎙️ Host: ${msg.payload.text}`);
+    } else if (msg.type === "HOST_ANNOUNCEMENT") {
+      audioEngine.playWarningGong();
+      toast.warning(`📣 Host: "${msg.payload.text}"`);
+    } else if (msg.type === "CHAT_MESSAGE") {
+      toast.info(`💬 ${msg.payload.author}: ${msg.payload.text}`, { autoClose: 3500 });
+    }
+  }, [handleTeamBid, sellPlayer, finalizeSale]);
+
+  const handleJoinRoom = (roomId, role, teamId, userName) => {
+    if (syncEngine) {
+      syncEngine.destroy();
+    }
+    const engine = new AuctionRoomSync(
+      roomId,
+      (msg) => {
+        handleIncomingSyncMessage(msg);
+      },
+      role,
+      teamId,
+      userName
+    );
+    setSyncEngine(engine);
+    setActiveRoomId(roomId);
+    setRoomRole(role);
+    if (teamId) {
+      setRoomTeamId(teamId);
+      setHumanTeamIds((prev) => Array.from(new Set([...prev, teamId])));
+      setActiveHumanTeamId(teamId);
+    }
+    if (role === "host") {
+      setTimerSpeedSetting("manual");
+      setShowHostModal(true);
+    }
+  };
+
+  const handleLeaveRoom = () => {
+    if (syncEngine) {
+      syncEngine.destroy();
+      setSyncEngine(null);
+    }
+    setActiveRoomId(null);
+    toast.info("Left multiplayer room.");
+  };
+
+  // Phase 9: Global Leagues Switcher & Custom Sandbox Deployer
+  const handleSelectLeague = (leagueConfig) => {
+    setActiveLeague(leagueConfig);
+    setTeams(leagueConfig.teams.map((t) => ({ ...t, budget: leagueConfig.purse, players: [], spent: 0, rtmCount: t.rtmCount || 4 })));
+    setUserTeamId(leagueConfig.teams[0].id);
+    setHumanTeamIds([leagueConfig.teams[0].id]);
+    setActiveHumanTeamId(leagueConfig.teams[0].id);
+    // Add international stars to player pool if available
+    setActivePlayerPool((prev) => {
+      const existingNames = new Set(prev.map((p) => p.name));
+      const newStars = GLOBAL_ADDITIONAL_PLAYERS.filter((p) => !existingNames.has(p.name));
+      return [...newStars, ...prev];
+    });
+    // Reset auction state for fresh tournament
+    setAuctionStarted(false);
+    setAuctionEnded(false);
+    setCurrentSetIndex(0);
+    setCurrentSetPlayerIndex(0);
+    setCurrentBid(leagueConfig.currency === "₹" ? 2.0 : 1.0);
+    setCurrentBidderIndex(null);
+    setPassedTeams([]);
+    setLastBidders([]);
+    toast.success(`Active Tournament set to ${leagueConfig.name}! 🌍`);
+  };
+
+  const handleDeployCustomTournament = (customLeagueConfig) => {
+    handleSelectLeague(customLeagueConfig);
+    if (customLeagueConfig.timerSpeed) {
+      setTimerSpeedSetting(customLeagueConfig.timerSpeed);
+    }
+    toast.success(`Custom Tournament "${customLeagueConfig.name}" deployed! 🛠️`);
   };
 
   const handleUserBid = () => {
@@ -1756,6 +1936,48 @@ export default function App() {
     });
   };
 
+  // Phase 6: Execute Trade Handler
+  const handleExecuteTrade = ({ teamAId, teamBId, playersFromA, playersFromB, cashOffer }) => {
+    setTeams((prevTeams) => {
+      return prevTeams.map((team) => {
+        if (team.id === teamAId) {
+          const removedIds = new Set(playersFromA.map((p) => p.id));
+          const keptPlayers = (team.players || []).filter((p) => !removedIds.has(p.id));
+          return {
+            ...team,
+            players: [...keptPlayers, ...playersFromB],
+            budget: parseFloat((team.budget - cashOffer).toFixed(2)),
+          };
+        } else if (team.id === teamBId) {
+          const removedIds = new Set(playersFromB.map((p) => p.id));
+          const keptPlayers = (team.players || []).filter((p) => !removedIds.has(p.id));
+          return {
+            ...team,
+            players: [...keptPlayers, ...playersFromA],
+            budget: parseFloat((team.budget + cashOffer).toFixed(2)),
+          };
+        }
+        return team;
+      });
+    });
+
+    const teamAName = teams.find((t) => t.id === teamAId)?.name || "Team 1";
+    const teamBName = teams.find((t) => t.id === teamBId)?.name || "Team 2";
+    toast.success(
+      `Trade Finalized! Transferred ${playersFromA.map((p) => p.name).join(", ")} from ${teamAName} to ${teamBName} for ${playersFromB.map((p) => p.name).join(", ")}!`,
+      { autoClose: 5000 }
+    );
+  };
+
+  // Phase 6: Season Advance / Mini-Auction Completion Handler
+  const handleCompleteSeasonAdvance = ({ newSeason, updatedTeams }) => {
+    setTeams(updatedTeams);
+    setCurrentSeason(newSeason);
+    toast.success(`🚀 IPL Season ${newSeason} Officially Launched with Updated Rosters!`, {
+      autoClose: 5000,
+    });
+  };
+
   // User / Active Human team object
   const activeHumanTeam =
     teams.find((t) => t.id === activeHumanTeamId) ||
@@ -1804,7 +2026,7 @@ export default function App() {
   }
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-950 text-white p-3 md:p-6 relative">
+    <div className={`flex flex-col items-center min-h-screen ${activeTheme.bgClass} text-white p-3 md:p-6 relative transition-colors duration-500`}>
       {/* Phase 5: LocalStorage Recovery Banner */}
       {showRecoveryBanner && (
         <div className="w-full max-w-7xl mb-4 bg-gradient-to-r from-blue-950 via-indigo-950 to-purple-950 border-2 border-indigo-400 p-4 rounded-2xl shadow-2xl flex flex-wrap items-center justify-between gap-3 text-white animate-fadeIn">
@@ -1934,6 +2156,119 @@ export default function App() {
             </button>
 
             <button
+              onClick={() => setShowTradeModal(true)}
+              className="px-3 py-1.5 bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-600 hover:to-indigo-600 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
+              title="IPL Transfer Window & Player Trades"
+            >
+              <span>🔄 Trades</span>
+            </button>
+
+            <button
+              onClick={() => setShowMiniAuctionModal(true)}
+              className="px-3 py-1.5 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-black font-extrabold rounded-xl text-xs transition-all shadow-md flex items-center gap-1.5"
+              title="Advance to Next Season & Mini-Auction"
+            >
+              <span>🚀 S{currentSeason + 1} Mini-Auction</span>
+            </button>
+
+            {/* Phase 7: Head-to-Head Matrix Button */}
+            <button
+              onClick={() => setShowHeadToHeadModal(true)}
+              className="px-3 py-1.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
+              title="Head-to-Head Batter vs Bowler Matrix"
+            >
+              <span>⚔️ H2H Matchups</span>
+            </button>
+
+            {/* Phase 7: Social Feed & Expert Grades Button */}
+            <button
+              onClick={() => setShowSocialModal(true)}
+              className="px-3 py-1.5 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-black rounded-xl text-xs font-black transition-all shadow-md flex items-center gap-1.5"
+              title="Pundit Studio, Social Wire & Expert Grades"
+            >
+              <span>📰 Pundits & Grades</span>
+              {socialFeed.length > 0 && (
+                <span className="w-2 h-2 rounded-full bg-rose-600 animate-ping" />
+              )}
+            </button>
+
+            {/* Phase 8: Online Rooms Button */}
+            <button
+              onClick={() => setShowRoomLobbyModal(true)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5 ${
+                activeRoomId
+                  ? "bg-emerald-600 hover:bg-emerald-500 text-white font-black"
+                  : "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white"
+              }`}
+              title="Real-Time Multiplayer Cloud Rooms & Live Sledge Chat"
+            >
+              <span>🌐</span>
+              <span>{activeRoomId ? `#${activeRoomId}` : "Rooms"}</span>
+              {activeRoomId && <span className="w-2 h-2 rounded-full bg-white animate-pulse" />}
+            </button>
+
+            {/* Phase 8: Dedicated Host / Auctioneer Gavel Mode */}
+            <button
+              onClick={() => setShowHostModal(true)}
+              className="px-3 py-1.5 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-black font-extrabold rounded-xl text-xs transition-all shadow-md flex items-center gap-1.5"
+              title="Live Auctioneer Podium & Gavel Speed Controls"
+            >
+              <span>🔨 Host Mode</span>
+            </button>
+
+            {/* Phase 8: Graphical Squad Card Studio */}
+            <button
+              onClick={() => setShowSquadCardStudioModal(true)}
+              className="px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
+              title="Generate & Export HD PNG Squad Cards"
+            >
+              <span>🖼️ Squad Cards</span>
+            </button>
+
+            {/* Phase 8: Community Roster Hub */}
+            <button
+              onClick={() => setShowRosterHubModal(true)}
+              className="px-3 py-1.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
+              title="Community Roster Hub & Legendary Dream Teams"
+            >
+              <span>🏛️ Hub</span>
+            </button>
+
+            {/* Phase 9: Global Leagues & Custom Sandbox */}
+            <button
+              onClick={() => setShowGlobalLeaguesModal(true)}
+              className="px-3 py-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-extrabold rounded-xl text-xs transition-all shadow-md flex items-center gap-1.5"
+              title="Global T20 Leagues (BBL, PSL, SA20, MLC, CPL, World Cup) & Custom Tournament Sandbox"
+            >
+              <span>{activeLeague.badge || "🌍"}</span>
+              <span className="hidden sm:inline">{activeLeague.name.split(" ")[0]}</span>
+              <span className="px-1 py-0.2 rounded bg-black/40 text-[9px] text-yellow-300 font-bold uppercase tracking-wider">Leagues</span>
+            </button>
+
+            {/* Phase 7: TV Broadcast Theme Switcher */}
+            <div className="flex items-center gap-1 bg-gray-900 border border-gray-700 p-0.5 rounded-xl text-xs">
+              <span className="text-[10px] text-gray-400 pl-1.5 font-bold hidden xl:inline">Theme:</span>
+              {Object.values(BROADCAST_THEMES).map((th) => (
+                <button
+                  key={th.id}
+                  onClick={() => {
+                    setActiveThemeKey(th.id);
+                    toast.info(`📺 Switched to ${th.name}`);
+                  }}
+                  className={`px-2 py-1 rounded-lg text-xs font-bold transition-all ${
+                    activeThemeKey === th.id
+                      ? "bg-yellow-400 text-black shadow-md font-extrabold"
+                      : "text-gray-400 hover:text-white hover:bg-gray-800"
+                  }`}
+                  title={th.description}
+                >
+                  <span>{th.badge}</span>
+                  <span className="hidden lg:inline ml-1">{th.shortName}</span>
+                </button>
+              ))}
+            </div>
+
+            <button
               onClick={() => setShowAudioSettingsModal(true)}
               className="px-3 py-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
               title="Audio & Sound FX Settings"
@@ -2041,11 +2376,31 @@ export default function App() {
 
           {/* Tactical Intelligence Wire */}
           {tacticalInsight && (
-            <div className="w-full max-w-2xl -mt-5 mb-6 bg-gray-900/95 border border-purple-500/40 rounded-2xl px-4 py-2 text-xs flex items-center gap-2 text-purple-200 shadow-xl shadow-purple-950/20">
+            <div className="w-full max-w-2xl -mt-5 mb-3 bg-gray-900/95 border border-purple-500/40 rounded-2xl px-4 py-2 text-xs flex items-center gap-2 text-purple-200 shadow-xl shadow-purple-950/20">
               <span className="text-purple-400 font-bold shrink-0 flex items-center gap-1">
                 <span>🧠 AI Scouting Wire:</span>
               </span>
               <span className="truncate">{tacticalInsight}</span>
+            </div>
+          )}
+
+          {/* Phase 7: Live Social Media & Pundit Reaction Ticker */}
+          {latestTickerPost && (
+            <div
+              onClick={() => setShowSocialModal(true)}
+              className={`w-full max-w-2xl mb-6 ${activeTheme.liveTickerBg} rounded-2xl px-4 py-2.5 text-xs flex items-center justify-between gap-3 shadow-xl cursor-pointer hover:opacity-90 transition-all border`}
+            >
+              <div className="flex items-center gap-2 truncate">
+                <span className="text-base shrink-0">{latestTickerPost.avatar}</span>
+                <div className="flex items-center gap-1.5 truncate">
+                  <span className="font-extrabold text-white shrink-0">{latestTickerPost.author}:</span>
+                  <span className="truncate">{latestTickerPost.content}</span>
+                </div>
+              </div>
+              <div className="shrink-0 flex items-center gap-2 text-[10px] text-gray-400">
+                <span>❤️ {latestTickerPost.likes}</span>
+                <span className="px-1.5 py-0.5 rounded bg-gray-800 text-yellow-400 font-bold">View Feed →</span>
+              </div>
             </div>
           )}
 
@@ -2454,6 +2809,48 @@ export default function App() {
               🏆 Simulate IPL Season & Playoffs
             </button>
             <button
+              onClick={() => setShowTradeModal(true)}
+              className="px-6 py-3 bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-600 hover:to-indigo-600 text-white font-black rounded-xl shadow-lg shadow-indigo-500/20 transition-all text-sm flex items-center gap-2"
+            >
+              🔄 Transfer Window & Trade Center
+            </button>
+            <button
+              onClick={() => setShowMiniAuctionModal(true)}
+              className="px-6 py-3 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-black font-black rounded-xl shadow-lg shadow-yellow-500/20 transition-all text-sm flex items-center gap-2"
+            >
+              🚀 Season {currentSeason + 1} Mini-Auction
+            </button>
+            <button
+              onClick={() => setShowSocialModal(true)}
+              className="px-6 py-3 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-black font-black rounded-xl shadow-lg shadow-yellow-500/20 transition-all text-sm flex items-center gap-2"
+            >
+              📊 Expert Auction Report Cards & Pundit Grades
+            </button>
+            <button
+              onClick={() => setShowHeadToHeadModal(true)}
+              className="px-6 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-black rounded-xl shadow-lg shadow-blue-500/20 transition-all text-sm flex items-center gap-2"
+            >
+              ⚔️ Head-to-Head Batter vs Bowler Matrix
+            </button>
+            <button
+              onClick={() => setShowSquadCardStudioModal(true)}
+              className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black rounded-xl shadow-lg shadow-teal-500/20 transition-all text-sm flex items-center gap-2"
+            >
+              🖼️ Export HD Squad Poster (PNG)
+            </button>
+            <button
+              onClick={() => setShowRosterHubModal(true)}
+              className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-black rounded-xl shadow-lg shadow-purple-500/20 transition-all text-sm flex items-center gap-2"
+            >
+              🏛️ Community Roster Hub
+            </button>
+            <button
+              onClick={() => setShowGlobalLeaguesModal(true)}
+              className="px-6 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-black rounded-xl shadow-lg shadow-blue-500/20 transition-all text-sm flex items-center gap-2"
+            >
+              🌍 Global Leagues & World Cup Sandbox
+            </button>
+            <button
               onClick={exportPDF}
               className="px-6 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-black rounded-xl shadow-lg shadow-yellow-500/30 transition-all text-sm"
             >
@@ -2681,6 +3078,7 @@ export default function App() {
           teams={teams}
           initialTeamId={selectedXITeamId}
           userTeamId={userTeamId}
+          playerFormMap={playerFormMap}
           onOpenMatchSimulator={(teamId) => {
             setInitialTournamentTeamId(teamId);
             setShowTournamentModal(true);
@@ -2696,6 +3094,35 @@ export default function App() {
           teams={teams}
           userTeamId={userTeamId}
           initialMatchTeamId={initialTournamentTeamId}
+          currentSeason={currentSeason}
+          onOpenTradeWindow={() => setShowTradeModal(true)}
+          onAdvanceToNextSeason={() => {
+            setShowTournamentModal(false);
+            setShowMiniAuctionModal(true);
+          }}
+        />
+      )}
+
+      {/* Phase 6: Transfer Window & Trade Center Modal */}
+      {showTradeModal && (
+        <TradeCenterModal
+          isOpen={showTradeModal}
+          onClose={() => setShowTradeModal(false)}
+          teams={teams}
+          userTeamId={activeHumanTeamId || userTeamId || 1}
+          onExecuteTrade={handleExecuteTrade}
+        />
+      )}
+
+      {/* Phase 6: Multi-Year Franchise Mode & Annual Mini-Auction Modal */}
+      {showMiniAuctionModal && (
+        <MiniAuctionModal
+          isOpen={showMiniAuctionModal}
+          onClose={() => setShowMiniAuctionModal(false)}
+          teams={teams}
+          userTeamId={activeHumanTeamId || userTeamId || 1}
+          currentSeason={currentSeason}
+          onCompleteSeasonAdvance={handleCompleteSeasonAdvance}
         />
       )}
 
@@ -2746,6 +3173,98 @@ export default function App() {
         activeRosterPreset={activeRosterPreset}
         onSelectPreset={handleSelectPreset}
       />
+
+      {/* Phase 7: Head-to-Head Batter vs Bowler Matrix Modal */}
+      {showHeadToHeadModal && (
+        <HeadToHeadModal
+          isOpen={showHeadToHeadModal}
+          onClose={() => setShowHeadToHeadModal(false)}
+          allPlayers={activePlayerPool}
+        />
+      )}
+
+      {/* Phase 7: Social Feed & Expert Grades Modal */}
+      {showSocialModal && (
+        <SocialFeedAndGradesModal
+          isOpen={showSocialModal}
+          onClose={() => setShowSocialModal(false)}
+          socialPosts={socialFeed}
+          teams={teams}
+        />
+      )}
+
+      {/* Phase 8: Real-Time Multiplayer Cloud Room Modal */}
+      {showRoomLobbyModal && (
+        <MultiplayerRoomModal
+          isOpen={showRoomLobbyModal}
+          onClose={() => setShowRoomLobbyModal(false)}
+          activeRoomId={activeRoomId}
+          roomRole={roomRole}
+          roomTeamId={roomTeamId}
+          onJoinRoom={handleJoinRoom}
+          onLeaveRoom={handleLeaveRoom}
+          syncEngine={syncEngine}
+          onOpenHostConsole={() => setShowHostModal(true)}
+        />
+      )}
+
+      {/* Phase 8: Dedicated Host / Auctioneer Gavel Mode Modal */}
+      {showHostModal && (
+        <AuctioneerHostModal
+          isOpen={showHostModal}
+          onClose={() => setShowHostModal(false)}
+          currentPlayer={currentPlayer}
+          currentBid={currentBid}
+          currentBidder={currentBidderIndex !== null ? teams[currentBidderIndex] : null}
+          timer={timer}
+          isPaused={isAuctionPaused}
+          onTogglePause={() => setIsAuctionPaused((prev) => !prev)}
+          onForceSold={() => sellPlayer()}
+          onForceUnsold={() => finalizeSale(null, 0)}
+          onNextPlayer={() => advanceToNext()}
+          onSetTimerSpeed={(speed) => {
+            setTimerSpeedSetting(speed);
+            resetTimer();
+          }}
+          timerSpeedSetting={timerSpeedSetting}
+          syncEngine={syncEngine}
+        />
+      )}
+
+      {/* Phase 8: Graphical Squad Card Studio Modal */}
+      {showSquadCardStudioModal && (
+        <SquadCardStudioModal
+          isOpen={showSquadCardStudioModal}
+          onClose={() => setShowSquadCardStudioModal(false)}
+          teams={teams}
+        />
+      )}
+
+      {/* Phase 8: Community Roster Hub & Dream Squads Modal */}
+      {showRosterHubModal && (
+        <CommunityRosterHubModal
+          isOpen={showRosterHubModal}
+          onClose={() => setShowRosterHubModal(false)}
+          userTeams={teams}
+          onLoadRosterIntoSimulation={(squad) => {
+            // Load roster into tournament simulator
+            setInitialTournamentTeamId(userTeamId || 1);
+            setShowTournamentModal(true);
+            toast.success(`Loaded "${squad.title}" for simulation!`);
+          }}
+        />
+      )}
+
+      {/* Phase 9: Global Leagues & Custom Tournament Creator Modal */}
+      {showGlobalLeaguesModal && (
+        <GlobalLeaguesModal
+          isOpen={showGlobalLeaguesModal}
+          onClose={() => setShowGlobalLeaguesModal(false)}
+          activeLeagueId={activeLeague?.id || "ipl"}
+          onSelectLeague={handleSelectLeague}
+          onDeployCustomTournament={handleDeployCustomTournament}
+        />
+      )}
 
       <ToastContainer position="top-center" newestOnTop limit={4} />
     </div>

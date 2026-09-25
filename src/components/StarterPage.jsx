@@ -271,6 +271,54 @@ export const StarterPage = ({
                   Once the auction ends, head over to the <strong>Playing XI Builder</strong> to construct your lineup (enforces max 4 overseas, min 1 keeper, min 5 bowlers), calculate your Chemistry Rating, and simulate an entire 45-match IPL Season with Playoffs!
                 </p>
               </section>
+
+              <section className="bg-gray-950 p-3.5 rounded-xl border border-gray-800">
+                <h4 className="font-bold text-white text-sm mb-1.5 flex items-center gap-1.5">
+                  <span className="text-yellow-400">6.</span> Strategic Franchise Management & Multi-Year
+                </h4>
+                <p>
+                  • <strong>Impact Player Rule:</strong> Nominate 5 substitutes and execute tactical 12th man swaps during simulated matches.<br />
+                  • <strong>Transfer Window & Trades:</strong> Propose player swaps and cash deals with AI evaluated on squad balance and salary caps.<br />
+                  • <strong>Form & Fatigue:</strong> Track streaks (🔥 On Fire to ⚠️ Fatigued) and rotate bowlers across a 14-match season.<br />
+                  • <strong>Multi-Year Mini-Auctions:</strong> Carry rosters into Season 2 and 3, release deadweight, and draft rising rookie prodigies!
+                </p>
+              </section>
+
+              <section className="bg-gray-950 p-3.5 rounded-xl border border-gray-800">
+                <h4 className="font-bold text-white text-sm mb-1.5 flex items-center gap-1.5">
+                  <span className="text-yellow-400">7.</span> Broadcast Skins, Analytics & Social Reactions
+                </h4>
+                <p>
+                  • <strong>TV Broadcast Skins:</strong> Toggle between official broadcast skins: <em>Star Sports Gold</em>, <em>JioCinema Neon Night</em>, <em>2008 Vintage Retro</em>, and <em>IPL Dark</em>.<br />
+                  • <strong>Worm & Manhattan Charts:</strong> Interactive run-rate curves, over-by-over run bars, and wicket markers for all match simulations.<br />
+                  • <strong>Simulated Social Wire & Pundit Grades:</strong> Real-time analyst tweets on sales/steals, and post-auction franchise report cards graded from <strong>A+ to F</strong>.<br />
+                  • <strong>Batter vs Bowler Matrix:</strong> Inspect head-to-head records (Kohli vs Bumrah, Rohit vs Boult, Dhoni vs Narine) with strike rates, dismissals, and tactical advice!
+                </p>
+              </section>
+
+              <section className="bg-gray-950 p-3.5 rounded-xl border border-gray-800">
+                <h4 className="font-bold text-white text-sm mb-1.5 flex items-center gap-1.5">
+                  <span className="text-yellow-400">8.</span> Online Rooms, Dedicated Host & HD Squad Cards
+                </h4>
+                <p>
+                  • <strong>Multiplayer Cloud Rooms:</strong> Join rooms via custom room codes (<code>IPL-2025</code>) with zero-latency synchronization via BroadcastChannel and cross-device WebRTC P2P!<br />
+                  • <strong>Live Sledge & Banter Box:</strong> Real-time chat with fellow franchise managers to banter and sledge during high-stakes bidding duels.<br />
+                  • <strong>Dedicated Auctioneer Podium:</strong> Take the podium as the Live Host with gavel controls (Going Once, Going Twice, SOLD!), customizable countdown speeds, and full soundboard FX.<br />
+                  • <strong>HD Squad Card Studio:</strong> Export broadcast-quality 4:5 Instagram & 16:9 wallpaper PNG posters of your squad with custom franchise colors.<br />
+                  • <strong>Community Roster Hub:</strong> Load legendary rosters (RCB 2016, MI 2020, CSK 2018, All-Time GOATs) directly into the tournament match simulator!
+                </p>
+              </section>
+
+              <section className="bg-gray-950 p-3.5 rounded-xl border border-gray-800">
+                <h4 className="font-bold text-white text-sm mb-1.5 flex items-center gap-1.5">
+                  <span className="text-yellow-400">9.</span> Global T20 Leagues & Custom Tournament Sandbox
+                </h4>
+                <p>
+                  • <strong>World Franchise Leagues:</strong> Switch active tournaments to the <strong>Big Bash League (BBL)</strong>, <strong>SA20</strong>, <strong>Major League Cricket (MLC USA)</strong>, <strong>Pakistan Super League (PSL)</strong>, or <strong>Caribbean Premier League (CPL)</strong> with authentic team rosters, currencies, and purse caps.<br />
+                  • <strong>T20 World Cup International Draft:</strong> Lead 10 national teams (India, Australia, England, South Africa, Pakistan, New Zealand, West Indies, Afghanistan, Sri Lanka, USA) through a World T20 draft and championship tournament!<br />
+                  • <strong>Custom Tournament Sandbox:</strong> Create custom tournaments with customizable purse (₹20 Cr to ₹200 Cr), team count (4 to 10), overseas quotas (0 to 11), squad limits, and timer speeds!
+                </p>
+              </section>
             </div>
 
             <div className="mt-5 pt-3 border-t border-gray-800 flex justify-end">

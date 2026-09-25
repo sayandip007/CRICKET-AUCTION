@@ -427,14 +427,30 @@ export function calculateTeamRatings(team, playingXI = null) {
 }
 
 /**
- * T20 Match Simulator
+ * T20 Match Simulator with Impact Player (12th Man) Substitution Rule
  * Simulates a realistic 20-over match between two teams
  */
-export function simulateT20Match(teamA, teamB, xiA = null, xiB = null, pitchId = "balanced") {
+export function simulateT20Match(
+  teamA,
+  teamB,
+  xiA = null,
+  xiB = null,
+  pitchId = "balanced",
+  options = {}
+) {
   const pitch = PITCH_CONDITIONS.find((p) => p.id === pitchId) || PITCH_CONDITIONS[0];
 
-  const actualXiA = xiA && xiA.length === 11 ? xiA : autoSelectBestXI(teamA.players || []);
-  const actualXiB = xiB && xiB.length === 11 ? xiB : autoSelectBestXI(teamB.players || []);
+  const actualXiA = xiA && xiA.length === 11 ? [...xiA] : autoSelectBestXI(teamA.players || []);
+  const actualXiB = xiB && xiB.length === 11 ? [...xiB] : autoSelectBestXI(teamB.players || []);
+
+  // Bench for Impact Player candidates
+  const xiIdsA = new Set(actualXiA.map((p) => p.id));
+  const xiIdsB = new Set(actualXiB.map((p) => p.id));
+  const benchA = (teamA.players || []).filter((p) => !xiIdsA.has(p.id));
+  const benchB = (teamB.players || []).filter((p) => !xiIdsB.has(p.id));
+
+  const candidateA = options.impactPlayerA || benchA[0] || null;
+  const candidateB = options.impactPlayerB || benchB[0] || null;
 
   const ratingsA = calculateTeamRatings(teamA, actualXiA);
   const ratingsB = calculateTeamRatings(teamB, actualXiB);
@@ -445,10 +461,29 @@ export function simulateT20Match(teamA, teamB, xiA = null, xiB = null, pitchId =
   const battingFirstTeam = tossChoice === "bat" ? tossWinner : tossWinner.id === teamA.id ? teamB : teamA;
   const bowlingFirstTeam = battingFirstTeam.id === teamA.id ? teamB : teamA;
 
-  const xi1st = battingFirstTeam.id === teamA.id ? actualXiA : actualXiB;
-  const xi2nd = battingFirstTeam.id === teamA.id ? actualXiB : actualXiA;
+  let xi1st = battingFirstTeam.id === teamA.id ? [...actualXiA] : [...actualXiB];
+  let xi2nd = battingFirstTeam.id === teamA.id ? [...actualXiB] : [...actualXiA];
   const ratings1st = battingFirstTeam.id === teamA.id ? ratingsA : ratingsB;
   const ratings2nd = battingFirstTeam.id === teamA.id ? ratingsB : ratingsA;
+
+  const impactCandidate1st = battingFirstTeam.id === teamA.id ? candidateA : candidateB;
+  const impactCandidate2nd = battingFirstTeam.id === teamA.id ? candidateB : candidateA;
+
+  const impactSubstitutions = [];
+
+  // Tactical Impact Player activation for 1st Innings (Batting reinforcement)
+  if (impactCandidate1st && xi1st.length === 11) {
+    const replacedPlayer = xi1st[10]; // replace lowest order player with impact batter
+    xi1st[10] = impactCandidate1st;
+    impactSubstitutions.push({
+      team: battingFirstTeam,
+      playerIn: impactCandidate1st,
+      playerOut: replacedPlayer,
+      innings: 1,
+      role: impactCandidate1st.role,
+      reason: "Tactical Batting Firepower (Middle-Order Reinforcement)",
+    });
+  }
 
   // Simulate 1st Innings
   const inn1 = simulateInnings({
@@ -464,6 +499,20 @@ export function simulateT20Match(teamA, teamB, xiA = null, xiB = null, pitchId =
 
   // Target for 2nd innings
   const target = inn1.totalRuns + 1;
+
+  // Tactical Impact Player activation for 2nd Innings (Fielding/Bowling or Chasing reinforcement)
+  if (impactCandidate2nd && xi2nd.length === 11) {
+    const replacedPlayer = xi2nd[10];
+    xi2nd[10] = impactCandidate2nd;
+    impactSubstitutions.push({
+      team: bowlingFirstTeam,
+      playerIn: impactCandidate2nd,
+      playerOut: replacedPlayer,
+      innings: 2,
+      role: impactCandidate2nd.role,
+      reason: "Tactical Bowling Specialist (Target Defense & Wicket Threat)",
+    });
+  }
 
   // Simulate 2nd Innings
   const inn2 = simulateInnings({
@@ -558,6 +607,7 @@ export function simulateT20Match(teamA, teamB, xiA = null, xiB = null, pitchId =
     winner,
     margin,
     potm,
+    impactSubstitutions,
   };
 }
 

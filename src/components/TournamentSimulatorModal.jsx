@@ -10,6 +10,7 @@ import {
 import playersData from "../data/players.json";
 import { FALLBACK_IMAGE } from "../utils/constants";
 import { audioEngine } from "../utils/audioEffects";
+import MatchWormChart from "./MatchWormChart";
 
 export default function TournamentSimulatorModal({
   isOpen,
@@ -17,6 +18,9 @@ export default function TournamentSimulatorModal({
   teams,
   userTeamId,
   initialMatchTeamId,
+  onOpenTradeWindow,
+  onAdvanceToNextSeason,
+  currentSeason = 1,
 }) {
   const [activeTab, setActiveTab] = useState("SEASON"); // 'SEASON' | 'EXHIBITION'
 
@@ -311,7 +315,16 @@ export default function TournamentSimulatorModal({
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
+                  {onAdvanceToNextSeason && (
+                    <button
+                      onClick={onAdvanceToNextSeason}
+                      className="px-4 py-2 bg-black hover:bg-gray-900 text-yellow-300 border-2 border-black/30 font-black rounded-xl text-xs shadow-lg transition-all flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <span>🚀</span>
+                      <span>Advance to Season {currentSeason + 1} & Mini-Auction ▶</span>
+                    </button>
+                  )}
                   <button
                     onClick={triggerCelebration}
                     className="px-4 py-2 bg-black hover:bg-gray-900 text-yellow-400 font-black rounded-xl text-xs shadow-lg transition-all"
@@ -348,6 +361,17 @@ export default function TournamentSimulatorModal({
               </div>
 
               <div className="flex items-center gap-2">
+                {onOpenTradeWindow && (
+                  <button
+                    onClick={onOpenTradeWindow}
+                    className="px-3 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-xl transition-all shadow-md flex items-center gap-1.5"
+                    title="Open Mid-Season Transfer Window"
+                  >
+                    <span>🔄</span>
+                    <span>Trade Center</span>
+                  </button>
+                )}
+
                 {!isLeagueComplete && (
                   <>
                     <button
@@ -592,17 +616,40 @@ export default function TournamentSimulatorModal({
                       <p className="text-emerald-400 font-extrabold text-xs">
                         {selectedMatchDetail.result.winner.name} {selectedMatchDetail.result.margin}
                       </p>
+
+                      {/* Impact Player Substitutions */}
+                      {selectedMatchDetail.result.impactSubstitutions &&
+                        selectedMatchDetail.result.impactSubstitutions.length > 0 && (
+                          <div className="mt-2 p-2 rounded-lg bg-amber-950/30 border border-amber-500/40 text-[10px]">
+                            <div className="font-extrabold text-amber-400 flex items-center gap-1 mb-1">
+                              <span>⚡</span>
+                              <span>Official Impact Player Substitutions:</span>
+                            </div>
+                            {selectedMatchDetail.result.impactSubstitutions.map((sub, i) => (
+                              <div key={i} className="text-gray-300">
+                                <span className="font-bold text-white">{sub.team.shortName}:</span>{" "}
+                                <span className="text-amber-300 font-bold">{sub.playerIn.name}</span> in for{" "}
+                                <span className="line-through text-gray-400">{sub.playerOut.name}</span> ({sub.reason})
+                              </div>
+                            ))}
+                          </div>
+                        )}
                     </div>
 
                     {/* POTM */}
                     {selectedMatchDetail.result.potm && (
-                      <div className="p-2 rounded-xl bg-purple-950/40 border border-purple-500/40 flex items-center justify-between text-[11px]">
+                      <div className="p-2 rounded-xl bg-purple-950/40 border border-purple-500/40 flex items-center justify-between text-[11px] mb-3">
                         <span className="text-purple-300 font-bold">⭐ Player of the Match:</span>
                         <span className="text-white font-extrabold">
                           {selectedMatchDetail.result.potm.player?.name} ({selectedMatchDetail.result.potm.label})
                         </span>
                       </div>
                     )}
+
+                    {/* Phase 7: Interactive Match Worm & Manhattan Analytics */}
+                    <div className="mt-3">
+                      <MatchWormChart matchResult={selectedMatchDetail.result} />
+                    </div>
                   </div>
                 )}
               </div>
@@ -710,6 +757,37 @@ export default function TournamentSimulatorModal({
                     </span>
                   </div>
                 </div>
+
+                {/* Impact Player Substitutions Banner */}
+                {exhibitionResult.impactSubstitutions &&
+                  exhibitionResult.impactSubstitutions.length > 0 && (
+                    <div className="p-3 bg-amber-950/30 border border-amber-500/50 rounded-2xl text-xs">
+                      <div className="font-extrabold text-amber-300 flex items-center gap-1.5 mb-1.5">
+                        <span>⚡</span>
+                        <span>Tactical Impact Player (12th Man) Substitutions</span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {exhibitionResult.impactSubstitutions.map((sub, i) => (
+                          <div
+                            key={i}
+                            className="bg-gray-900/80 border border-gray-800 p-2 rounded-xl flex items-center justify-between"
+                          >
+                            <div>
+                              <span className="font-bold text-white">{sub.team.shortName}:</span>{" "}
+                              <span className="text-amber-400 font-bold">{sub.playerIn.name}</span>{" "}
+                              <span className="text-gray-400 text-[11px]">in for</span>{" "}
+                              <span className="line-through text-gray-400 text-[11px]">
+                                {sub.playerOut.name}
+                              </span>
+                            </div>
+                            <span className="text-[10px] text-gray-500 italic">
+                              Inn {sub.innings}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                 {/* Both Innings Scorecards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -835,6 +913,9 @@ export default function TournamentSimulatorModal({
                     </div>
                   </div>
                 </div>
+
+                {/* Phase 7: Interactive Match Worm & Manhattan Analytics for Exhibition */}
+                <MatchWormChart matchResult={exhibitionResult} />
               </div>
             )}
           </div>
