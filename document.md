@@ -327,14 +327,25 @@ Take complete control of franchise operations beyond the auction podium with dee
 
 ## 15. Broadcast Visuals, Match Analytics & Social Pundit Studio (Phase 7)
 
-### 15.1 Official TV Broadcast Skin Themes
-Switch between four authentic television broadcast presentation skins via the top toolbar:
-- **IPL Dark Broadcast** (Default): Polished obsidian dark theme with official IPL gold accents.
-- **Star Sports Ultra Gold**: Iconic blue stadium studio look with rich gold typography and television graphics.
-- **JioCinema Neon Night**: High-energy cyberpunk neon with glowing magenta, electric purple, and cyan highlights.
-- **Vintage 2008 Retro CRT**: Nostalgic sepia gold and vintage CRT monitor styling paying homage to the inaugural 2008 auction.
+### 15.1 Distinctive Broadcast Television Skin Themes
+Switch between six high-contrast, visually unmistakable broadcast presentation packages via the 1-click theme ribbon on the main HUD:
+- **Star Sports 1 HD**: Iconic television broadcast look with royal blue studio backgrounds (`#0a2366`), 24K championship gold borders, and Star Sports graphics.
+- **Sony MAX Extraaa Innings**: Classic scarlet crimson (`#4a0815`) and ruby red studio with fiery flame-gold accents, evoking the golden era of IPL on TV.
+- **JioCinema Ultra Neon**: Futuristic streaming atmosphere with cosmic violet studio backgrounds, glowing magenta neon edge lighting, and electric cyan highlights.
+- **Lord's Pavilion Heritage**: Prestigious daytime cricket aesthetic featuring British racing forest green (`#062417`), crisp ivory cricket accents, and regal gold trim.
+- **IPL Arena Stadium**: Sleek stadium carbon dark arena with golden floodlights and amber accents.
+- **DLF IPL 2008 Vintage Retro**: Nostalgic sepia gold and vintage CRT monitor styling paying homage to the historic inaugural 2008 DLF IPL mega auction.
 
-### 15.2 Interactive Match Worm & Manhattan Over Charts
+### 15.2 Beginner-Friendly Auction Option Deck & Bidding Station
+- **Simplified Option Deck (`AuctionControlCenter.jsx`)**:
+  - Replaces nested vertical lists with clean, modern action decks and direct 1-click theme switching.
+  - **💡 Simple Mode Toggle**: Newcomers can switch on Simple Mode to view only the 4 most essential actions (📋 Sets, 🎯 Needs, 🏏 Playing XI, 🏆 Sim Season) without confusing dropdowns.
+  - **⚡ All 19 Features Modal**: Searchable, clean visual directory categorized into Matchday, Multiplayer, Intel, and Settings.
+- **Hero Raise Bid Paddle**:
+  - Large, intuitive primary button with clear increment step (`+₹0.20 Cr`), leading bid status indicators, and separate clean buttons for Pass and Hammer.
+  - Multi-Manager view toggle allows switching between single-team focus and the full multi-paddle grid.
+
+### 15.3 Interactive Match Worm & Manhattan Over Charts
 During simulated matches (both in the 45-match season and exhibition quick matches):
 - **Worm Graph (Run-Rate Curves)**:
   - Vector SVG comparative run-rate curves tracking Team 1 vs. Team 2 cumulative scoring across all 20 overs.
@@ -344,14 +355,14 @@ During simulated matches (both in the 45-match season and exhibition quick match
   - Over-by-over comparative bar charts showing runs scored in every individual over.
   - Floating red wicket indicators above bars with full hover details.
 
-### 15.3 Simulated Social Media Wire & Expert Franchise Report Cards
+### 15.4 Simulated Social Media Wire & Expert Franchise Report Cards
 - **Live Fan & Analyst Wire**:
   - Real-time ticker beneath the live player card reacting to big-money bids (₹15 Cr+), bargain steals, dramatic RTM cards, and shocking unsolds.
   - Pundit reactions from 5 distinct analyst personas (Harsha B., Ian B., Aakash C., Simon D., and CricFanatic).
 - **Post-Auction Report Cards (A+ to F)**:
   - Algorithmic grading of all 10 franchises evaluating average player ratings, wicketkeeper & bowling quota balance, squad depth (18–25), and purse utilization efficiency.
 
-### 15.4 Head-to-Head Batter vs. Bowler Matchup Matrix
+### 15.5 Head-to-Head Batter vs. Bowler Matchup Matrix
 - Access the **⚔️ H2H Matchups** console from the top header or the concluded auction screen.
 - Select any batsman and bowler to inspect historical and simulated face-offs:
   - Balls faced, runs scored, career strike rate, dismissals, and boundary tallies.

@@ -55,6 +55,7 @@ import AuctioneerHostModal from "./components/AuctioneerHostModal";
 import SquadCardStudioModal from "./components/SquadCardStudioModal";
 import CommunityRosterHubModal from "./components/CommunityRosterHubModal";
 import GlobalLeaguesModal from "./components/GlobalLeaguesModal";
+import AuctionControlCenter from "./components/AuctionControlCenter";
 import { GLOBAL_LEAGUES, GLOBAL_ADDITIONAL_PLAYERS } from "./data/globalLeaguesData";
 import { AuctionRoomSync } from "./utils/multiplayerSync";
 import { BROADCAST_THEMES } from "./utils/themeStyles";
@@ -497,16 +498,29 @@ const PlayerCard = ({
   timer,
   isAccelerated,
   onClick,
+  activeTheme,
 }) => {
   if (!player) return null;
   const isOverseas = player.nationality && player.nationality.toLowerCase().trim() !== "indian";
   const timerPercentage = Math.max(0, Math.min(100, (timer / (isAccelerated ? 5 : 12)) * 100));
 
+  const cardStyle = activeTheme ? activeTheme.lotCardBg : "bg-gradient-to-tr from-gray-950 via-gray-900 to-gray-900 border-2 border-indigo-500";
+
   return (
     <div
-      className="bg-gradient-to-tr from-gray-950 via-gray-900 to-gray-900 rounded-3xl shadow-2xl w-full max-w-md p-6 text-center border-2 border-indigo-500 hover:border-yellow-400 transition-all duration-300 cursor-pointer relative overflow-hidden group"
+      className={`${cardStyle} rounded-3xl shadow-2xl w-full max-w-md p-6 text-center transition-all duration-300 cursor-pointer relative overflow-hidden group hover:scale-[1.01]`}
       onClick={onClick}
     >
+      {/* On-Screen TV Broadcast Bug */}
+      {activeTheme && (
+        <div className="flex items-center justify-between mb-3 text-[10px] font-black uppercase tracking-wider">
+          <span className={`px-2 py-0.5 rounded-lg border ${activeTheme.watermarkColor}`}>
+            {activeTheme.tvWatermark}
+          </span>
+          <span className="text-gray-400 font-mono">LOT #{player.id}</span>
+        </div>
+      )}
+
       {/* Top badges */}
       <div className="flex items-center justify-between gap-2 mb-3">
         <span className="px-2.5 py-0.5 rounded-full bg-gray-800 border border-gray-700 text-xs font-bold text-gray-300">
@@ -524,7 +538,9 @@ const PlayerCard = ({
         <img
           src={player.image || FALLBACK_IMAGE}
           alt={player.name}
-          className="w-full h-full rounded-full border-4 border-indigo-500 shadow-2xl object-cover group-hover:scale-105 transition-transform"
+          className={`w-full h-full rounded-full border-4 ${
+            activeTheme?.borderAccent || "border-indigo-500"
+          } shadow-2xl object-cover group-hover:scale-105 transition-transform`}
         />
         <img
           src={roleImages[player.role]}
@@ -557,7 +573,7 @@ const PlayerCard = ({
         {getPlayerSpecializations(player).map((spec, idx) => (
           <span
             key={idx}
-            className="text-[11px] px-2 py-0.5 rounded-lg bg-indigo-950/80 border border-indigo-500/40 text-indigo-300 font-medium"
+            className="text-[11px] px-2 py-0.5 rounded-lg bg-black/40 border border-white/10 text-gray-200 font-medium"
           >
             ⚡ {spec}
           </span>
@@ -565,13 +581,13 @@ const PlayerCard = ({
       </div>
 
       {/* Base Price & Current Bid Bar */}
-      <div className="grid grid-cols-2 gap-3 bg-gray-950/70 p-3 rounded-2xl border border-gray-800 mb-4">
+      <div className="grid grid-cols-2 gap-3 bg-black/40 p-3.5 rounded-2xl border border-white/10 mb-4 shadow-inner">
         <div>
           <p className="text-xs text-gray-400">Base Price</p>
-          <p className="text-lg font-bold text-gray-300">₹{player.basePrice.toFixed(2)}Cr</p>
+          <p className="text-lg font-bold text-gray-200">₹{player.basePrice.toFixed(2)}Cr</p>
         </div>
         <div>
-          <p className="text-xs text-yellow-400 font-bold">Current Bid</p>
+          <p className={`text-xs ${activeTheme?.textAccent || "text-yellow-400"} font-bold`}>Current Bid</p>
           <p className="text-2xl font-black text-green-400">₹{currentBid.toFixed(2)}Cr</p>
         </div>
       </div>
@@ -898,6 +914,7 @@ export default function App() {
   // Phase 9: Global T20 Leagues & Custom Tournament Creator State
   const [showGlobalLeaguesModal, setShowGlobalLeaguesModal] = useState(false);
   const [activeLeague, setActiveLeague] = useState(GLOBAL_LEAGUES.ipl);
+  const [showMultiPaddleGrid, setShowMultiPaddleGrid] = useState(false);
 
   const activeTheme = BROADCAST_THEMES[activeThemeKey] || BROADCAST_THEMES.modern_dark;
 
@@ -2026,7 +2043,10 @@ export default function App() {
   }
 
   return (
-    <div className={`flex flex-col items-center min-h-screen ${activeTheme.bgClass} text-white p-3 md:p-6 relative transition-colors duration-500`}>
+    <div
+      style={{ backgroundImage: activeTheme.ambientGlow }}
+      className={`flex flex-col items-center min-h-screen ${activeTheme.bgClass} text-white p-3 md:p-6 relative transition-colors duration-500`}
+    >
       {/* Phase 5: LocalStorage Recovery Banner */}
       {showRecoveryBanner && (
         <div className="w-full max-w-7xl mb-4 bg-gradient-to-r from-blue-950 via-indigo-950 to-purple-950 border-2 border-indigo-400 p-4 rounded-2xl shadow-2xl flex flex-wrap items-center justify-between gap-3 text-white animate-fadeIn">
@@ -2058,240 +2078,71 @@ export default function App() {
         </div>
       )}
 
-      {/* Top Header */}
-      <header className="w-full max-w-7xl flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-gray-800">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-yellow-500 to-amber-600 flex items-center justify-center font-black text-black text-xl shadow-lg shadow-yellow-500/20">
-            IPL
-          </div>
-          <div>
-            <h1 className="text-xl md:text-2xl font-black text-white tracking-tight">
-              Cricket Auction Simulator
-            </h1>
-            <p className="text-xs text-gray-400">
-              Interactive Mega Auction with RTM Cards, AI Intelligence & Immersion
-            </p>
+      {/* Top Header & Modern Categorized Control Center */}
+      <header className="w-full max-w-7xl flex flex-col gap-3 mb-6 pb-2 border-b border-gray-800/80">
+        <div className="w-full flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className={`w-10 h-10 rounded-2xl bg-gradient-to-tr ${activeTheme.primaryGradient} flex items-center justify-center font-black text-black text-xl shadow-lg`}>
+              IPL
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-xl md:text-2xl font-black text-white tracking-tight">
+                  Cricket Auction Simulator
+                </h1>
+                <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider border ${activeTheme.watermarkColor}`}>
+                  {activeTheme.shortName}
+                </span>
+              </div>
+              <p className="text-xs text-gray-400">
+                Interactive Mega Auction with AI Personas, RTM Duels & Real-Time Global Tournaments
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* User Franchise Status Badge */}
+        {/* Clean, Beginner-Friendly Auction Options & Telemetry Control Center */}
         {userTeam && (
-          <div className="flex flex-wrap items-center gap-2">
-            <div className="bg-gray-900 border border-gray-700 px-3 py-1.5 rounded-xl flex items-center gap-2 text-xs">
-              <span className="text-gray-400">Active Paddle:</span>
-              <span className="font-extrabold text-yellow-400">{userTeam.name}</span>
-              {humanTeamIds.length > 1 && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-bold border border-indigo-400/40">
-                  {humanTeamIds.length} Human Teams
-                </span>
-              )}
-            </div>
-
-            <div className="bg-gray-900 border border-gray-700 px-3 py-1.5 rounded-xl flex items-center gap-2 text-xs">
-              <span className="text-gray-400">Purse:</span>
-              <span className="font-extrabold text-green-400">₹{userTeam.budget.toFixed(2)}Cr</span>
-            </div>
-
-            <div className="bg-yellow-500/20 border border-yellow-400/60 px-3 py-1.5 rounded-xl flex items-center gap-1.5 text-xs text-yellow-300 font-bold">
-              <span>⚡ RTMs:</span>
-              <span className="font-black text-white">{userTeam.rtmCount}</span>
-            </div>
-
-            <button
-              onClick={() => setShowMultiplayerModal(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
-              title="Pass-and-Play & Multiplayer Franchises"
-            >
-              <span>👥 Multi-Manager</span>
-              {humanTeamIds.length > 1 && (
-                <span className="bg-yellow-400 text-black px-1.5 py-0.2 rounded-full font-black text-[10px]">
-                  {humanTeamIds.length}
-                </span>
-              )}
-            </button>
-
-            <button
-              onClick={() => setShowPlayerEditorModal(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
-              title="Custom Rosters & Database Studio"
-            >
-              <span>✏️ Roster Studio</span>
-            </button>
-
-            <button
-              onClick={() => setShowSetsModal(true)}
-              className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
-            >
-              📋 Sets
-            </button>
-
-            <button
-              onClick={() => {
-                setSelectedNeedsTeamId(activeHumanTeamId || userTeamId || 1);
-                setShowTeamNeedsModal(true);
-              }}
-              className="px-3 py-1.5 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
-            >
-              🎯 Needs & Intel
-            </button>
-
-            <button
-              onClick={() => {
-                setSelectedXITeamId(activeHumanTeamId || userTeamId || 1);
-                setShowPlayingXIModal(true);
-              }}
-              className="px-3 py-1.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
-            >
-              🏏 Playing XI
-            </button>
-
-            <button
-              onClick={() => {
-                setInitialTournamentTeamId(activeHumanTeamId || userTeamId || 1);
-                setShowTournamentModal(true);
-              }}
-              className="px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
-            >
-              🏆 Match Simulator
-            </button>
-
-            <button
-              onClick={() => setShowTradeModal(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-600 hover:to-indigo-600 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
-              title="IPL Transfer Window & Player Trades"
-            >
-              <span>🔄 Trades</span>
-            </button>
-
-            <button
-              onClick={() => setShowMiniAuctionModal(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-black font-extrabold rounded-xl text-xs transition-all shadow-md flex items-center gap-1.5"
-              title="Advance to Next Season & Mini-Auction"
-            >
-              <span>🚀 S{currentSeason + 1} Mini-Auction</span>
-            </button>
-
-            {/* Phase 7: Head-to-Head Matrix Button */}
-            <button
-              onClick={() => setShowHeadToHeadModal(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
-              title="Head-to-Head Batter vs Bowler Matrix"
-            >
-              <span>⚔️ H2H Matchups</span>
-            </button>
-
-            {/* Phase 7: Social Feed & Expert Grades Button */}
-            <button
-              onClick={() => setShowSocialModal(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-black rounded-xl text-xs font-black transition-all shadow-md flex items-center gap-1.5"
-              title="Pundit Studio, Social Wire & Expert Grades"
-            >
-              <span>📰 Pundits & Grades</span>
-              {socialFeed.length > 0 && (
-                <span className="w-2 h-2 rounded-full bg-rose-600 animate-ping" />
-              )}
-            </button>
-
-            {/* Phase 8: Online Rooms Button */}
-            <button
-              onClick={() => setShowRoomLobbyModal(true)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5 ${
-                activeRoomId
-                  ? "bg-emerald-600 hover:bg-emerald-500 text-white font-black"
-                  : "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white"
-              }`}
-              title="Real-Time Multiplayer Cloud Rooms & Live Sledge Chat"
-            >
-              <span>🌐</span>
-              <span>{activeRoomId ? `#${activeRoomId}` : "Rooms"}</span>
-              {activeRoomId && <span className="w-2 h-2 rounded-full bg-white animate-pulse" />}
-            </button>
-
-            {/* Phase 8: Dedicated Host / Auctioneer Gavel Mode */}
-            <button
-              onClick={() => setShowHostModal(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-black font-extrabold rounded-xl text-xs transition-all shadow-md flex items-center gap-1.5"
-              title="Live Auctioneer Podium & Gavel Speed Controls"
-            >
-              <span>🔨 Host Mode</span>
-            </button>
-
-            {/* Phase 8: Graphical Squad Card Studio */}
-            <button
-              onClick={() => setShowSquadCardStudioModal(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
-              title="Generate & Export HD PNG Squad Cards"
-            >
-              <span>🖼️ Squad Cards</span>
-            </button>
-
-            {/* Phase 8: Community Roster Hub */}
-            <button
-              onClick={() => setShowRosterHubModal(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
-              title="Community Roster Hub & Legendary Dream Teams"
-            >
-              <span>🏛️ Hub</span>
-            </button>
-
-            {/* Phase 9: Global Leagues & Custom Sandbox */}
-            <button
-              onClick={() => setShowGlobalLeaguesModal(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-extrabold rounded-xl text-xs transition-all shadow-md flex items-center gap-1.5"
-              title="Global T20 Leagues (BBL, PSL, SA20, MLC, CPL, World Cup) & Custom Tournament Sandbox"
-            >
-              <span>{activeLeague.badge || "🌍"}</span>
-              <span className="hidden sm:inline">{activeLeague.name.split(" ")[0]}</span>
-              <span className="px-1 py-0.2 rounded bg-black/40 text-[9px] text-yellow-300 font-bold uppercase tracking-wider">Leagues</span>
-            </button>
-
-            {/* Phase 7: TV Broadcast Theme Switcher */}
-            <div className="flex items-center gap-1 bg-gray-900 border border-gray-700 p-0.5 rounded-xl text-xs">
-              <span className="text-[10px] text-gray-400 pl-1.5 font-bold hidden xl:inline">Theme:</span>
-              {Object.values(BROADCAST_THEMES).map((th) => (
-                <button
-                  key={th.id}
-                  onClick={() => {
-                    setActiveThemeKey(th.id);
-                    toast.info(`📺 Switched to ${th.name}`);
-                  }}
-                  className={`px-2 py-1 rounded-lg text-xs font-bold transition-all ${
-                    activeThemeKey === th.id
-                      ? "bg-yellow-400 text-black shadow-md font-extrabold"
-                      : "text-gray-400 hover:text-white hover:bg-gray-800"
-                  }`}
-                  title={th.description}
-                >
-                  <span>{th.badge}</span>
-                  <span className="hidden lg:inline ml-1">{th.shortName}</span>
-                </button>
-              ))}
-            </div>
-
-            <button
-              onClick={() => setShowAudioSettingsModal(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5"
-              title="Audio & Sound FX Settings"
-            >
-              🎙️ Audio FX
-            </button>
-
-            <button
-              onClick={handleManualSave}
-              className="px-2.5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1"
-              title="Save Auction Checkpoint"
-            >
-              <span>💾 Save</span>
-            </button>
-
-            <button
-              onClick={handleResetAuction}
-              className="px-2.5 py-1.5 bg-gray-800 hover:bg-red-900/60 border border-gray-700 hover:border-red-600 text-gray-400 hover:text-red-200 rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1"
-              title="Reset Auction"
-            >
-              <span>🔄 Reset</span>
-            </button>
-          </div>
+          <AuctionControlCenter
+            userTeam={userTeam}
+            humanTeamIds={humanTeamIds}
+            currentSeason={currentSeason}
+            socialFeedLength={socialFeed.length}
+            activeRoomId={activeRoomId}
+            activeLeague={activeLeague}
+            activeThemeKey={activeThemeKey}
+            onSelectTheme={(themeKey) => {
+              setActiveThemeKey(themeKey);
+              toast.info(`📺 Switched to ${BROADCAST_THEMES[themeKey]?.name || themeKey}`);
+            }}
+            onOpenMultiManager={() => setShowMultiplayerModal(true)}
+            onOpenRosterStudio={() => setShowPlayerEditorModal(true)}
+            onOpenSets={() => setShowSetsModal(true)}
+            onOpenNeeds={() => {
+              setSelectedNeedsTeamId(activeHumanTeamId || userTeamId || 1);
+              setShowTeamNeedsModal(true);
+            }}
+            onOpenPlayingXI={() => {
+              setSelectedXITeamId(activeHumanTeamId || userTeamId || 1);
+              setShowPlayingXIModal(true);
+            }}
+            onOpenTournament={() => {
+              setInitialTournamentTeamId(activeHumanTeamId || userTeamId || 1);
+              setShowTournamentModal(true);
+            }}
+            onOpenTrades={() => setShowTradeModal(true)}
+            onOpenMiniAuction={() => setShowMiniAuctionModal(true)}
+            onOpenH2H={() => setShowHeadToHeadModal(true)}
+            onOpenSocial={() => setShowSocialModal(true)}
+            onOpenRoomLobby={() => setShowRoomLobbyModal(true)}
+            onOpenHostPodium={() => setShowHostModal(true)}
+            onOpenSquadCards={() => setShowSquadCardStudioModal(true)}
+            onOpenRosterHub={() => setShowRosterHubModal(true)}
+            onOpenGlobalLeagues={() => setShowGlobalLeaguesModal(true)}
+            onOpenAudioSettings={() => setShowAudioSettingsModal(true)}
+            onSave={handleManualSave}
+            onReset={handleResetAuction}
+          />
         )}
       </header>
 
@@ -2372,6 +2223,7 @@ export default function App() {
             timer={timer}
             isAccelerated={isAcceleratedRound}
             onClick={() => setShowPlayerStats(currentPlayer)}
+            activeTheme={activeTheme}
           />
 
           {/* Tactical Intelligence Wire */}
@@ -2418,100 +2270,141 @@ export default function App() {
             currentBidderTeam={currentBidderTeam}
           />
 
-          {/* User Bidding Control Bar */}
-          <div className="w-full max-w-2xl bg-gray-900/90 border border-gray-800 rounded-2xl p-4 shadow-2xl mb-8 flex flex-col gap-3">
-            <div className="flex flex-wrap items-center justify-between gap-2 text-xs border-b border-gray-800 pb-2">
-              <span className="text-gray-400">
-                Next Bid Increment: <span className="font-bold text-yellow-400">+₹{getIncrement(currentBid).toFixed(2)}Cr</span>
-              </span>
-              <span className="text-gray-400">
-                {userTeam?.shortName} Max Allowable Bid: <span className="font-bold text-green-400">₹{userMaxBid.toFixed(2)}Cr</span>
-              </span>
+          {/* User Bidding Control Bar & Paddle Station */}
+          <div
+            className={`w-full max-w-2xl ${
+              activeTheme.controlBg || "bg-gray-900/95"
+            } border ${
+              activeTheme.borderAccent || "border-gray-800"
+            } rounded-3xl p-4 sm:p-5 shadow-2xl mb-8 flex flex-col gap-3.5 transition-all duration-300`}
+          >
+            {/* Header Telemetry: Increment & Max Bid */}
+            <div className="flex flex-wrap items-center justify-between gap-2 text-xs border-b border-white/10 pb-2.5">
+              <div className="flex items-center gap-1.5 text-gray-300">
+                <span className="text-gray-400">Increment Step:</span>
+                <span className={`font-black ${activeTheme.textAccent || "text-yellow-400"} px-2.5 py-0.5 rounded-lg bg-black/40 border border-white/10`}>
+                  +₹{getIncrement(currentBid).toFixed(2)} Cr
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5 text-gray-300">
+                <span className="text-gray-400">{userTeam?.shortName} Max Purse Limit:</span>
+                <span className="font-extrabold text-emerald-400">
+                  ₹{userMaxBid.toFixed(2)} Cr
+                </span>
+              </div>
             </div>
 
-            {/* Phase 5: Active Paddle Selector in Multiplayer */}
+            {/* In Multi-Manager Mode: Active Paddle Selector & View Toggle */}
             {humanTeamIds.length > 1 && (
-              <div className="flex flex-wrap items-center gap-2 p-2 bg-gray-950/70 rounded-xl border border-gray-800">
-                <span className="text-[11px] text-gray-400 font-bold">Active Paddle:</span>
-                {humanTeamIds.map((hId) => {
-                  const hTeam = teams.find((t) => t.id === hId);
-                  if (!hTeam) return null;
-                  const isSelected = activeHumanTeamId === hId;
-                  const isLeading = currentBidderIndex === hId - 1;
-                  const hasPassed = passedTeams.includes(hId);
+              <div className="flex flex-wrap items-center justify-between gap-2 p-2 bg-black/40 rounded-2xl border border-white/10">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="text-[11px] text-gray-400 font-bold">Active Paddle:</span>
+                  {humanTeamIds.map((hId) => {
+                    const hTeam = teams.find((t) => t.id === hId);
+                    if (!hTeam) return null;
+                    const isSelected = activeHumanTeamId === hId;
+                    const isLeading = currentBidderIndex === hId - 1;
+                    const hasPassed = passedTeams.includes(hId);
 
-                  return (
-                    <button
-                      key={hId}
-                      onClick={() => setActiveHumanTeamId(hId)}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-extrabold transition-all flex items-center gap-1.5 ${
-                        isSelected
-                          ? "bg-yellow-400 text-black shadow-md shadow-yellow-500/30 ring-2 ring-yellow-400"
-                          : "bg-gray-800 hover:bg-gray-700 text-gray-300"
-                      } ${hasPassed ? "opacity-40" : ""}`}
-                    >
-                      <span>{hTeam.shortName}</span>
-                      {managerNames[hId] && (
-                        <span className="font-normal text-[10px]">({managerNames[hId]})</span>
-                      )}
-                      {isLeading && <span className="text-[10px] text-green-600 font-black">★</span>}
-                    </button>
-                  );
-                })}
+                    return (
+                      <button
+                        key={hId}
+                        onClick={() => setActiveHumanTeamId(hId)}
+                        className={`px-2.5 py-1 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 ${
+                          isSelected
+                            ? "bg-yellow-400 text-black shadow-md ring-2 ring-yellow-400"
+                            : "bg-gray-800 hover:bg-gray-700 text-gray-300"
+                        } ${hasPassed ? "opacity-40" : ""}`}
+                      >
+                        <span>{hTeam.shortName}</span>
+                        {managerNames[hId] && (
+                          <span className="font-normal text-[10px]">({managerNames[hId]})</span>
+                        )}
+                        {isLeading && <span className="text-[10px] text-green-600 font-black">★</span>}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <button
+                  onClick={() => setShowMultiPaddleGrid((prev) => !prev)}
+                  className="px-2.5 py-1 rounded-xl text-[11px] font-bold bg-white/10 hover:bg-white/20 text-gray-300 transition flex items-center gap-1"
+                >
+                  <span>{showMultiPaddleGrid ? "Hide Grid" : "Show All Paddles (Grid)"}</span>
+                  <span>{showMultiPaddleGrid ? "▲" : "▼"}</span>
+                </button>
               </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <button
-                onClick={handleUserBid}
-                disabled={!userBidCheck.allowed || currentBidderIndex === userTeam.id - 1}
-                className={`py-3 px-4 rounded-xl font-black text-sm flex flex-col items-center justify-center transition-all shadow-lg ${
-                  userBidCheck.allowed && currentBidderIndex !== userTeam.id - 1
-                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-blue-600/30 active:scale-95"
-                    : "bg-gray-800 text-gray-500 cursor-not-allowed border border-gray-800"
-                }`}
-              >
-                <span>
-                  {userTeam.shortName} Bid ₹{nextUserBid.toFixed(2)}Cr
+            {/* Beginner-Friendly Hero Raise Bid Button */}
+            <button
+              onClick={handleUserBid}
+              disabled={!userBidCheck.allowed || currentBidderIndex === userTeam.id - 1}
+              className={`w-full py-4 px-5 rounded-2xl font-black transition-all shadow-xl flex items-center justify-between gap-3 text-left group ${
+                currentBidderIndex === userTeam.id - 1
+                  ? "bg-gradient-to-r from-emerald-600 to-green-600 text-white ring-2 ring-emerald-400 shadow-green-900/50 cursor-default"
+                  : userBidCheck.allowed
+                  ? activeTheme.heroBtnClass || "bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-black active:scale-[0.99]"
+                  : "bg-gray-800/80 text-gray-500 cursor-not-allowed border border-gray-800"
+              }`}
+            >
+              <div className="flex items-center gap-3 truncate">
+                <span className="text-2xl p-2 rounded-xl bg-black/25 flex items-center justify-center shrink-0">
+                  {currentBidderIndex === userTeam.id - 1 ? "🏆" : "🏏"}
                 </span>
-                {!userBidCheck.allowed && (
-                  <span className="text-[10px] font-normal text-red-400 truncate max-w-full">
-                    {userBidCheck.reason}
-                  </span>
-                )}
-                {currentBidderIndex === userTeam.id - 1 && (
-                  <span className="text-[10px] font-normal text-green-400">
-                    {userTeam.shortName} holds highest bid!
-                  </span>
-                )}
-              </button>
+                <div className="truncate">
+                  <div className="text-base sm:text-lg font-black tracking-tight truncate">
+                    {currentBidderIndex === userTeam.id - 1
+                      ? `${userTeam.shortName} Holds Winning Bid (₹${currentBid.toFixed(2)} Cr)`
+                      : `${userTeam.shortName} Raise Bid to ₹${nextUserBid.toFixed(2)} Cr`}
+                  </div>
+                  <div className="text-xs font-medium opacity-90 truncate">
+                    {currentBidderIndex === userTeam.id - 1 ? (
+                      <span className="text-emerald-200 font-bold">★ You are leading this auction — waiting for gavel</span>
+                    ) : !userBidCheck.allowed ? (
+                      <span className="text-red-300">{userBidCheck.reason}</span>
+                    ) : (
+                      <span>Click to outbid the room (+₹{getIncrement(currentBid).toFixed(2)} Cr increment)</span>
+                    )}
+                  </div>
+                </div>
+              </div>
 
+              <div className="shrink-0 px-3 py-1.5 rounded-xl bg-black/20 text-xs font-black uppercase tracking-wider backdrop-blur-sm border border-black/10">
+                {currentBidderIndex === userTeam.id - 1 ? "Leading" : `+₹${getIncrement(currentBid).toFixed(2)} Cr`}
+              </div>
+            </button>
+
+            {/* Secondary Actions: Pass & Hammer / Sold */}
+            <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={handleUserPass}
                 disabled={passedTeams.includes(userTeam.id)}
-                className={`py-3 px-4 rounded-xl font-bold text-sm transition-all border ${
+                className={`py-3 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all border flex items-center justify-center gap-2 ${
                   passedTeams.includes(userTeam.id)
-                    ? "bg-gray-800 text-gray-600 border-gray-800 cursor-not-allowed"
-                    : "bg-red-950/40 hover:bg-red-900 border-red-800 text-red-300"
+                    ? "bg-gray-800/60 text-gray-500 border-gray-800 cursor-not-allowed"
+                    : "bg-red-950/40 hover:bg-red-900/60 border-red-700/60 text-red-200 active:scale-95"
                 }`}
               >
-                {passedTeams.includes(userTeam.id) ? `${userTeam.shortName} Passed` : `Pass ${userTeam.shortName}`}
+                <span className="text-base">⛔</span>
+                <span>{passedTeams.includes(userTeam.id) ? `${userTeam.shortName} Passed` : `Pass on Player`}</span>
               </button>
 
               <button
                 onClick={sellPlayer}
-                className="py-3 px-4 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-black text-sm rounded-xl shadow-lg shadow-green-600/20 active:scale-95 transition-all"
+                className="py-3 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-xs sm:text-sm rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 active:scale-95"
               >
-                🔨 Hammer / Sold
+                <span className="text-base">🔨</span>
+                <span>Hammer / Sold</span>
               </button>
             </div>
 
-            {/* Phase 5: Multi-Manager Direct Paddles Grid */}
-            {humanTeamIds.length > 1 && (
-              <div className="pt-2 border-t border-gray-800">
+            {/* Multi-Manager Direct Paddles Grid (Collapsible or Shown when toggled) */}
+            {humanTeamIds.length > 1 && showMultiPaddleGrid && (
+              <div className="pt-3 border-t border-white/10 animate-fadeIn">
                 <p className="text-[11px] text-gray-400 mb-2 font-bold flex items-center justify-between">
                   <span>⚡ Multi-Manager Direct Paddles:</span>
-                  <span className="text-gray-500 font-normal text-[10px]">Click your franchise button to bid</span>
+                  <span className="text-gray-500 font-normal text-[10px]">Click any franchise paddle to bid immediately</span>
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
                   {humanTeamIds.map((hId) => {
@@ -2612,7 +2505,7 @@ export default function App() {
                         ? "bg-green-950/40 ring-4 ring-green-500 animate-pulse shadow-xl"
                         : isRecent
                         ? "bg-yellow-950/30 ring-2 ring-yellow-400"
-                        : "bg-gray-900/80 hover:bg-gray-800"
+                        : `${activeTheme.cardBg || "bg-gray-900/80"} hover:brightness-110`
                     }`}
                   >
                     <div>

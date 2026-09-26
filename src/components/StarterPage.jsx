@@ -289,7 +289,7 @@ export const StarterPage = ({
                   <span className="text-yellow-400">7.</span> Broadcast Skins, Analytics & Social Reactions
                 </h4>
                 <p>
-                  • <strong>TV Broadcast Skins:</strong> Toggle between official broadcast skins: <em>Star Sports Gold</em>, <em>JioCinema Neon Night</em>, <em>2008 Vintage Retro</em>, and <em>IPL Dark</em>.<br />
+                  • <strong>TV Broadcast Skins:</strong> Toggle between 6 high-contrast, authentic broadcast packages: <em>Star Sports 1 HD (Royal Studio Blue & Gold)</em>, <em>Sony MAX (Classic Crimson & Gold Flame)</em>, <em>JioCinema (Cyberpunk Neon Magenta & Cyan)</em>, <em>Lord&apos;s Pavilion (Forest Green & Heritage Gold)</em>, <em>IPL Arena (Obsidian Dark)</em>, and <em>DLF 2008 Vintage Retro</em>.<br />
                   • <strong>Worm & Manhattan Charts:</strong> Interactive run-rate curves, over-by-over run bars, and wicket markers for all match simulations.<br />
                   • <strong>Simulated Social Wire & Pundit Grades:</strong> Real-time analyst tweets on sales/steals, and post-auction franchise report cards graded from <strong>A+ to F</strong>.<br />
                   • <strong>Batter vs Bowler Matrix:</strong> Inspect head-to-head records (Kohli vs Bumrah, Rohit vs Boult, Dhoni vs Narine) with strike rates, dismissals, and tactical advice!
